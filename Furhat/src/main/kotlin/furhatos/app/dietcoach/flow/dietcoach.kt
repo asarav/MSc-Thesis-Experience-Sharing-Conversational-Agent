@@ -8,11 +8,11 @@ import furhatos.app.dietcoach.dialog
 
 val Start = state(Interaction) {
     onEntry {
-
+        furhat.ask(dialog.getStatement())
     }
 
     onResponse {
         // Query done in query state below, with its result saved here since we're doing a call
-
+        System.out.println(dialog.getResponse())
     }
 }

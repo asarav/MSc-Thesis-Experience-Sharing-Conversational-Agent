@@ -5,15 +5,19 @@ from flask import Flask
 import manager
 
 app = Flask(__name__)
-manager = manager.manager()
+manager = manager.Manager()
 
 
-@app.route('/output')
-def hello_world():
+@app.route('/statement')
+def output():
     print("Sending predictions")
-    return {"outputs": manager.get_and_empty_outputs()}
+    print(manager.get_and_empty_outputs())
+    return {"outputs": "statement"}
 
+@app.route('/response')
+def response():
+    print("Sending predictions")
+    print(manager.get_and_empty_outputs())
+    return {"outputs": "HI"}
 
-if __name__ == "__main__":
-    threading.Thread(target=app.run).start()
-    manager.start_loop()
+app.run()

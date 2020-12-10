@@ -11,8 +11,8 @@ class dialog {
         /**
          * Returns the next statement outputted by the robot
          */
-        private fun getResponse(): String {
-            val url = URL("http://localhost:5000/")
+        fun getResponse(): String {
+            val url = URL("http://localhost:5000/response")
             try {
                 with(url.openConnection() as HttpURLConnection) {
                     requestMethod = "GET"  // optional default is GET
@@ -25,16 +25,16 @@ class dialog {
                     }
 
                     val jsonObject = JSONObject(jsonStr)
+                    System.out.println(jsonObject)
                     val outputs = ""
-                    for (output in jsonObject.getJSONArray("reply")) {
-                        val outputValuesList = output as JSONArray
-                    }
+                    print(jsonObject.getString("outputs"))
 
-                    return ""
+                    return "Response"
                 }
             } catch (e: Exception) {
+                System.out.println(e)
                 System.err.println("Warning! Could not get results from the dialogue manager! Is the server running?")
-                return ""
+                return "INVALID"
             }
         }
 
@@ -42,7 +42,30 @@ class dialog {
          * Returns the next statement outputted by the client
          */
         fun getStatement(): String {
-            return ""
+            val url = URL("http://localhost:5000/response")
+            try {
+                with(url.openConnection() as HttpURLConnection) {
+                    requestMethod = "GET"  // optional default is GET
+
+                    var jsonStr = ""
+                    inputStream.bufferedReader().use {
+                        it.lines().forEach { line ->
+                            jsonStr += line
+                        }
+                    }
+
+                    val jsonObject = JSONObject(jsonStr)
+                    System.out.println(jsonObject)
+                    val outputs = ""
+                    print(jsonObject.getString("outputs"))
+
+                    return "Response"
+                }
+            } catch (e: Exception) {
+                System.out.println(e)
+                System.err.println("Warning! Could not get results from the dialogue manager! Is the server running?")
+                return "INVALID"
+            }
         }
     }
 }
