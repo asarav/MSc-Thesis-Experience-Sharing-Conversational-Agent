@@ -1,18 +1,24 @@
 from threading import Thread
 from typing import Optional
+from dialogue_states.greeting import Greeting
+
 
 class Manager:
-
     def __init__(self):
-        self.outputs = []
+        self.states = []
+        self.currentStateName = "Greeting"
+        self.Greeting = Greeting()
+        self.states.push(self.Greeting.states)
 
-    def get_and_empty_outputs(self):
-        to_return = self.outputs
-        self.outputs = []
-        return to_return
+    def playStatement(self):
+        state = self.getState(self.currentStateName)
+        return state["statement"]
 
-    def start_loop(self):
-        images = []
-        t: Optional[Thread] = None
-        while True:
-            print("Hi")
+    def getState(self, name):
+        for state in self.states:
+            if state["name"] == name:
+                return state
+
+    def handleResponse(self):
+        state = self.getState(self.currentStateName)
+        return state["response"]()
