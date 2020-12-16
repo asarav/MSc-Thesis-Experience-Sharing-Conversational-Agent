@@ -4,18 +4,17 @@ class Greeting:
         self.states = [{
             "name": "Greeting",
             "statement": "Hello there, I am diet bot. How are you doing?",
-            "response": self.GreetingResponse(),
+            "response": self.GreetingResponse,
+            "stateType": "AnswerResponse"
         },
         {
             "name": "AskName",
             "statement": "What is your name?",
-            "response": None
+            "response": None,
+            "stateType": "End"
         }]
 
-    def GreetingResponse(self):
+    def GreetingResponse(self, response):
         #Process the response here.
-        possibleResponses = []
-        variables = []
-        variableValues = []
-        nextState = ""
-        return variableValues, nextState
+        nextState = "AskName"
+        return [], nextState

@@ -8,7 +8,7 @@ class Manager:
         self.states = []
         self.currentStateName = "Greeting"
         self.Greeting = Greeting()
-        self.states.push(self.Greeting.states)
+        self.states = self.states + self.Greeting.states
 
     def playStatement(self):
         state = self.getState(self.currentStateName)
@@ -19,6 +19,14 @@ class Manager:
             if state["name"] == name:
                 return state
 
-    def handleResponse(self):
+    def handleResponse(self, response):
         state = self.getState(self.currentStateName)
-        return state["response"]()
+        variables = []
+        if state["response"] is not None:
+            variables, self.currentStateName = state["response"](response)
+
+        nextState = self.getState(self.currentStateName)
+        if "stateType" in nextState:
+            nextStateType = nextState["stateType"]
+
+        return variables, self.currentStateName, nextStateType

@@ -18,8 +18,8 @@ def output():
 def response():
     response = request.args.get('response')
     print("Handling Response")
-    print(response)
     #Send "end" if you want the conversation to go to an end state.
-    return {"outputs": manager.handleResponse(response)}
+    _,_,stateType = manager.handleResponse(response)
+    return {"outputs": stateType}
 
 app.run()

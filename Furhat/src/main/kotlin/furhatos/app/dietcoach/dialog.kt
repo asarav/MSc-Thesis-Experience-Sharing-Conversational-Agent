@@ -1,18 +1,20 @@
 package furhatos.app.dietcoach
 
-import org.json.JSONArray
 import org.json.JSONObject
-import java.lang.Exception
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
+import java.net.URLEncoder
 
 class dialog {
     companion object {
         /**
-         * Returns the next statement outputted by the robot
+         * Sends a response to the dialog manager client so that it can update its internal state
          */
-        fun getResponse(): String {
-            val url = URL("http://localhost:5000/response")
+        fun sendResponse(response: String) : String {
+            val url = URL("http://localhost:5000/response" + "?response=" + response)
             try {
                 with(url.openConnection() as HttpURLConnection) {
                     requestMethod = "GET"  // optional default is GET
@@ -25,11 +27,9 @@ class dialog {
                     }
 
                     val jsonObject = JSONObject(jsonStr)
-                    System.out.println(jsonObject)
-                    val outputs = ""
-                    print(jsonObject.getString("outputs"))
+                    val output = jsonObject.getString("outputs")
 
-                    return "Response"
+                    return output
                 }
             } catch (e: Exception) {
                 System.out.println(e)
@@ -42,7 +42,7 @@ class dialog {
          * Returns the next statement outputted by the client
          */
         fun getStatement(): String {
-            val url = URL("http://localhost:5000/response")
+            val url = URL("http://localhost:5000/statement")
             try {
                 with(url.openConnection() as HttpURLConnection) {
                     requestMethod = "GET"  // optional default is GET
@@ -55,11 +55,9 @@ class dialog {
                     }
 
                     val jsonObject = JSONObject(jsonStr)
-                    System.out.println(jsonObject)
-                    val outputs = ""
-                    print(jsonObject.getString("outputs"))
+                    val output = jsonObject.getString("outputs")
 
-                    return "Response"
+                    return output
                 }
             } catch (e: Exception) {
                 System.out.println(e)
