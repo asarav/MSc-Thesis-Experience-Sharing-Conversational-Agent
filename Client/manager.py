@@ -1,18 +1,22 @@
-from threading import Thread
-from typing import Optional
 from dialogue_states.greeting import Greeting
 
 
 class Manager:
     def __init__(self):
         self.states = []
-        self.currentStateName = "Greeting"
+        self.basicStates = []
+        #Set the starting state here.
+        self.currentStateName = "AskUserID"
         self.Greeting = Greeting()
         self.states = self.states + self.Greeting.states
 
+    #Expects either a string or a function that returns a string.
     def playStatement(self):
         state = self.getState(self.currentStateName)
-        return state["statement"]
+        if isinstance(state["statement"], str):
+            return state["statement"]
+        else:
+            return state["statement"]()
 
     def getState(self, name):
         for state in self.states:
@@ -30,3 +34,9 @@ class Manager:
             nextStateType = nextState["stateType"]
 
         return variables, self.currentStateName, nextStateType
+
+    def caseFolding(self, response):
+        return response.casefold()
+
+    def NER(self, response):
+        return
