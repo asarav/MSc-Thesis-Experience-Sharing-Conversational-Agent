@@ -14,7 +14,8 @@ class dialog {
          * Sends a response to the dialog manager client so that it can update its internal state
          */
         fun sendResponse(response: String) : String {
-            val url = URL("http://localhost:5000/response" + "?response=" + response)
+            val formattedResponse = response.replace(" ", "%20")
+            val url = URL("http://localhost:5000/response" + "?response=" + "\"" + formattedResponse + "\"")
             try {
                 with(url.openConnection() as HttpURLConnection) {
                     requestMethod = "GET"  // optional default is GET

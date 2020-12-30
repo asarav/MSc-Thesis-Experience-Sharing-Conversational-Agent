@@ -18,17 +18,25 @@ class Manager:
         else:
             return state["statement"]()
 
+    #Gets a state by its unique name in the list of states
     def getState(self, name):
         for state in self.states:
             if state["name"] == name:
                 return state
 
+    #Updates the state and parses the response
     def handleResponse(self, response):
         state = self.getState(self.currentStateName)
         variables = []
+        #Update new state
         if state["response"] is not None:
-            variables, self.currentStateName = state["response"](response)
+            if isinstance(state["response"], str):
+                print("Statement!")
+                self.currentStateName = state["response"]
+            else:
+                variables, self.currentStateName = state["response"](response)
 
+        #Get next state type so that Furhat knows what to do.
         nextState = self.getState(self.currentStateName)
         if "stateType" in nextState:
             nextStateType = nextState["stateType"]

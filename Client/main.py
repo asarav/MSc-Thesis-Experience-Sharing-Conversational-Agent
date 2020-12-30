@@ -12,6 +12,7 @@ manager = manager.Manager()
 @app.route('/statement', methods=['GET'])
 def output():
     print("Handling Statement")
+    print(manager.playStatement())
     return {"outputs": manager.playStatement()}
 
 @app.route('/response', methods=['GET'])
