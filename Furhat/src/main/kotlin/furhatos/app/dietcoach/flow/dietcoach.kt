@@ -11,7 +11,7 @@ import furhatos.gestures.Gestures
 
 val Start : State = state(Interaction) {
     onEntry {
-        furhat.userSpeechStartGesture = listOf(Gestures.Thoughtful, Gestures.Nod, Gestures.Smile)
+        furhat.userSpeechStartGesture = listOf(Gestures.Thoughtful,Gestures.Smile,Gestures.BrowRaise,Gestures.Nod)
         val statementObject = dialog.getStatement()
         val statmentOutput = statementObject.getString("outputs")
         val gesture = statementObject.getString("gesture")
@@ -172,7 +172,7 @@ fun handleGesture(gest: String) : Gesture {
         "Thoughtful" -> return Gestures.Thoughtful
         "Wink" -> return Gestures.Wink
         else -> { // Note the block
-            return Gestures.Nod
+            return Gestures.BrowRaise
         }
     }
 }
