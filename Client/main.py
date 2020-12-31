@@ -12,8 +12,14 @@ manager = manager.Manager()
 @app.route('/statement', methods=['GET'])
 def output():
     print("Handling Statement")
-    print(manager.playStatement())
-    return {"outputs": manager.playStatement()}
+    statement = manager.playStatement()
+    package = {"outputs": statement, "gesture": "None", "gestureTiming": "None"}
+    gesture, gestureTiming = manager.getGesture()
+    if gesture is not None:
+        package["gesture"] = gesture
+    if gestureTiming is not None:
+        package["gestureTiming"] = gestureTiming
+    return package
 
 @app.route('/response', methods=['GET'])
 def response():

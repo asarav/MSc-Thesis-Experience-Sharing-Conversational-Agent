@@ -34,7 +34,8 @@ class Greeting:
             "name": "Start",
             "statement": "Great! Let's get started then.",
             "response": "Greeting",
-            "stateType": "Statement"
+            "stateType": "Statement",
+            "gesture": "Nod"
         },
         {
             "name": "Greeting",
@@ -129,6 +130,8 @@ class Greeting:
 
     def IncorrectNameResponse(self, response):
         nextState = "ConfirmName"
+        self.IncorrectName = True
+        self.username = response
         return [], nextState
 
     def GetStartedGreetingStatement(self):

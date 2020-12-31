@@ -18,6 +18,19 @@ class Manager:
         else:
             return state["statement"]()
 
+    def getGesture(self):
+        state = self.getState(self.currentStateName)
+        gesture = None
+        # Where 0 is before and 1 is after.
+        gestureTiming = False
+        if "gesture" in state:
+            gesture = state["gesture"]
+        if "gestureTiming" in state:
+            gestureTiming = state["gestureTiming"]
+        return gesture, gestureTiming
+
+
+
     #Gets a state by its unique name in the list of states
     def getState(self, name):
         for state in self.states:

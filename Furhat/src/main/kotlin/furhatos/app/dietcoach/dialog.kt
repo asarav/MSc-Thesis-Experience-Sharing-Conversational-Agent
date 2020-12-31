@@ -42,7 +42,7 @@ class dialog {
         /**
          * Returns the next statement outputted by the client
          */
-        fun getStatement(): String {
+        fun getStatement(): JSONObject {
             val url = URL("http://localhost:5000/statement")
             try {
                 with(url.openConnection() as HttpURLConnection) {
@@ -56,14 +56,17 @@ class dialog {
                     }
 
                     val jsonObject = JSONObject(jsonStr)
-                    val output = jsonObject.getString("outputs")
 
-                    return output
+                    return jsonObject
                 }
             } catch (e: Exception) {
                 System.out.println(e)
                 System.err.println("Warning! Could not get results from the dialogue manager! Is the server running?")
-                return "INVALID"
+                val obj = JSONObject()
+                obj.put("outputs", "INVALID")
+                obj.put("gesture", "None")
+                obj.put("gestureTiming", false)
+                return obj
             }
         }
     }
