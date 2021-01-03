@@ -11,7 +11,7 @@ import furhatos.gestures.Gestures
 
 val Start : State = state(Interaction) {
     onEntry {
-        furhat.userSpeechStartGesture = listOf(Gestures.Thoughtful,Gestures.Smile,Gestures.BrowRaise,Gestures.Nod)
+        furhat.userSpeechStartGesture = listOf(Gestures.Thoughtful,Gestures.Smile,Gestures.BrowRaise,Gestures.Thoughtful,Gestures.Smile,Gestures.BrowRaise,Gestures.GazeAway,Gestures.Nod)
         val statementObject = dialog.getStatement()
         val statmentOutput = statementObject.getString("outputs")
         val gesture = statementObject.getString("gesture")

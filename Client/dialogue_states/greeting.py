@@ -132,7 +132,7 @@ class Greeting:
 
     def NoUserIDStatement(self):
         self.ID = "1234"
-        return "Okay. Welcome. Here is your new user Id. " + "Your Id is: " + self.ID + ". Make sure you write it down somewhere. You will need it for all of the sessions we will have together. Do you have your ID memorized and written down somewhere?"
+        return "Okay. Welcome. Here is your new user Id. " + "Your ID is: " + self.ID + ". Make sure you write it down somewhere. You will need it for all of the sessions we will have together. Do you have your ID memorized and written down somewhere?"
 
     def NoUserIDResponse(self, response):
         nextState = "NoUserID"
