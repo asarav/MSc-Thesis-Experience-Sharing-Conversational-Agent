@@ -18,13 +18,6 @@ class jsonManager:
         with open(file) as json_file:
             self.data = json.load(json_file)
 
-            # Print the type of data variable
-            print("Type:", type(data))
-
-            # Print the data of dictionary
-            print("\nPeople1:", data['people1'])
-            print("\nPeople2:", data['people2'])
-
     def writeJSON(self, data, file):
         # WRITING
         with open(file, 'w') as fp:
