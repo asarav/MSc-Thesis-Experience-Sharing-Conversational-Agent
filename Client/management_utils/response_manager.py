@@ -48,3 +48,58 @@ class ResponseManager:
             decision = 2
 
         return decision
+
+    #Returns a 0,1,or 2. 0 is femalel. 1 is a male. 2 is neither.
+    def DetermineGender(self, Response):
+        male = ["male", "man", "boy", "masculine",]
+        female = ["female", "woman", "girl", "feminine"]
+        decision = 0
+        if self.MatchExpectedResponses(male, Response):
+            decision = 1
+        elif self.MatchExpectedResponses(female, Response):
+            decision = 0
+        else:
+            decision = 2
+
+        return decision
+
+    def GetNumber(self, Response):
+        numbers = [int(word) for word in Response.split() if word.isdigit()]
+        return numbers
+
+    def GetHeight(self, Response):
+        # Imperial
+        feet = ["foot", "feet"]
+        inches = ["inch", "inches"]
+
+        # Metric
+        meters = ["meter", "meters"]
+        centimeters = ["centimeter", "centimeters"]
+
+        f = self.MatchExpectedResponses(feet, Response)
+        i = self.MatchExpectedResponses(inches, Response)
+        m = self.MatchExpectedResponses(meters, Response)
+        c = self.MatchExpectedResponses(centimeters, Response)
+
+        if f or i:
+            print("Imperial")
+        elif m or c:
+            print("Metric")
+        else:
+            print("Unknown")
+
+    def GetGoal(self, Response):
+        calorieRestriction = ["calorie", "caloric"]
+        sugarReduction = ["sugar", "glucose"]
+        dietCompositionChange = ["diet", "composition"]
+        decision = 0
+        if self.MatchExpectedResponses(calorieRestriction, Response):
+            decision = 0
+        elif self.MatchExpectedResponses(sugarReduction, Response):
+            decision = 1
+        elif self.MatchExpectedResponses(dietCompositionChange, Response):
+            decision = 2
+        else:
+            decision = 3
+
+        return decision

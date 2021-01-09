@@ -1,4 +1,5 @@
 from dialogue_states.greeting import Greeting
+from dialogue_states.session1Content import Session1Content
 
 
 class Manager:
@@ -8,15 +9,20 @@ class Manager:
         #Set the starting state here.
         self.currentStateName = "AskUserID"
         self.Greeting = Greeting()
-        self.states = self.states + self.Greeting.states
+        self.session1Content = Session1Content()
+        self.states = self.states + self.Greeting.states + self.session1Content.states
 
     #Expects either a string or a function that returns a string.
     def playStatement(self):
         state = self.getState(self.currentStateName)
+        statement = ""
         if isinstance(state["statement"], str):
-            return state["statement"]
+            statement = state["statement"]
         else:
-            return state["statement"]()
+            statement = state["statement"]()
+
+
+        return statement
 
     def getGesture(self):
         state = self.getState(self.currentStateName)
