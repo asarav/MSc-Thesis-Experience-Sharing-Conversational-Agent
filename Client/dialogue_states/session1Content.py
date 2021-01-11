@@ -1,5 +1,6 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
+import data_retrieval.shortTermData as shortTermData
 
 class Session1Content:
     def __init__(self):
@@ -13,6 +14,10 @@ class Session1Content:
         self.height = 160
         self.askedGoals = False
         self.goal = 0
+
+        #Load user data
+        self.shortTermData = shortTermData.ShortTermData()
+
         self.states = [
         {
             "name": "GetStartedGreeting",
@@ -137,6 +142,8 @@ class Session1Content:
         ]
 
     def GetStartedGreetingStatement(self):
+        #Load the data here because it is the first statement.
+        self.shortTermData.jsonLoaded()
         return "Great. Nice to meet you " + self.username + ". Let's start improving your diet"
 
     def AnswerDiabetesQuestionsResponse(self, response):

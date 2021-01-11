@@ -1,4 +1,5 @@
 import management_utils.response_manager as ResponseManager
+import data_retrieval.shortTermData as shortTermData
 
 class Greeting:
     def __init__(self):
@@ -6,6 +7,11 @@ class Greeting:
         self.ID = "1234"
         self.username = ""
         self.IncorrectName = False
+
+        #Load the data here because it is the beginning of the interaction
+        self.shortTermData = shortTermData.ShortTermData()
+        self.shortTermData.jsonLoaded()
+
         self.states = [{
             "name": "AskUserID",
             "statement": "Hello there. I am Diet Bot. Before we start, do you already have a user id?",
