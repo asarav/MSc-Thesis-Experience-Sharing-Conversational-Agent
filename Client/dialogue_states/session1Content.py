@@ -64,7 +64,7 @@ class Session1Content:
         {
             "name": "ListGoals",
             "statement": "There are three goals that you can choose. These are calorie restriction, sugar reduction and diet composition change. Before we choose a goal, I would like to ask you for a few personal details so that we can ensure that the goal that is chosen is appropriate for you.",
-            "response": "ListGoals",
+            "response": "AskGender",
             "stateType": "Statement"
         },
         {
@@ -143,7 +143,8 @@ class Session1Content:
 
     def GetStartedGreetingStatement(self):
         #Load the data here because it is the first statement.
-        self.shortTermData.jsonLoaded()
+        self.shortTermData.readData()
+        self.shortTermData.data["physicalData"] = {}
         return "Great. Nice to meet you " + self.username + ". Let's start improving your diet"
 
     def AnswerDiabetesQuestionsResponse(self, response):
@@ -190,13 +191,14 @@ class Session1Content:
         if decision is 0:
             nextState = "AskGender"
         else:
+            self.shortTermData.data["physicalData"]["gender"] = self.gender
             nextState = "AskAge"
         return [], nextState
 
     def AskAgeResponse(self, response):
         nextState = "ConfirmAge"
         numbers = self.responseUtils.GetNumber(response)
-        if len(numbers) > 1:
+        if len(numbers) > 0:
             self.age = numbers[0]
         return [], nextState
 
@@ -209,13 +211,15 @@ class Session1Content:
         if decision is 0:
             nextState = "AskAge"
         else:
+            self.shortTermData.data["physicalData"]["age"] = self.age
+            self.shortTermData.writeData()
             nextState = "AskWeight"
         return [], nextState
 
     def AskWeightResponse(self, response):
         nextState = "ConfirmWeight"
         numbers = self.responseUtils.GetNumber(response)
-        if len(numbers) > 1:
+        if len(numbers) > 0:
             self.weight = numbers[0]
         return [], nextState
 
@@ -228,13 +232,14 @@ class Session1Content:
         if decision is 0:
             nextState = "AskWeight"
         else:
+            self.shortTermData.data["physicalData"]["weight"] = self.weight
             nextState = "AskHeight"
         return [], nextState
 
     def AskHeightResponse(self, response):
         nextState = "ConfirmHeight"
         numbers = self.responseUtils.GetNumber(response)
-        if len(numbers) > 1:
+        if len(numbers) > 0:
             self.height = numbers[0]
         return [], nextState
 
@@ -247,6 +252,8 @@ class Session1Content:
         if decision is 0:
             nextState = "AskHeight"
         else:
+            self.shortTermData.data["physicalData"]["height"] = self.height
+            self.shortTermData.writeDataToJSON()
             nextState = "ListGoals2"
         return [], nextState
 

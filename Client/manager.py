@@ -1,5 +1,7 @@
 from dialogue_states.greeting import Greeting
 from dialogue_states.session1Content import Session1Content
+from management_utils.response_manager import ResponseManager
+import random
 
 
 class Manager:
@@ -11,6 +13,8 @@ class Manager:
         self.Greeting = Greeting()
         self.session1Content = Session1Content()
         self.states = self.states + self.Greeting.states + self.session1Content.states
+        self.responseManager = ResponseManager()
+        self.repeat = False
 
     #Expects either a string or a function that returns a string.
     def playStatement(self):
@@ -20,6 +24,16 @@ class Manager:
             statement = state["statement"]
         else:
             statement = state["statement"]()
+
+        if self.repeat:
+            self.repeat = False
+            #Choose initial statement.
+            initial = random.choice(["Okay. ", "I will repeat that. ", "Sure. "])
+            statement = initial + statement
+        else:
+            #Add voice gestures if not repeating
+            statement = self.responseManager.AddVoiceGestures(statement)
+            print("Voice Gestures Added")
 
 
         return statement
@@ -48,7 +62,10 @@ class Manager:
         state = self.getState(self.currentStateName)
         variables = []
         #Update new state
-        if state["response"] is not None:
+        if self.responseManager.AskRepeat(response):
+            self.currentStateName = state["name"]
+            self.repeat = True
+        elif state["response"] is not None:
             if isinstance(state["response"], str):
                 print("Statement!")
                 self.currentStateName = state["response"]

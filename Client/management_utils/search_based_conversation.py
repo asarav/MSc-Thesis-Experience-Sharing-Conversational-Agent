@@ -88,7 +88,9 @@ class SearchBasedConversation:
             ["How is my sex related to diabetes?",
             "Diabetes, especially type 2, is more common in males rather than females. However, females often have more serious complications and a greater risk of death. Glucose is usually metabolised and regulated at low levels in the blood through the function of a pancreatic hormone called insulin."],
             ["How does age affect diabetes?",
-            "The risk of type 2 diabetes increases as you get older, especially after age 45. That's probably because people tend to exercise less, lose muscle mass and gain weight as they age. But type 2 diabetes is also increasing dramatically among children, adolescents and younger adults."]
+            "The risk of type 2 diabetes increases as you get older, especially after age 45. That's probably because people tend to exercise less, lose muscle mass and gain weight as they age. But type 2 diabetes is also increasing dramatically among children, adolescents and younger adults."],
+            ["What is type 1 diabetes?",
+             "Type 1 diabetes is usually found in children. Type 1 diabetes is all about insulin—a lack of the hormone insulin. If you have type 1 diabetes, then your body doesn’t produce enough insulin to handle the glucose in your body. Glucose is a sugar that your body uses for instant energy, but in order for your body to use it properly, you have to have insulin."]
         ]
 
         self.trainer = ListTrainer(self.chatbot)

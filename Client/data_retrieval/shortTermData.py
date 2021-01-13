@@ -1,4 +1,4 @@
-import jsonManager
+import data_retrieval.jsonManager as jsonManager
 
 #A wrapper for the jsonManager that is used for accessing interaction data in different flows.
 class ShortTermData:

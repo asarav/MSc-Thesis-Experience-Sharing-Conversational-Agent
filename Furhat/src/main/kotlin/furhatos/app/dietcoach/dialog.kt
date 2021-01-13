@@ -63,7 +63,7 @@ class dialog {
                 System.out.println(e)
                 System.err.println("Warning! Could not get results from the dialogue manager! Is the server running?")
                 val obj = JSONObject()
-                obj.put("outputs", "INVALID")
+                obj.put("outputs", "I'm sorry. I just experienced an error. Could you repeat that?")
                 obj.put("gesture", "None")
                 obj.put("gestureTiming", false)
                 return obj

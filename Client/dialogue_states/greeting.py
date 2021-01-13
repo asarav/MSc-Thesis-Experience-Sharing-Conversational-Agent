@@ -10,7 +10,7 @@ class Greeting:
 
         #Load the data here because it is the beginning of the interaction
         self.shortTermData = shortTermData.ShortTermData()
-        self.shortTermData.jsonLoaded()
+        self.shortTermData.readData()
 
         self.states = [{
             "name": "AskUserID",
@@ -51,7 +51,7 @@ class Greeting:
         },
         {
             "name": "AskName",
-            "statement": "What is your name?",
+            "statement": "What is your first name?",
             "response": self.AskNameResponse,
             "stateType": "AnswerResponse"
         },
@@ -87,6 +87,7 @@ class Greeting:
 
     def NoUserIDStatement(self):
         self.ID = "1234"
+        self.shortTermData.data["id"] = self.ID
         return "Okay. Welcome. Here is your new user Id. " + "Your ID is: " + self.ID + ". Make sure you write it down somewhere. You will need it for all of the sessions we will have together. Do you have your ID memorized and written down somewhere?"
 
     def NoUserIDResponse(self, response):
@@ -125,6 +126,8 @@ class Greeting:
             else:
                 nextState = "IncorrectName"
         else:
+            self.shortTermData.data["name"] = self.username
+            self.shortTermData.writeData()
             nextState = "GetStartedGreeting"
         return [], nextState
 
