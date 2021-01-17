@@ -1,6 +1,8 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.shortTermData as shortTermData
+from diet_utils.nutrition import Nutrition
+
 
 class Session1Content:
     def __init__(self):
@@ -269,11 +271,48 @@ class Session1Content:
         return calorieRestriction + " " + sugarReduction + " " + dietCompositionChange
 
     def AskGoalsStatement(self):
-        if self.askedGoals:
-            goals = "calorie restriction, sugar reduction and diet composition change."
-            return "Which goal would you like to work on? The goals available to you are " + goals
+        self.nutrition = Nutrition(self.age, self.weight, self.height, self.gender)
+        goals = self.nutrition.AppropriateGoals()
+        bmiGoals = self.nutrition.AppropriateGoalsBMI()
+        acceptedGoals = []
+
+        if goals[0] and bmiGoals[0]:
+            acceptedGoals.append("calorie restriction")
+        if goals[1] and bmiGoals[1]:
+            acceptedGoals.append("sugar reduction")
+        if goals[2] and bmiGoals[2]:
+            acceptedGoals.append("diet composition change")
+
+        goalString = ""
+
+        if len(acceptedGoals) > 1:
+            goalString = "The goals available to you are "
         else:
-            return "Which goal would you like to work on for the rest of our sessions?"
+            goalString = "The only goal available to you is "
+
+        for i in range(0, len(acceptedGoals)):
+            if i is not len(acceptedGoals) - 1 and len(acceptedGoals) > 1:
+                goalString = goalString + acceptedGoals[i]
+                goalString = goalString + ", "
+            elif i is not len(acceptedGoals) - 1 and len(acceptedGoals) is 1:
+                goalString = goalString + acceptedGoals[i]
+            elif i is len(acceptedGoals) - 1 and len(acceptedGoals) > 1:
+                goalString = goalString + " and "
+                goalString = goalString + acceptedGoals[i]
+                goalString = goalString + "."
+            elif i is len(acceptedGoals) - 1 and len(acceptedGoals) is 1:
+                goalString = goalString + acceptedGoals[i]
+                goalString = goalString + "."
+
+        if len(acceptedGoals) > 1:
+            if self.askedGoals:
+                goals = "calorie restriction, sugar reduction and diet composition change."
+                return "Which goal would you like to work on? " + goals
+            else:
+                return "Which goal would you like to work on for the rest of our sessions?"
+        else:
+            #Since there is only one available goal, maybe asking the question is not that productive
+            return "Which goal would you like to work on? " + goals
 
 
     def AskGoalsResponse(self, response):
@@ -300,5 +339,5 @@ class Session1Content:
         if decision is 0:
             nextState = "AskGoals"
         else:
-            nextState = "???????"
+            nextState = "AskCurrentConsumption"
 

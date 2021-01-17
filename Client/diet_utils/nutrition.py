@@ -5,6 +5,7 @@ class Nutrition:
         self.height = height
         self.heightMeters = self.height/100
         self.gender = gender
+        self.BMI = self.weight / (self.heightMeters * self.heightMeters)
 
     def TotalEnergyExpenditure(self):
         # Physical Activity. Assume that it is sedentary for now.
@@ -42,3 +43,26 @@ class Nutrition:
         print("If no allergies, maybe just work on composition change")
 
         return CI, SI, DCC
+
+    def AppropriateGoalsBMI(self, BMI):
+        CI = True
+        SI = True
+        DCC = True
+        classification = self.BMIClassification(BMI)
+        if classification < 2:
+            CI = False
+
+        return CI, SI, DCC
+
+    def BMIClassification(self, BMI):
+        #Underweight
+        if BMI < 18.5:
+            return 0
+        #Normal
+        if BMI < 25:
+            return 1
+        #Overweight
+        if BMI < 30:
+            return 2
+        #Obese
+        return 3
