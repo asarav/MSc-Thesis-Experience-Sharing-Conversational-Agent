@@ -40,7 +40,7 @@ class ResponseManager:
 
     #Returns a 0,1,or 2. 0 is a no. 1 is a yes. 2 is neither a yes or a no.
     def YesOrNo(self, Response):
-        yes = ["yes", "okay", "yep", "yah",]
+        yes = ["yes", "okay", "yep", "yah", "yeah"]
         no = ["no", "nope", "nah", "don't", "not", "nay", "now", "doubt"]
         decision = 0
         if self.MatchExpectedResponses(yes, Response):
@@ -48,7 +48,9 @@ class ResponseManager:
         elif self.MatchExpectedResponses(no, Response):
             decision = 0
         else:
-            decision = 2
+            #Treat all other answers as though they are a no to prevent accidentally progressing in the flow.
+            decision = 0
+            #decision = 2
 
         return decision
 
@@ -131,7 +133,7 @@ class ResponseManager:
         #Used in the sentence in the start of statement
         startGestures = ["hhmmmm", "aahhhh", "ohhhh", "ummmmm", "aahhhh", "ummmmm", "sooo", "okay"]
         #Can be used whenever
-        middleGestures = ["ummmm", "ummmm", "like", "just"]
+        middleGestures = ["ummmm", "ummmm", "just"]
 
         sentences = tokenize.sent_tokenize(Statement)
         gestureNumbers = [0, 0, 0, 0, 0, 1, 1]

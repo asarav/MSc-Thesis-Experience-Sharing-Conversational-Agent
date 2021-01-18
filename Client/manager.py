@@ -1,5 +1,6 @@
 from dialogue_states.greeting import Greeting
-from dialogue_states.session1Content import Session1Content
+from dialogue_states.session1Start import Session1Start
+from dialogue_states.session1GoalSetting import Session1GoalSetting
 from management_utils.response_manager import ResponseManager
 import random
 
@@ -11,8 +12,12 @@ class Manager:
         #Set the starting state here.
         self.currentStateName = "AskUserID"
         self.Greeting = Greeting()
-        self.session1Content = Session1Content()
-        self.states = self.states + self.Greeting.states + self.session1Content.states
+        self.session1Start = Session1Start()
+        self.session1GoalSetting = Session1GoalSetting()
+        self.states = self.states + \
+                      self.Greeting.states + \
+                      self.session1Start.states + \
+                      self.session1GoalSetting.states
         self.responseManager = ResponseManager()
         self.repeat = False
 
