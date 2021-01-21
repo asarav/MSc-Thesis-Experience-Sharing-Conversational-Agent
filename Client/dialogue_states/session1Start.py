@@ -64,7 +64,7 @@ class Session1Start:
         },
         {
             "name": "ListGoals",
-            "statement": "There are three goals that you can choose. These are calorie restriction, sugar reduction and diet composition change. Before we choose a goal, I would like to ask you for a few personal details so that we can ensure that the goal that is chosen is appropriate for you.",
+            "statement": "There are two possible goals that you can choose. These are calorie restriction, and sugar reduction. Before we choose a goal, I would like to ask you for a few personal details so that we can ensure that the goal that is chosen is appropriate for you.",
             "response": "AskGender",
             "stateType": "Statement"
         },

@@ -17,17 +17,9 @@ class MileStone:
             #Milestone is the halfway point
             milestone = current - (current - finalGoal)/2
             print("Calorie Restriction")
-            return goal, milestone
-        elif goal is 1:
+            return finalGoal, milestone
+        else:
             finalGoal = current * 0.9
             milestone = current - (current - finalGoal)/2
             print("Sugar reduction")
             return finalGoal, milestone
-        else:
-            #Expect diet composition to be a number between 1 and 0
-            print("Diet Composition")
-            finalGoal = current - 0.15
-            if finalGoal < 0:
-                finalGoal = 0
-            mileStone = current - (current - finalGoal)/2
-            return finalGoal, mileStone

@@ -16,6 +16,8 @@ class Session1GoalSetting:
         self.height = 160
         self.askedGoals = False
         self.goal = 0
+        self.caloriesConsumed = 2000
+        self.sugarConsumed = 50
 
         #Load user data
         self.shortTermData = shortTermData.ShortTermData()
@@ -50,6 +52,12 @@ class Session1GoalSetting:
             "statement": self.AskCurrentConsumptionStatement,
             "response": self.AskCurrentConsumptionResponse,
             "stateType": "AnswerResponse"
+        },
+        {
+            "name": "ConfirmCurrentConsumption",
+            "statement": self.ConfirmCurrentConsumptionStatement,
+            "response": self.ConfirmCurrentConsumptionResponse,
+            "stateType": "AnswerResponse"
         }
         ]
 
@@ -65,17 +73,6 @@ class Session1GoalSetting:
         self.username = self.shortTermData.data["name"]
         self.ID = self.shortTermData.data["id"]
 
-        statement = "Based on the information you provided, I believe the following goals are appropriate for you: "
-        goals = "calorie restriction, sugar reduction and diet composition change."
-        return statement + goals
-
-    def ExplainGoalsStatement(self):
-        calorieRestriction = "Calorie reduction refers to reducing your daily caloric intake by either choosing healthier foods, reducing portions, or simply eating less."
-        sugarReduction = "Sugar reduction refers to reducing your daily sugar intake by eating foods with lower amounts of sugar, or simply reducing overall intake."
-        dietCompositionChange = "Diet composition change refers to the food groups you are eating from. The point of this goal is to "
-        return calorieRestriction + " " + sugarReduction + " " + dietCompositionChange
-
-    def AskGoalsStatement(self):
         self.nutrition = Nutrition(self.age, self.weight, self.height, self.gender)
         goals = self.nutrition.AppropriateGoals()
         bmiGoals = self.nutrition.AppropriateGoalsBMI()
@@ -85,8 +82,23 @@ class Session1GoalSetting:
             acceptedGoals.append("calorie restriction")
         if goals[1] and bmiGoals[1]:
             acceptedGoals.append("sugar reduction")
-        if goals[2] and bmiGoals[2]:
-            acceptedGoals.append("diet composition change")
+
+        goalsString = "calorie restriction, and sugar reduction."
+        if len(acceptedGoals) is 0:
+            goalsString = acceptedGoals[0]
+
+        statement = "Based on the information you provided, I believe the following goals are appropriate for you: "
+        return statement + goalsString
+
+    def ExplainGoalsStatement(self):
+        calorieRestriction = "Calorie reduction refers to reducing your daily caloric intake by either choosing healthier foods, reducing portions, or simply eating less."
+        sugarReduction = "Sugar reduction refers to reducing your daily sugar intake by eating foods with lower amounts of sugar, or simply reducing overall intake."
+        return calorieRestriction + " " + sugarReduction
+
+    def AskGoalsStatement(self):
+        goals = self.nutrition.AppropriateGoals()
+        bmiGoals = self.nutrition.AppropriateGoalsBMI()
+        acceptedGoals = []
 
         goalString = ""
 
@@ -111,13 +123,13 @@ class Session1GoalSetting:
 
         if len(acceptedGoals) > 1:
             if self.askedGoals:
-                goals = "calorie restriction, sugar reduction and diet composition change."
-                return "Which goal would you like to work on? " + goals
+                goals = "calorie restriction and sugar reduction."
+                return "Which goal would you like to work on? " + goalString
             else:
                 return "Which goal would you like to work on for the rest of our sessions?"
         else:
             #Since there is only one available goal, maybe asking the question is not that productive
-            return "Which goal would you like to work on? " + goals
+            return "Which goal would you like to work on? " + goalString
 
 
     def AskGoalsResponse(self, response):
@@ -131,10 +143,8 @@ class Session1GoalSetting:
         goal = "calorie restriction"
         if self.goal is 0:
             goal = "calorie restriction"
-        elif self.goal is 1:
-            goal = "sugar reduction"
         else:
-            goal = "diet composition change"
+            goal = "sugar reduction"
 
         return statement + goal + ". Is this correct?"
 
@@ -144,12 +154,28 @@ class Session1GoalSetting:
         if decision is 0:
             nextState = "AskGoals"
         else:
+            self.shortTermData.writeData()
             nextState = "AskCurrentConsumption"
 
         return [], nextState
 
     def AskCurrentConsumptionStatement(self):
-        return
+        goal = "calorie restriction"
+        if self.goal is 0:
+            goal = "How many calories have you consumed yesterday?"
+        else:
+            goal = "How many grams of sugar did you consume yesterday?"
 
-    def AskCurrentConsumptionResponse(self):
-        return
+        return goal
+
+    def AskCurrentConsumptionResponse(self, response):
+        nextState = 'AskCurrentConsumption'
+        if self.goal is 0:
+            numbers = self.responseUtils.GetNumber(response)
+            if len(numbers) > 0:
+                self.caloriesConsumed = numbers[0]
+        else:
+            numbers = self.responseUtils.GetNumber(response)
+            if len(numbers) > 0:
+                self.sugarConsumed = numbers[0]
+        return [], nextState

@@ -29,7 +29,6 @@ class Nutrition:
     def AppropriateGoals(self, calorieIntake, sugarIntake):
         CI = True
         SI = True
-        DCC = True
         #People need at least 1200 calories or 60% of daily expenditure.
         if calorieIntake < 0.7 * self.TotalEnergyExpenditure():
             print("Calorie Intake not Appropriate")
@@ -39,20 +38,17 @@ class Nutrition:
         if sugarIntake < 0.5 * self.recommendedMinSugarIntake():
             print("Sugar Intake not Appropriate")
             SI = False
-        #For diet composition change, just check for allergies
-        print("If no allergies, maybe just work on composition change")
 
-        return CI, SI, DCC
+        return CI, SI
 
     def AppropriateGoalsBMI(self, BMI):
         CI = True
         SI = True
-        DCC = True
         classification = self.BMIClassification(BMI)
         if classification < 2:
             CI = False
 
-        return CI, SI, DCC
+        return CI, SI
 
     def BMIClassification(self, BMI):
         #Underweight
