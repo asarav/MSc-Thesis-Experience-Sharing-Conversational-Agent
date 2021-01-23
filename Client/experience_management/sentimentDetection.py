@@ -81,8 +81,9 @@ if __name__ == "__main__":
     print(classifier.show_most_informative_features(10))
 
     #custom_tweet = "I ordered just once from TerribleCo, they screwed up, never used the app again."
-    custom_tweet = "Thank you for sending my baggage to CityX and flying me to CityY at the same time. Brilliant service."
+    custom_tweet = "I think I will feel a sense of pride if I manage to reach my goal."
 
     custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
+    print(classifier.prob_classify(dict([token, True] for token in custom_tokens))._prob_dict.items())
     print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
