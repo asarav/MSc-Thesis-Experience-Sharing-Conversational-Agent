@@ -18,6 +18,7 @@ class Session1GoalSetting:
         self.goal = 0
         self.caloriesConsumed = 2000
         self.sugarConsumed = 50
+        self.askedConsumption = False
 
         #Load user data
         self.shortTermData = shortTermData.ShortTermData()
@@ -48,6 +49,30 @@ class Session1GoalSetting:
             "stateType": "AnswerResponse"
         },
         {
+            "name": "ReasonForGoal",
+            "statement": "Okay. Why would you like to work on this goal?",
+            "response": self.ReasonForGoalResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "FeelingsAfterAchievement",
+            "statement": "If you manage to achieve this goal, how do you think you will feel?",
+            "response": self.FeelingsAfterAchievementResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "AllowToDo",
+            "statement": "What will achieving this goal allow you to do that you could not do before?",
+            "response": self.AllowToDoResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "CurrentFeelings",
+            "statement": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
+            "response": self.CurrentFeelingsResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
             "name": "AskCurrentConsumption",
             "statement": self.AskCurrentConsumptionStatement,
             "response": self.AskCurrentConsumptionResponse,
@@ -57,6 +82,12 @@ class Session1GoalSetting:
             "name": "ConfirmCurrentConsumption",
             "statement": self.ConfirmCurrentConsumptionStatement,
             "response": self.ConfirmCurrentConsumptionResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "ExplainFinalMilestone",
+            "statement": "",
+            "response": "",
             "stateType": "AnswerResponse"
         }
         ]
@@ -123,9 +154,9 @@ class Session1GoalSetting:
 
         if len(acceptedGoals) > 1:
             if self.askedGoals:
-                goals = "calorie restriction and sugar reduction."
                 return "Which goal would you like to work on? " + goalString
             else:
+                self.askedGoals = True
                 return "Which goal would you like to work on for the rest of our sessions?"
         else:
             #Since there is only one available goal, maybe asking the question is not that productive
@@ -154,18 +185,63 @@ class Session1GoalSetting:
         if decision is 0:
             nextState = "AskGoals"
         else:
+            self.shortTermData.data["goal"] = self.goal
             self.shortTermData.writeData()
-            nextState = "AskCurrentConsumption"
+            nextState = "ReasonForGoal"
+
+        return [], nextState
+
+    def ReasonForGoalResponse(self, response):
+        nextState = "FeelingsAfterAchievement"
+        self.shortTermData.data["experiences"] = []
+        self.shortTermData.data["experiences"].append({
+            "Question": "Why would you like to work on this goal?",
+            "Answer": response,
+            "session": 1
+        })
+
+        return [], nextState
+
+    def FeelingsAfterAchievementResponse(self, response):
+        nextState = "AllowToDo"
+        self.shortTermData.data["experiences"].append({
+            "Question": "If you manage to achieve this goal, how do you think you will feel?",
+            "Answer": response,
+            "session": 1
+        })
+
+        return [], nextState
+
+    def AllowToDoResponse(self, response):
+        nextState = "CurrentFeelings"
+        self.shortTermData.data["experiences"].append({
+            "Question": "What will achieving this goal allow you to do that you could not do before?",
+            "Answer": response,
+            "session": 1
+        })
+
+        return [], nextState
+
+    def CurrentFeelingsResponse(self, response):
+        nextState = "AskCurrentConsumption"
+        self.shortTermData.data["experiences"].append({
+            "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
+            "Answer": response,
+            "session": 1
+        })
 
         return [], nextState
 
     def AskCurrentConsumptionStatement(self):
-        goal = "calorie restriction"
+        goal = ""
+        if self.askedConsumption is False:
+            goal = goal + "Now, let's try to get into the specifics."
         if self.goal is 0:
-            goal = "How many calories have you consumed yesterday?"
+            goal = goal + "How many calories have you consumed yesterday?"
         else:
-            goal = "How many grams of sugar did you consume yesterday?"
+            goal = goal + "How many grams of sugar did you consume yesterday?"
 
+        self.askedConsumption = True
         return goal
 
     def AskCurrentConsumptionResponse(self, response):
@@ -178,4 +254,30 @@ class Session1GoalSetting:
             numbers = self.responseUtils.GetNumber(response)
             if len(numbers) > 0:
                 self.sugarConsumed = numbers[0]
+        return [], nextState
+
+    def ConfirmCurrentConsumptionStatement(self, response):
+        consumption = ""
+        if self.goal is 0:
+            consumption = "Your caloric consumption is " + self.caloriesConsumed + "."
+        else:
+            consumption = "Your sugar consumption is " + self.sugarConsumed + "."
+
+        return consumption + " Is this correct?"
+
+    def ConfirmCurrentConsumptionResponse(self, response):
+        nextState = ""
+        decision = self.responseUtils.YesOrNo(response)
+        if decision is 0:
+            nextState = "AskCurrentConsumption"
+        else:
+            self.shortTermData.data["diet"] = {
+                "session1" : {
+                    "sugar": self.sugarConsumed,
+                    "calories": self.caloriesConsumed
+                }
+            }
+            self.shortTermData.writeData()
+            nextState = ""
+
         return [], nextState
