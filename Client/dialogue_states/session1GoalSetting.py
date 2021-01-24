@@ -1,6 +1,7 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.shortTermData as shortTermData
+from diet_utils.mileStone import MileStone
 from diet_utils.nutrition import Nutrition
 
 
@@ -86,9 +87,15 @@ class Session1GoalSetting:
         },
         {
             "name": "ExplainFinalMilestone",
-            "statement": "",
-            "response": "",
-            "stateType": "AnswerResponse"
+            "statement": self.ExplainFinalMilestoneStatement,
+            "response": "ExplainIntermediateMilestone",
+            "stateType": "Statement"
+        },
+        {
+            "name": "ExplainIntermediateMilestone",
+            "statement": self.ExplainIntermediateMilestoneStatement,
+            "response": "AskMilestoneQuestions",
+            "stateType": "Statement"
         }
         ]
 
@@ -281,3 +288,22 @@ class Session1GoalSetting:
             nextState = ""
 
         return [], nextState
+
+    def ExplainFinalMilestoneStatement(self):
+        statement = "Given the goal that you have chosen and the information that you have provided, a final goal of "
+        self.milestone = MileStone(self.age, self.weight, self.height, self.gender)
+        if self.goal is 0:
+            self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.caloriesConsumed)
+            statement = statement + str(self.finalGoal) + " calories has been calculated to be a realistic goal to reach by the last session."
+        else:
+            self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.caloriesConsumed)
+            statement = statement + str(self.finalGoal) + " grams of sugar has been calculated to be a realistic goal to reach by the last session."
+        return statement
+
+    def ExplainIntermediateMilestoneStatement(self):
+        statement = "To reach this milestone, you will have an intermediate milestone that you should work towards and reach before our next meeting. This milestone is no more than "
+        if self.goal is 0:
+            statement = statement + str(self.intermediateGoal) + " calories consumed in a day."
+        else:
+            statement = statement + str(self.intermediateGoal) + " grams of sugar consumed in a day."
+        return statement

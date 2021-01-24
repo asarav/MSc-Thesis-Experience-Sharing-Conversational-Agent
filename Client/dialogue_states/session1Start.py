@@ -18,6 +18,7 @@ class Session1Start:
 
         #Load user data
         self.shortTermData = shortTermData.ShortTermData()
+        self.shortTermData.data["session"] = 1
 
         self.states = [
         {
