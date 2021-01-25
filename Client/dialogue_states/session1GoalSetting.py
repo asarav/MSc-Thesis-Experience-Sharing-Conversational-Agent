@@ -8,8 +8,6 @@ from diet_utils.nutrition import Nutrition
 class Session1GoalSetting:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
-        #I might be able to remove this line
-        self.DiabetesAnswers = SBC.SearchBasedConversation([], "Diabetes Questions")
         self.username = ""
         self.gender = 0
         self.age = 18

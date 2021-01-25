@@ -1,13 +1,13 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.shortTermData as shortTermData
-from diet_utils.nutrition import Nutrition
+import management_utils.diabetesConversation as diabetesConversation
 
 
 class Session1Start:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
-        self.DiabetesAnswers = SBC.SearchBasedConversation([], "Diabetes Questions")
+        self.DiabetesAnswers = SBC.SearchBasedConversation(diabetesConversation.conversation, "Diabetes Questions")
         self.ID = "1234"
         self.username = ""
         self.firstTimeDiabetesQuestion = True
