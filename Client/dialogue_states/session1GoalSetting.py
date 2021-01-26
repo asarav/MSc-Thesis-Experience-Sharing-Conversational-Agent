@@ -296,6 +296,9 @@ class Session1GoalSetting:
         else:
             self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.caloriesConsumed)
             statement = statement + str(self.finalGoal) + " grams of sugar has been calculated to be a realistic goal to reach by the last session."
+
+        self.shortTermData.data["milestone"] = self.milestone
+        self.shortTermData.data["finalGoal"] = self.finalGoal
         return statement
 
     def ExplainIntermediateMilestoneStatement(self):
@@ -304,4 +307,6 @@ class Session1GoalSetting:
             statement = statement + str(self.intermediateGoal) + " calories consumed in a day."
         else:
             statement = statement + str(self.intermediateGoal) + " grams of sugar consumed in a day."
+
+        self.shortTermData.writeData()
         return statement
