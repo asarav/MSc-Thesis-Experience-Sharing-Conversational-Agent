@@ -68,6 +68,7 @@ class Manager:
     #Updates the state and parses the response
     def handleResponse(self, response):
         state = self.getState(self.currentStateName)
+        response = response.strip('"')
         variables = []
         #Update new state
         if self.responseManager.AskRepeat(response):

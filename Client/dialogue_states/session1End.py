@@ -27,10 +27,10 @@ class Session1End:
 
         self.states = [
         {
-            "name": "ExplainIntermediateMilestone",
+            "name": "AskMilestoneQuestions",
             "statement": "Do you have any questions on how to reach this milestone or any strategies?",
-            "response": "ExplainIntermediateMilestoneResponse",
-            "stateType": "Statement"
+            "response": self.AskMilestoneQuestionsResponse,
+            "stateType": "AnswerResponse"
         },
         {
             "name": "AnswerGoalQuestions",
@@ -45,9 +45,9 @@ class Session1End:
             "stateType": "AnswerResponse"
         },
         {
-            "name": "DiabetesAnswer",
-            "statement": self.ProvideDiabetesAnswer,
-            "response": "AnswerDiabetesQuestions",
+            "name": "GoalAnswer",
+            "statement": self.ProvideGoalAnswer,
+            "response": "AnswerGoalQuestions",
             "stateType": "Statement"
         },
         {
@@ -70,7 +70,7 @@ class Session1End:
         }
         ]
 
-    def ExplainIntermediateMilestoneResponse(self, response):
+    def AskMilestoneQuestionsResponse(self, response):
         #Load the data here because it is the first statement.
         if self.dataLoaded is False:
             self.shortTermData.readData()
@@ -110,7 +110,7 @@ class Session1End:
         return "Do you have any other questions?"
 
     def AskGoalQuestionResponse(self, response):
-        nextState = "DiabetesAnswer"
+        nextState = "GoalAnswer"
         self.GoalQuestionAnswer = ""
         if self.goal is 0:
             self.GoalQuestionAnswer = self.calorieRestrictionAnswers.askQuestion(response)
@@ -129,13 +129,15 @@ class Session1End:
             statement = statement + "to work your way down to a daily sugar consumption of " + str(self.milestone) + " grams of sugar."
         return statement + " This will get you halfway towards your final goal. Does that make sense?"
 
-    def AnswerGoalQuestionsResponse(self, response):
+    def ReviewNextMilestoneResponse(self, response):
         nextState = ""
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
             nextState = "FurtherExplanation"
         else:
             nextState = "Goodbye"
+        self.shortTermData.data["session"] = 2
+        self.shortTermData.writeData()
         return [], nextState
 
     def FurtherExplanationStatement(self):

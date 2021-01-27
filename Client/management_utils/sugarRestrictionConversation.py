@@ -3,9 +3,9 @@ conversation = [
      "The goal is calculated by finding a value that is about 5 to 10% less than the current sugar intake. We also check to make sure that the sugar consumption is above a certain threshold to avoid any drastic reductions in sugar that could result in negative health effects."],
     ["How was my final sigar intake goal calculated?",
      "The goal is calculated by finding a value that is about 5 to 10% less than the current sugar intake. We also check to make sure that the sugar consumption is above a certain threshold to avoid any drastic reductions in sugar that could result in negative health effects."],
-    ["How was the intermediate milestone calculated?"
+    ["How was the intermediate milestone calculated?",
     "The milestone was calculated by determining the difference between your current sugar intake and the final goal. Then, the halfway point was calculated."],
-    ["Why was an intermediate milestone calculated?"
+    ["Why was an intermediate milestone calculated?",
     "The point of the intermediate milestone is to ensure that you can reach your final goal in a manageable way by working towards it over time. It also encourages consistency and the building of a daily habit"],
     ["What is 'sugar reduction'?",
     "Sugar reduction, as the name suggests, involves reducing your daily sugar intake to healthy levels. Doing so will reduce the chances of gaining diabetes or reduce the severity of your diabetes.\n " +
@@ -20,7 +20,7 @@ conversation = [
     ["What type of strategy should I use?",
      "This can be done by avoiding drinks that such as soda that contain high amounts of sugar. With regards to foods and drinks, avoiding adding sugar can help.\n " +
      "Replacing sweets with healthier alternatives or snacks can make reducing sugar more manageable."],
-    ["How will sugar reduction affect my weight or obesity?"
+    ["How will sugar reduction affect my weight or obesity?",
     "Studies show that calorie restriction is more effective for obesity treatment than dietary fat restriction. It is a simple fact that if you are eating fewer calories than you burn, you will lose weight. On the other hand, if you eat more than you burn, then you will gain weight."],
     ["What does it mean to be overweight or obese?",
      "Overweight and obesity are defined as abnormal or excessive fat accumulation that presents a risk to health. A body mass index (BMI) over 25 is considered overweight, and over 30 is obese."],

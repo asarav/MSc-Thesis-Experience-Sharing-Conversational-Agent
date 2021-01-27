@@ -32,7 +32,7 @@ class Session1GoalSetting:
         {
             "name": "ExplainGoals",
             "statement": self.ExplainGoalsStatement,
-            "response": "ExplainGoals",
+            "response": "AskGoals",
             "stateType": "Statement"
         },
         {
@@ -112,16 +112,16 @@ class Session1GoalSetting:
         self.nutrition = Nutrition(self.age, self.weight, self.height, self.gender)
         goals = self.nutrition.AppropriateGoals()
         bmiGoals = self.nutrition.AppropriateGoalsBMI()
-        acceptedGoals = []
+        self.acceptedGoals = []
 
         if goals[0] and bmiGoals[0]:
-            acceptedGoals.append("calorie restriction")
+            self.acceptedGoals.append("calorie restriction")
         if goals[1] and bmiGoals[1]:
-            acceptedGoals.append("sugar reduction")
+            self.acceptedGoals.append("sugar reduction")
 
         goalsString = "calorie restriction, and sugar reduction."
-        if len(acceptedGoals) is 0:
-            goalsString = acceptedGoals[0]
+        if len(self.acceptedGoals) is 0:
+            goalsString = self.acceptedGoals[0]
 
         statement = "Based on the information you provided, I believe the following goals are appropriate for you: "
         return statement + goalsString
@@ -132,32 +132,30 @@ class Session1GoalSetting:
         return calorieRestriction + " " + sugarReduction
 
     def AskGoalsStatement(self):
-        goals = self.nutrition.AppropriateGoals()
-        bmiGoals = self.nutrition.AppropriateGoalsBMI()
-        acceptedGoals = []
-
         goalString = ""
 
-        if len(acceptedGoals) > 1:
+        if len(self.acceptedGoals) > 1:
             goalString = "The goals available to you are "
-        else:
+        elif len(self.acceptedGoals) is 1:
             goalString = "The only goal available to you is "
+        else:
+            return "It looks like none of the goals are appropriate for you."
 
-        for i in range(0, len(acceptedGoals)):
-            if i is not len(acceptedGoals) - 1 and len(acceptedGoals) > 1:
-                goalString = goalString + acceptedGoals[i]
+        for i in range(0, len(self.acceptedGoals)):
+            if i is not len(self.acceptedGoals) - 1 and len(self.acceptedGoals) > 1:
+                goalString = goalString + self.acceptedGoals[i]
                 goalString = goalString + ", "
-            elif i is not len(acceptedGoals) - 1 and len(acceptedGoals) is 1:
-                goalString = goalString + acceptedGoals[i]
-            elif i is len(acceptedGoals) - 1 and len(acceptedGoals) > 1:
+            elif i is not len(self.acceptedGoals) - 1 and len(self.acceptedGoals) is 1:
+                goalString = goalString + self.acceptedGoals[i]
+            elif i is len(self.acceptedGoals) - 1 and len(self.acceptedGoals) > 1:
                 goalString = goalString + " and "
-                goalString = goalString + acceptedGoals[i]
+                goalString = goalString + self.acceptedGoals[i]
                 goalString = goalString + "."
-            elif i is len(acceptedGoals) - 1 and len(acceptedGoals) is 1:
-                goalString = goalString + acceptedGoals[i]
+            elif i is len(self.acceptedGoals) - 1 and len(self.acceptedGoals) is 1:
+                goalString = goalString + self.acceptedGoals[i]
                 goalString = goalString + "."
 
-        if len(acceptedGoals) > 1:
+        if len(self.acceptedGoals) > 1:
             if self.askedGoals:
                 return "Which goal would you like to work on? " + goalString
             else:
@@ -174,7 +172,7 @@ class Session1GoalSetting:
         self.goal = decision
         return [], nextState
 
-    def ConfirmGoalStatement(self, response):
+    def ConfirmGoalStatement(self):
         statement = "So the goal you chose is "
         goal = "calorie restriction"
         if self.goal is 0:
@@ -240,7 +238,7 @@ class Session1GoalSetting:
     def AskCurrentConsumptionStatement(self):
         goal = ""
         if self.askedConsumption is False:
-            goal = goal + "Now, let's try to get into the specifics."
+            goal = goal + "Now, let's try to get into the specifics. "
         if self.goal is 0:
             goal = goal + "How many calories have you consumed yesterday?"
         else:
@@ -250,7 +248,7 @@ class Session1GoalSetting:
         return goal
 
     def AskCurrentConsumptionResponse(self, response):
-        nextState = 'AskCurrentConsumption'
+        nextState = 'ConfirmCurrentConsumption'
         if self.goal is 0:
             numbers = self.responseUtils.GetNumber(response)
             if len(numbers) > 0:
@@ -261,12 +259,12 @@ class Session1GoalSetting:
                 self.sugarConsumed = numbers[0]
         return [], nextState
 
-    def ConfirmCurrentConsumptionStatement(self, response):
+    def ConfirmCurrentConsumptionStatement(self):
         consumption = ""
         if self.goal is 0:
-            consumption = "Your caloric consumption is " + self.caloriesConsumed + "."
+            consumption = "Your caloric consumption is " + str(self.caloriesConsumed) + "."
         else:
-            consumption = "Your sugar consumption is " + self.sugarConsumed + "."
+            consumption = "Your sugar consumption is " + str(self.sugarConsumed) + "."
 
         return consumption + " Is this correct?"
 
@@ -283,7 +281,7 @@ class Session1GoalSetting:
                 }
             }
             self.shortTermData.writeData()
-            nextState = ""
+            nextState = "ExplainFinalMilestone"
 
         return [], nextState
 
@@ -297,7 +295,7 @@ class Session1GoalSetting:
             self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.caloriesConsumed)
             statement = statement + str(self.finalGoal) + " grams of sugar has been calculated to be a realistic goal to reach by the last session."
 
-        self.shortTermData.data["milestone"] = self.milestone
+        self.shortTermData.data["milestone"] = self.intermediateGoal
         self.shortTermData.data["finalGoal"] = self.finalGoal
         return statement
 
