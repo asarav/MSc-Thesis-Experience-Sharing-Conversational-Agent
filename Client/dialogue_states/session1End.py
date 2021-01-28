@@ -2,13 +2,14 @@ import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.shortTermData as shortTermData
 from management_utils import calorieRestrictionConversation
+from management_utils import sugarRestrictionConversation
 
 
 class Session1End:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
         self.calorieRestrictionAnswers = SBC.SearchBasedConversation(calorieRestrictionConversation.conversation, "Calorie Restriction Questions")
-        self.sugarReductionAnswers = SBC.SearchBasedConversation(calorieRestrictionConversation.conversation, "Sugar Reduction Questions")
+        self.sugarReductionAnswers = SBC.SearchBasedConversation(sugarRestrictionConversation.conversation, "Sugar Reduction Questions")
         self.username = ""
         self.gender = 0
         self.age = 18

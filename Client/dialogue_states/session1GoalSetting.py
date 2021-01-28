@@ -127,7 +127,7 @@ class Session1GoalSetting:
         return statement + goalsString
 
     def ExplainGoalsStatement(self):
-        calorieRestriction = "Calorie reduction refers to reducing your daily caloric intake by either choosing healthier foods, reducing portions, or simply eating less."
+        calorieRestriction = "Calorie restriction refers to reducing your daily caloric intake by either choosing healthier foods, reducing portions, or simply eating less."
         sugarReduction = "Sugar reduction refers to reducing your daily sugar intake by eating foods with lower amounts of sugar, or simply reducing overall intake."
         return calorieRestriction + " " + sugarReduction
 
@@ -292,7 +292,7 @@ class Session1GoalSetting:
             self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.caloriesConsumed)
             statement = statement + str(self.finalGoal) + " calories has been calculated to be a realistic goal to reach by the last session."
         else:
-            self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.caloriesConsumed)
+            self.finalGoal, self.intermediateGoal = self.milestone.generateGoalPlan(self.goal, self.sugarConsumed)
             statement = statement + str(self.finalGoal) + " grams of sugar has been calculated to be a realistic goal to reach by the last session."
 
         self.shortTermData.data["milestone"] = self.intermediateGoal

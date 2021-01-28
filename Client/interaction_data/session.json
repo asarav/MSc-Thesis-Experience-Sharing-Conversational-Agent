@@ -1,42 +1,42 @@
 {
     "id": "1234",
-    "name": "Nash",
+    "name": "Karen",
     "physicalData": {
-        "gender": "male",
+        "gender": "female",
         "age": 25,
-        "weight": 93,
-        "height": 176
+        "weight": 23,
+        "height": 165
     },
-    "goal": 0,
+    "goal": 1,
     "experiences": [
         {
             "Question": "Why would you like to work on this goal?",
-            "Answer": "I think it will make me healthier and help with my diabetes",
+            "Answer": "I think it'll make me healthier and help my diabetes",
             "session": 1
         },
         {
             "Question": "If you manage to achieve this goal, how do you think you will feel?",
-            "Answer": "think I'll feel happy",
+            "Answer": "Adele make you feel happy",
             "session": 1
         },
         {
             "Question": "What will achieving this goal allow you to do that you could not do before?",
-            "Answer": "think he'll help me become more active",
+            "Answer": "I'll be more active them healthier",
             "session": 1
         },
         {
             "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
-            "Answer": "I'm a bit nervous",
+            "Answer": "nervous",
             "session": 1
         }
     ],
     "diet": {
         "session1": {
             "sugar": 50,
-            "calories": 3000
+            "calories": 2000
         }
     },
     "session": 2,
-    "milestone": 2850.0,
-    "finalGoal": 2700.0
+    "milestone": 47.5,
+    "finalGoal": 45.0
 }
