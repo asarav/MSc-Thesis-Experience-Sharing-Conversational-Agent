@@ -1,6 +1,6 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
-import data_retrieval.shortTermData as shortTermData
+import data_retrieval.memoryManager as shortTermData
 from management_utils import calorieRestrictionConversation
 from management_utils import sugarRestrictionConversation
 
@@ -23,7 +23,7 @@ class Session1End:
         self.firstTimeGoalsQuestion = True
 
         #Load user data
-        self.shortTermData = shortTermData.ShortTermData()
+        self.shortTermData = shortTermData.MemoryManager()
         self.dataLoaded = False
 
         self.states = [
@@ -139,6 +139,7 @@ class Session1End:
             nextState = "Goodbye"
         self.shortTermData.data["session"] = 2
         self.shortTermData.writeData()
+        self.shortTermData.writeDataToLongTermMemory(self.shortTermData.data["id"])
         return [], nextState
 
     def FurtherExplanationStatement(self):

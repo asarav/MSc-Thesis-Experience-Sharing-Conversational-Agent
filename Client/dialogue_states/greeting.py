@@ -1,15 +1,15 @@
 import management_utils.response_manager as ResponseManager
-import data_retrieval.shortTermData as shortTermData
+import data_retrieval.memoryManager as shortTermData
 
 class Greeting:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
-        self.ID = "1234"
+        self.ID = "1234.json"
         self.username = ""
         self.IncorrectName = False
 
         #Load the data here because it is the beginning of the interaction
-        self.shortTermData = shortTermData.ShortTermData()
+        self.shortTermData = shortTermData.MemoryManager()
         self.shortTermData.readData()
 
         self.states = [{
@@ -86,7 +86,7 @@ class Greeting:
         return [], nextState
 
     def NoUserIDStatement(self):
-        self.ID = "1234"
+        self.ID = "1234.json"
         self.shortTermData.data["id"] = self.ID
         self.shortTermData.data["session"] = 1
         return "Okay. Welcome. Here is your new user Id. " + "Your ID is: " + self.ID + ". Make sure you write it down somewhere. You will need it for all of the sessions we will have together. Do you have your ID memorized and written down somewhere?"

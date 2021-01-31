@@ -1,6 +1,6 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
-import data_retrieval.shortTermData as shortTermData
+import data_retrieval.memoryManager as shortTermData
 import management_utils.diabetesConversation as diabetesConversation
 
 
@@ -8,7 +8,7 @@ class Session1Start:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
         self.DiabetesAnswers = SBC.SearchBasedConversation(diabetesConversation.conversation, "Diabetes Questions")
-        self.ID = "1234"
+        self.ID = "1234.json"
         self.username = ""
         self.firstTimeDiabetesQuestion = True
         self.gender = 0
@@ -17,7 +17,7 @@ class Session1Start:
         self.height = 160
 
         #Load user data
-        self.shortTermData = shortTermData.ShortTermData()
+        self.shortTermData = shortTermData.MemoryManager()
         self.shortTermData.data["session"] = 1
 
         self.states = [

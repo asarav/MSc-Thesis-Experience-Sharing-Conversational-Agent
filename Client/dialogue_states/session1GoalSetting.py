@@ -1,6 +1,6 @@
 import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
-import data_retrieval.shortTermData as shortTermData
+import data_retrieval.memoryManager as shortTermData
 from diet_utils.mileStone import MileStone
 from diet_utils.nutrition import Nutrition
 
@@ -20,7 +20,7 @@ class Session1GoalSetting:
         self.askedConsumption = False
 
         #Load user data
-        self.shortTermData = shortTermData.ShortTermData()
+        self.shortTermData = shortTermData.MemoryManager()
 
         self.states = [
         {

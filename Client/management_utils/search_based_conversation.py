@@ -21,6 +21,8 @@ class SearchBasedConversation:
 
         self.conversations = conversations
 
+        self.answered = [False] * len(self.conversations)
+
         self.trainer = ListTrainer(self.chatbot)
 
         # Train each conversation 3 times
@@ -87,7 +89,12 @@ class SearchBasedConversation:
         answer = self.conversations[maxQuestionIndex]
         print(answer)
 
-        if maxQuestion < 0.5:
+        if self.answered[maxQuestionIndex]:
+            return "I may have already given this answer, but maybe it might be useful. " + answer[1]
+
+        self.answered[maxQuestionIndex] = True
+
+        if maxQuestion < 0.7:
             return "I'm not sure if this is the correct answer, but I'll try my best. " + answer[1]
         else:
             return answer[1]
