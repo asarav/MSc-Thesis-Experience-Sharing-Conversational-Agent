@@ -66,12 +66,6 @@ class Session1GoalSetting:
             "stateType": "AnswerResponse"
         },
         {
-            "name": "CurrentFeelings",
-            "statement": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
-            "response": self.CurrentFeelingsResponse,
-            "stateType": "AnswerResponse"
-        },
-        {
             "name": "AskCurrentConsumption",
             "statement": self.AskCurrentConsumptionStatement,
             "response": self.AskCurrentConsumptionResponse,
@@ -196,7 +190,6 @@ class Session1GoalSetting:
 
     def ReasonForGoalResponse(self, response):
         nextState = "FeelingsAfterAchievement"
-        self.shortTermData.data["experiences"] = []
         self.shortTermData.data["experiences"].append({
             "Question": "Why would you like to work on this goal?",
             "Answer": response,
@@ -216,19 +209,9 @@ class Session1GoalSetting:
         return [], nextState
 
     def AllowToDoResponse(self, response):
-        nextState = "CurrentFeelings"
-        self.shortTermData.data["experiences"].append({
-            "Question": "What will achieving this goal allow you to do that you could not do before?",
-            "Answer": response,
-            "session": 1
-        })
-
-        return [], nextState
-
-    def CurrentFeelingsResponse(self, response):
         nextState = "AskCurrentConsumption"
         self.shortTermData.data["experiences"].append({
-            "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
+            "Question": "What will achieving this goal allow you to do that you could not do before?",
             "Answer": response,
             "session": 1
         })
@@ -266,7 +249,7 @@ class Session1GoalSetting:
         else:
             consumption = "Your sugar consumption is " + str(self.sugarConsumed) + "."
 
-        return consumption + " Is this correct?"
+        return consumption + " Is that right?"
 
     def ConfirmCurrentConsumptionResponse(self, response):
         nextState = ""

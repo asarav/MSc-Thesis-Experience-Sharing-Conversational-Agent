@@ -42,8 +42,14 @@ class Session1Start:
         {
             "name": "ExplainTreatments",
             "statement": "There are a variety of treatments for Type II diabetes, but two approaches that are under your control are that of diet management and exercise. I will be focusing on diet.",
-            "response": "AnswerDiabetesQuestions",
+            "response": "CurrentFeelings",
             "stateType": "Statement"
+        },
+        {
+            "name": "CurrentFeelings",
+            "statement": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
+            "response": self.CurrentFeelingsResponse,
+            "stateType": "AnswerResponse"
         },
         {
             "name": "AnswerDiabetesQuestions",
@@ -136,6 +142,17 @@ class Session1Start:
             nextState = "AskDiabetesQuestion"
         return [], nextState
 
+    def CurrentFeelingsResponse(self, response):
+        nextState = "AnswerDiabetesQuestions"
+        self.shortTermData.data["experiences"] = []
+        self.shortTermData.data["experiences"].append({
+            "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
+            "Answer": response,
+            "session": 1
+        })
+
+        return [], nextState
+
     def AnswerDiabetesQuestionsStatement(self):
         if not self.firstTimeDiabetesQuestion:
             return "Do you have any other questions?"
@@ -163,7 +180,7 @@ class Session1Start:
         return [], nextState
 
     def ConfirmGenderStatement(self):
-        return "Your gender is " + self.gender + ". Is this correct?"
+        return "Your gender is " + self.gender + ". Do I have that right?"
 
     def ConfirmGenderResponse(self, response):
         nextState = "AskGender"
@@ -204,7 +221,7 @@ class Session1Start:
         return [], nextState
 
     def ConfirmWeightStatement(self):
-        return "Your weight is " + str(self.weight) + " kilograms. Is this correct?"
+        return "Your weight is " + str(self.weight) + " kilograms. Is that right?"
 
     def ConfirmWeightResponse(self, response):
         nextState = "AskWeight"

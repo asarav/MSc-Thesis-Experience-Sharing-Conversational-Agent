@@ -131,7 +131,7 @@ class ResponseManager:
 
     def AddVoiceGestures(self, Statement):
         #Used in the sentence in the start of statement
-        startGestures = ["hhmmmm", "aahhhh", "ohhhh", "ummmmm", "aahhhh", "ummmmm", "sooo", "okay"]
+        startGestures = ["hhmmmm", "aahhhh", "ohhhh", "ummmmm", "aahhhh", "ummmmm", "sooo", "okay", "alright"]
         #Can be used whenever
         middleGestures = ["ummmm", "ummmm", "just"]
 
@@ -184,3 +184,16 @@ class ResponseManager:
 
         finalStatement = " ".join(sentences)
         return finalStatement
+
+    #Need to implement
+    def GetProlificId(self, Statement):
+        if "My id is" in Statement:
+            return
+        if "my id is" in Statement:
+            return
+        if "It is" in Statement:
+            return
+        if "it is" in Statement:
+            return
+
+        return
