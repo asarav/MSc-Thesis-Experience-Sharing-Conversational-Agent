@@ -8,6 +8,7 @@ import furhatos.app.dietcoach.dialog
 import furhatos.autobehavior.userSpeechStartGesture
 import furhatos.gestures.Gesture
 import furhatos.gestures.Gestures
+import kotlin.system.exitProcess
 
 val Start : State = state(Interaction) {
     onEntry {

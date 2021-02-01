@@ -4,9 +4,10 @@ import data_retrieval.memoryManager as shortTermData
 class Greeting:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
-        self.ID = "1234.json"
+        self.ID = "1234"
         self.username = ""
         self.IncorrectName = False
+        self.userIdFirstTime = True
 
         #Load the data here because it is the beginning of the interaction
         self.shortTermData = shortTermData.MemoryManager()
@@ -14,26 +15,14 @@ class Greeting:
 
         self.states = [{
             "name": "AskUserID",
-            "statement": "Hello there. I am Diet Bot. Before we start, do you already have a user id?",
+            "statement": self.AskUserIDStatement,
             "response": self.AskUserIDResponse,
             "stateType": "AnswerResponse"
         },
         {
-            "name": "NoUserID",
-            "statement": self.NoUserIDStatement,
-            "response": self.NoUserIDResponse,
-            "stateType": "AnswerResponse"
-        },
-        {
-            "name": "Wait",
-            "statement": "Okay. Let me know when you are ready.",
-            "response": "WaitQuestion",
-            "stateType": "Statement"
-        },
-        {
-            "name": "WaitQuestion",
-            "statement": "Your ID is " + self.ID + ". Are you ready now?",
-            "response": self.WaitQuestionResponse,
+            "name": "ConfirmUserID",
+            "statement": self.ConfirmUserIDStatement,
+            "response": self.ConfirmUserIDResponse,
             "stateType": "AnswerResponse"
         },
         {
@@ -51,7 +40,7 @@ class Greeting:
         },
         {
             "name": "AskName",
-            "statement": "What is your first name?",
+            "statement": "What is your first name, or what would you like to be called?",
             "response": self.AskNameResponse,
             "stateType": "AnswerResponse"
         },
@@ -75,44 +64,36 @@ class Greeting:
         }
         ]
 
+    def AskUserIDStatement(self):
+        if self.userIdFirstTime:
+            self.userIdFirstTime = False
+            return "Hello there. I am Diet Bot. Before we start, what is your user id? Your user id is provided to you by Prolific."
+        else:
+            return "What is your user id?"
+
     def AskUserIDResponse(self, response):
         #Process the response here.
-        nextState = "NoUserID"
-        decision = self.responseUtils.YesOrNo(response)
-        if decision is 0:
-            nextState = "NoUserID"
-        else:
-            nextState = "NoUserID"
+        nextState = "ConfirmUserID"
+        self.ID = self.responseUtils.GetProlificId(response)
+
         return [], nextState
 
-    def NoUserIDStatement(self):
-        self.ID = "1234.json"
-        self.shortTermData.data["id"] = self.ID
-        self.shortTermData.data["session"] = 1
-        return "Okay. Welcome. Here is your new user Id. " + "Your ID is: " + self.ID + ". Make sure you write it down somewhere. You will need it for all of the sessions we will have together. Do you have your ID memorized and written down somewhere?"
+    def ConfirmUserIDStatement(self):
+        return "Your user id is " + self.ID + ". Do I have that right?"
 
-    def NoUserIDResponse(self, response):
-        nextState = "NoUserID"
+    def ConfirmUserIDResponse(self, response):
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
-            nextState = "Wait"
+            nextState = "AskUserID"
         else:
-            nextState = "Start"
-        return [], nextState
-
-    def WaitQuestionResponse(self, response):
-        nextState = "WaitQuestion"
-        decision = self.responseUtils.YesOrNo(response)
-        if decision is 0:
-            nextState = "WaitQuestion"
-        else:
+            self.shortTermData.data["id"] = self.ID
             nextState = "Start"
         return [], nextState
 
     def AskNameResponse(self, response):
         nextState = "ConfirmName"
         print(response)
-        self.username = response
+        self.username = self.responseUtils.GetName(response)
         return [], nextState
 
     def ConfirmNameStatement(self):

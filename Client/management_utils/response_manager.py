@@ -70,6 +70,7 @@ class ResponseManager:
 
     def GetNumber(self, Response):
         Response = Response.strip('"')
+        Response = Response.strip('cmkgftinlb')
         numbers = [int(word) for word in Response.split() if word.isdigit()]
         print(Response)
         print(type(Response))
@@ -185,15 +186,38 @@ class ResponseManager:
         finalStatement = " ".join(sentences)
         return finalStatement
 
-    #Need to implement
     def GetProlificId(self, Statement):
-        if "My id is" in Statement:
-            return
-        if "my id is" in Statement:
-            return
-        if "It is" in Statement:
-            return
-        if "it is" in Statement:
-            return
+        if "my ID is" in Statement:
+            id = Statement.split("my ID is", 1)[1]
+        elif "my user ID is" in Statement:
+            id = Statement.split("my user ID is", 1)[1]
+        elif "the user ID is" in Statement:
+            id = Statement.split("the user ID is", 1)[1]
+        elif "the ID is" in Statement:
+            id = Statement.split("the ID is", 1)[1]
+        elif "it is" in Statement:
+            id = Statement.split("it is", 1)[1]
+        else:
+            id = Statement
+        id.strip()
+        id = id.replace(" ", "")
+        return id.upper()
 
-        return
+    def GetName(self, Statement):
+        if "my name is" in Statement:
+            id = Statement.split("my name is", 1)[1]
+        elif "I am" in Statement:
+            id = Statement.split("I am", 1)[1]
+        elif "I'm" in Statement:
+            id = Statement.split("I'm", 1)[1]
+        elif "i am" in Statement:
+            id = Statement.split("i am", 1)[1]
+        elif "I would like to be called" in Statement:
+            id = Statement.split("I would like to be called", 1)[1]
+        elif "i would like to be called" in Statement:
+            id = Statement.split("i would like to be called", 1)[1]
+        else:
+            id = Statement
+        id.strip()
+        id = id.replace(" ", "")
+        return id
