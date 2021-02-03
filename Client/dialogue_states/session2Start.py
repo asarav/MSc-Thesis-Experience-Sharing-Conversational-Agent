@@ -86,8 +86,23 @@ class Session2Start:
         return [], nextState
 
     def ConfirmProgressStatement(self):
-        return
+        statement = ""
+        if self.goal is 0:
+            statement = statement + "Your caloric intake was " + str(self.newCalories) + " calories. Is this correct?"
+        else:
+            statement = statement + "Your sugar intake was " + str(self.newSugar) + " grams of sugar. Is this correct?"
+        return statement
 
     def ConfirmProgressResponse(self, response):
-        nextState = ""
+        nextState = "DetermineProgressSession2"
+        decision = self.responseUtils.YesOrNo(response)
+        if decision is 0:
+            nextState = "DetermineProgressSession2"
+        else:
+            self.shortTermData.data["session2Progress"] = {}
+            if self.goal is 0:
+                self.shortTermData.data["session2Progress"]["calories"] = self.newCalories
+            else:
+                self.shortTermData.data["session2Progress"]["sugar"] = self.newCalories
+            nextState = ""
         return [], nextState
