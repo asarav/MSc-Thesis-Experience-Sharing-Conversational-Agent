@@ -26,6 +26,7 @@ class MemoryManager:
         fileExists = self.jsonManager.readJSON("interaction_data/" + id + ".json")
         self.data = self.jsonManager.data
         self.jsonLoaded = True
+        return fileExists
 
     def writeDataToLongTermMemory(self, id):
         self.jsonManager.writeJSON(self.data, "interaction_data/" + id + ".json")

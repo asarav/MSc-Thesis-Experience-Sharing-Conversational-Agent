@@ -1,5 +1,7 @@
 import management_utils.response_manager as ResponseManager
 import data_retrieval.memoryManager as shortTermData
+from data_retrieval.jsonManager import jsonManager
+
 
 class Greeting:
     def __init__(self):
@@ -87,7 +89,18 @@ class Greeting:
             nextState = "AskUserID"
         else:
             self.shortTermData.data["id"] = self.ID
-            nextState = "Start"
+            reader = jsonManager()
+            fileExists = reader.readJSON("interaction_data/" + self.ID + ".json")
+            if fileExists:
+                #Load long term memory into short term memory
+                self.shortTermData.readDataFromLongTermMemory(self.ID)
+                session = self.shortTermData.data["session"]
+                if session is 2:
+                    nextState = "Session2Start"
+                else:
+                    nextState = "Session3Start"
+            else:
+                nextState = "Start"
         return [], nextState
 
     def AskNameResponse(self, response):

@@ -8,7 +8,7 @@ class Session1Start:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
         self.DiabetesAnswers = SBC.SearchBasedConversation(diabetesConversation.conversation, "Diabetes Questions")
-        self.ID = "1234.json"
+        self.ID = "1234"
         self.username = ""
         self.firstTimeDiabetesQuestion = True
         self.gender = 0
