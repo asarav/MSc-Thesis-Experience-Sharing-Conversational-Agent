@@ -44,7 +44,19 @@ class Session2Start:
             "statement": self.ConfirmProgressStatement,
             "response": self.ConfirmProgressResponse,
             "stateType": "AnswerResponse"
-        }
+        },
+        {
+            "name": "ProgressSufficientSession2",
+            "statement": self.ProgressSufficientStatement,
+            "response": "DetermineProgressSession2",
+            "stateType": "Statement"
+        },
+        {
+            "name": "ProgressInsufficientSession2",
+            "statement": self.ProgressInsufficientStatement,
+            "response": "DetermineProgressSession2",
+            "stateType": "Statement"
+        },
         ]
 
     def Session2StartStatement(self):
@@ -102,7 +114,31 @@ class Session2Start:
             self.shortTermData.data["session2Progress"] = {}
             if self.goal is 0:
                 self.shortTermData.data["session2Progress"]["calories"] = self.newCalories
+                if self.newCalories > self.milestone:
+                    nextState = "ProgressInsufficientSession2"
+                else:
+                    nextState = "ProgressSufficientSession2"
             else:
                 self.shortTermData.data["session2Progress"]["sugar"] = self.newCalories
+                if self.newSugar > self.milestone:
+                    nextState = "ProgressInsufficientSession2"
+                else:
+                    nextState = "ProgressSufficientSession2"
             nextState = ""
         return [], nextState
+
+    def ProgressSufficientStatement(self):
+        statement = "Looks like you are on track to reach "
+        if self.goal is 0:
+            statement = statement + self.goal + " calories in your daily caloric intake."
+        else:
+            statement = statement + self.goal + " grams of sugar in your daily sugar intake."
+        return statement + " Great job!"
+
+    def ProgressInsufficientStatement(self):
+        statement = "It looks like you are falling behind. At the current rate, you will not reach your final goal of "
+        if self.goal is 0:
+            statement = statement + self.goal + " maximum calories in your daily caloric intake."
+        else:
+            statement = statement + self.goal + " maximum grams of sugar in your daily sugar intake."
+        return statement

@@ -23,12 +23,12 @@ class ExperienceManager:
         self.question = question
         self.doc = doc
 
-    def TFIDFKeywordExtraction(self, question, doc):
-        total_words = doc.split()
+    def TFIDFKeywordExtraction(self):
+        total_words = self.doc.split()
         total_word_length = len(total_words)
         print(total_word_length)
 
-        total_sentences = tokenize.sent_tokenize(doc)
+        total_sentences = tokenize.sent_tokenize(self.doc)
         total_sent_len = len(total_sentences)
         print(total_sent_len)
 
@@ -73,21 +73,21 @@ class ExperienceManager:
 
         print(get_top_n(tf_idf_score, 5))
 
-    def RakeKeywordExtraction(self, question, doc):
+    def RakeKeywordExtraction(self):
         r = Rake()  # Uses stopwords for english from NLTK, and all puntuation characters.
 
-        r.extract_keywords_from_text(doc)
+        r.extract_keywords_from_text(self.doc)
 
         rankedPhrases = r.get_ranked_phrases()  # To get keyword phrases ranked highest to lowest.
         print(rankedPhrases)
 
-    def NLTKPOSTagging(self, document):
-        sent = nltk.word_tokenize(document)
+    def NLTKPOSTagging(self):
+        sent = nltk.word_tokenize(self.doc)
         sent = nltk.pos_tag(sent)
         return sent
 
-    def SPACYPOSTagging(self, document):
-        answer = nlp(document)
+    def SPACYPOSTagging(self):
+        answer = nlp(self.doc)
         print(answer)
         for token in answer:
             return token.text, token.lemma_, token.pos_, token.tag_, token.dep_, token.shape_, token.is_alpha, token.is_stop
