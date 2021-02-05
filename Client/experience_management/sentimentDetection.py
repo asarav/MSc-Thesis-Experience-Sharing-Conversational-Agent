@@ -38,7 +38,7 @@ def get_tweets_for_model(cleaned_tokens_list):
     for tweet_tokens in cleaned_tokens_list:
         yield dict([token, True] for token in tweet_tokens)
 
-if __name__ == "__main__":
+def performSentimentAnalysis(toBeProcessed):
     stop_words = stopwords.words('english')
 
     positive_tweet_tokens = twitter_samples.tokenized('positive_tweets.json')
@@ -78,12 +78,8 @@ if __name__ == "__main__":
 
     print("Accuracy is:", classify.accuracy(classifier, test_data))
 
-    print(classifier.show_most_informative_features(10))
-
-    #custom_tweet = "I ordered just once from TerribleCo, they screwed up, never used the app again."
-    custom_tweet = "I think I will feel a sense of pride if I manage to reach my goal."
+    custom_tweet = toBeProcessed
 
     custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
-    print(classifier.prob_classify(dict([token, True] for token in custom_tokens))._prob_dict.items())
     print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
