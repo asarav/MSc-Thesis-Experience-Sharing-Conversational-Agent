@@ -48,14 +48,38 @@ class Session2Start:
         {
             "name": "ProgressSufficientSession2",
             "statement": self.ProgressSufficientStatement,
-            "response": "DetermineProgressSession2",
+            "response": "SharedMemoryReferencePraiseSession2",
             "stateType": "Statement"
         },
         {
             "name": "ProgressInsufficientSession2",
             "statement": self.ProgressInsufficientStatement,
-            "response": "DetermineProgressSession2",
+            "response": "SharedMemoryReferenceCriticismSession2",
             "stateType": "Statement"
+        },
+        {
+            "name": "SharedMemoryReferencePraiseSession2",
+            "statement": self.SharedMemoryReferencePraise,
+            "response": self.IncreaseDifficultyOrContinue,
+            "stateType": "Statement"
+        },
+        {
+            "name": "SharedMemoryReferenceCriticismSession2",
+            "statement": self.SharedMemoryReferenceCriticsm,
+            "response": "LessAmbitiousGoal",
+            "stateType": "Statement"
+        },
+        {
+            "name": "LessAmbitiousGoal",
+            "statement": "Since you have not met your milestone, would you like to work towards a less ambitious goal for your final goal?",
+            "response": self.LessAmbitiousGoalResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "MoreAmbitiousGoal",
+            "statement": "Since you have greatly exceeded your milestone, would you like to work towards a more ambitious goal for your final goal?",
+            "response": self.MoreAmbitiousGoalResponse,
+            "stateType": "AnswerResponse"
         },
         ]
 
@@ -142,3 +166,37 @@ class Session2Start:
         else:
             statement = statement + self.goal + " maximum grams of sugar in your daily sugar intake."
         return statement
+
+    def SharedMemoryReferencePraise(self):
+        return self.shortTermData.chooseMemory(session=1, type=0)
+
+    def SharedMemoryReferenceCriticsm(self):
+        return self.shortTermData.chooseMemory(session=1, type=0)
+
+    def IncreaseDifficultyOrContinue(self, response):
+        nextState = "AskFeelingsSession2"
+        if self.goal is 0:
+            if self.newCalories > self.finalGoal or self.newCalories > (self.milestone + (self.finalGoal - self.milestone)/2):
+                nextState = "MoreAmbitiousGoal"
+        else:
+            if self.newSugar > self.finalGoal or self.newSugar > (self.milestone + (self.finalGoal - self.milestone)/2):
+                nextState = "MoreAmbitiousGoal"
+        return [], nextState
+
+    def LessAmbitiousGoalResponse(self, response):
+        nextState = "PresentAndConfirmEasierGoal"
+        decision = self.responseUtils.YesOrNo(response)
+        if decision is 0:
+            nextState = "AskFeelingsAboutProgress"
+        else:
+            nextState = "PresentAndConfirmEasierGoal"
+        return [], nextState
+
+    def MoreAmbitiousGoalResponse(self, response):
+        nextState = "PresentAndConfirmHarderGoal"
+        decision = self.responseUtils.YesOrNo(response)
+        if decision is 0:
+            nextState = "AskFeelingsAboutProgress"
+        else:
+            nextState = "PresentAndConfirmHarderGoal"
+        return [], nextState

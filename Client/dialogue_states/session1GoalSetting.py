@@ -61,7 +61,7 @@ class Session1GoalSetting:
         },
         {
             "name": "AllowToDo",
-            "statement": "What will achieving this goal allow you to do that you could not do before?",
+            "statement": "What do you think achieving this goal allow you to do that you could not do before?",
             "response": self.AllowToDoResponse,
             "stateType": "AnswerResponse"
         },
