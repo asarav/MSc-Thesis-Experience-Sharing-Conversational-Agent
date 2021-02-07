@@ -79,7 +79,7 @@ class ExperienceManager:
         r.extract_keywords_from_text(self.doc)
 
         rankedPhrases = r.get_ranked_phrases()  # To get keyword phrases ranked highest to lowest.
-        print(rankedPhrases)
+        return rankedPhrases
 
     def NLTKPOSTagging(self):
         sent = nltk.word_tokenize(self.doc)

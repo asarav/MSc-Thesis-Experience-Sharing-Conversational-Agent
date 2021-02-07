@@ -82,4 +82,4 @@ def performSentimentAnalysis(toBeProcessed):
 
     custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
-    print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
+    return classifier.classify(dict([token, True] for token in custom_tokens))
