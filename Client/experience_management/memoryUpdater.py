@@ -183,7 +183,7 @@ for file in onlyfiles:
                         if sentimentBool:
                             sentimentPraise = sentimentPraise + ", and you sounded optimistic and positive. Keep it up. Your optimism will help you in the long run."
                         else:
-                            sentimentPraise = ", and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You have done well, and I'm sure you will continue to do well."
+                            sentimentPraise = sentimentPraise + ", and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You have done well, and I'm sure you will continue to do well."
                         praisePhrases.append(sentimentPraise)
 
                         # Second generate variants for criticism
@@ -195,7 +195,7 @@ for file in onlyfiles:
                                 keywordCriticism = keywordCriticism + "calorie restriction."
                             else:
                                 keywordCriticism = keywordCriticism + "sugar reduction."
-                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                            keywordCriticism = keywordCriticism + " You said " + keywords[0] + "."
                             keywordCriticism = keywordCriticism + " You had some setbacks, but I think if you keep these thoughts in mind and focus, you will reach your goal."
                             criticismPhrases.append(keywordCriticism)
 
@@ -217,7 +217,7 @@ for file in onlyfiles:
                         if sentimentBool:
                             sentimentCriticism = sentimentCriticism + ", and you sounded optimistic and positive. Even though you've run into some problems, I don't think this should change. Stay consistent and committed. You will get there."
                         else:
-                            sentimentCriticism = ", and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal. You just need to take the first step."
+                            sentimentCriticism = sentimentCriticism + ", and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal. You just need to take the first step."
                         criticismPhrases.append(sentimentCriticism)
                     elif question == "If you manage to achieve this goal, how do you think you will feel?":
                         # Keyword
@@ -342,4 +342,4 @@ for file in onlyfiles:
                 fileData["experiences"] = updatedExperiences
     manager.data = fileData
     #Use this as a temporary file to test
-    manager.writeDataToJSON("updated.json")
+    manager.writeDataToJSON(mypath + "/" + file)
