@@ -2,6 +2,7 @@ import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.memoryManager as shortTermData
 import management_utils.diabetesConversation as diabetesConversation
+import diet_utils.mileStone as milestone
 
 
 class Session2Start:
@@ -79,6 +80,30 @@ class Session2Start:
             "name": "MoreAmbitiousGoal",
             "statement": "Since you have greatly exceeded your milestone, would you like to work towards a more ambitious goal for your final goal?",
             "response": self.MoreAmbitiousGoalResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "PresentAndConfirmEasierGoal",
+            "statement": self.PresentAndConfirmEasierGoalStatement,
+            "response": self.PresentAndConfirmEasierGoalResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "PresentAndConfirmHarderGoal",
+            "statement": self.PresentAndConfirmHarderGoalStatement,
+            "response": self.PresentAndConfirmHarderGoalStatement,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "NewGoalChosen",
+            "statement": "Then we will continue with this new goal in mind.",
+            "response": "AskFeelingsAboutProgress",
+            "stateType": "Statement"
+        },
+        {
+            "name": "AskFeelingsSession2",
+            "statement": "Now that you have started, how do you feel about the progress you have made?",
+            "response": self.AskFeelingsResponse,
             "stateType": "AnswerResponse"
         },
         ]
@@ -199,4 +224,62 @@ class Session2Start:
             nextState = "AskFeelingsAboutProgress"
         else:
             nextState = "PresentAndConfirmHarderGoal"
+        return [], nextState
+
+    def PresentAndConfirmEasierGoalStatement(self):
+        if self.goal is 0:
+            statement = "I propose that you change your final goal to be " + str(self.milestone) + " calories."
+            return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
+        else:
+            statement = "I propose that you change your final goal to be " + str(self.milestone) + " grams of sugar."
+            return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
+
+    def PresentAndConfirmHarderGoalStatement(self):
+        physicalData = self.shortTermData.data["physicalData"]
+        age = physicalData["age"]
+        weight = physicalData["weight"]
+        height = physicalData["height"]
+        gender = physicalData["gender"]
+        getGoal = milestone.MileStone(age, weight, height, gender)
+        if self.goal is 0:
+            initialConsumption = self.shortTermData.data["diet"]["session1"]["calories"]
+            self.newGoal = getGoal.generatedAmbitiousGoal(self.goal, initialConsumption)
+            statement = "I propose that you change your final goal to be " + str(self.newCalories) + " calories."
+            if self.newGoal == self.goal:
+                statement = statement + " If the new goal is same as your previous goal, this is because your previous goal was on the boundary of what may have been considered safe."
+            return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
+        else:
+            initialConsumption = self.shortTermData.data["diet"]["session1"]["sugar"]
+            self.newGoal = getGoal.generatedAmbitiousGoal(self.goal, initialConsumption)
+            statement = "I propose that you change your final goal to be " + str(self.milestone) + " grams of sugar."
+            if self.newGoal == self.goal:
+                statement = statement + " If the new goal is same as your previous goal, this is because your previous goal was on the boundary of what may have been considered safe."
+            return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
+
+    def PresentAndConfirmEasierGoalResponse(self, response):
+        nextState = "AskFeelingsAboutProgress"
+        decision = self.responseUtils.YesOrNo(response)
+        if decision is 1:
+            self.shortTermData.data["previousGoal"] = self.finalGoal
+            self.shortTermData.data["finalGoal"] = self.newGoal
+            self.shortTermData.data["goalChanged"] = True
+            self.finalGoal = self.newGoal
+            nextState = "NewGoalChosen"
+        return [], nextState
+
+    def PresentAndConfirmHarderGoalStatement(self, response):
+        nextState = "AskFeelingsAboutProgress"
+        decision = self.responseUtils.YesOrNo(response)
+        if decision is 1:
+            self.shortTermData.data["previousGoal"] = self.finalGoal
+            self.shortTermData.data["finalGoal"] = self.newGoal
+            self.shortTermData.data["goalChanged"] = True
+            self.finalGoal = self.newGoal
+            nextState = "NewGoalChosen"
+        return [], nextState
+
+    def AskFeelingsResponse(self, response):
+        nextState = ""
+        #Save everything to the file
+
         return [], nextState

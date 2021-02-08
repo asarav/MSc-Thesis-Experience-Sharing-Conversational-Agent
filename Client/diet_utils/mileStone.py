@@ -23,3 +23,19 @@ class MileStone:
             milestone = current - (current - finalGoal)/2
             print("Sugar reduction")
             return finalGoal, milestone
+
+    def generatedAmbitiousGoal(self, goal, current):
+        TTE = self.nutrition.TotalEnergyExpenditure()
+        if goal is 0:
+            diff = abs(TTE - current)
+            #Set goal for 10% reduction
+            finalGoal = current * 0.8
+            if finalGoal < 0.7 * TTE:
+                finalGoal = 0.7 * TTE
+            #Milestone is the halfway point
+            print("Calorie Restriction")
+            return finalGoal
+        else:
+            finalGoal = current * 0.8
+            print("Sugar reduction")
+            return finalGoal
