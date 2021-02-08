@@ -48,7 +48,7 @@ for file in onlyfiles:
                     criticismPhrases = []
 
                     #Do some filtering of words like "oh", "yeah", and other words like "God" and the names of others
-                    stopwords = ['oh', 'yeah', 'God', 'Charlie']
+                    stopwords = ['oh', 'yeah', 'God', 'Charlie', 'god']
                     querywords = answer.split()
 
                     resultwords = [word for word in querywords if word.lower() not in stopwords]
@@ -59,20 +59,21 @@ for file in onlyfiles:
                     print("RAKE")
                     keywords = memoryUpdater.RakeKeywordExtraction()
                     print(keywords)
-                    #Use NLTK for POS tagging, because it is easier to work with
-                    print("NLTKPOS")
-                    print(memoryUpdater.NLTKPOSTagging())
 
-                    '''
                     #Use spellcheck to get a replacement that can be used as the basis of a rephrased memory.
                     print("Matches")
-                    matches = tool.check(answer)
-                    print(len(matches))
-                    for match in matches:
-                        print(match)
-                    '''
+                    correctedAnswer = tool.correct(answer)
+                    answer = correctedAnswer
 
                     #Remove keywords that do not contain nouns or adjectives
+                    # Use NLTK for POS tagging, because it is easier to work with
+                    if len(keywords) > 0:
+                        parts = memoryUpdater.NLTKPOSTaggingSpecific(keywords[0])
+                        print("POS")
+                        print(parts)
+                        for part in parts:
+                            if part[1] == 'JJ' or part[1] == "JJR" or part[1] == 'NN' or part[1] == 'NNS':
+                                print("Good")
 
                     #For each memory, perform sentiment analysis and keyword extraction for the question and the answer
                     sentiment = performSentimentAnalysis(answer)

@@ -86,6 +86,11 @@ class ExperienceManager:
         sent = nltk.pos_tag(sent)
         return sent
 
+    def NLTKPOSTaggingSpecific(self, text):
+        sent = nltk.word_tokenize(text)
+        sent = nltk.pos_tag(sent)
+        return sent
+
     def SPACYPOSTagging(self):
         answer = nlp(self.doc)
         print(answer)
