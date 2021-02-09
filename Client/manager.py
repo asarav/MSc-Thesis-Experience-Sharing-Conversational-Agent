@@ -2,6 +2,7 @@ from dialogue_states.greeting import Greeting
 from dialogue_states.session1End import Session1End
 from dialogue_states.session1Start import Session1Start
 from dialogue_states.session1GoalSetting import Session1GoalSetting
+from dialogue_states.session2QuestonsAndEnd import Session2QuestionsAndEnd
 from dialogue_states.session2Start import Session2Start
 from management_utils.response_manager import ResponseManager
 import random
@@ -18,12 +19,14 @@ class Manager:
         self.session1GoalSetting = Session1GoalSetting()
         self.session1End = Session1End()
         self.session2Start = Session2Start()
+        self.session2QuestionsAndEnd = Session2QuestionsAndEnd()
         self.states = self.states + \
                       self.Greeting.states + \
                       self.session1Start.states + \
                       self.session1GoalSetting.states +\
                       self.session1End.states +\
-                      self.session2Start.states
+                      self.session2Start.states +\
+                      self.session2QuestionsAndEnd.states
         self.responseManager = ResponseManager()
         self.repeat = False
 

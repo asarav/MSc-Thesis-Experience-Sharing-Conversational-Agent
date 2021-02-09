@@ -279,7 +279,11 @@ class Session2Start:
         return [], nextState
 
     def AskFeelingsResponse(self, response):
-        nextState = ""
+        nextState = "AskStruggle"
         #Save everything to the file
-
+        self.shortTermData.data["experiences"].append({
+            "Question": "Now that you have started, how do you feel about the progress you have made?",
+            "Answer": response,
+            "session": 2
+        })
         return [], nextState
