@@ -45,10 +45,10 @@ class Session2QuestionsAndEnd:
             "name": "QuestionsAboutActivities",
             "statement": self.QuestionsAboutActivitiesStatement,
             "response": self.QuestionsAboutActivitiesResponse,
-            "stateType": "Statement"
+            "stateType": "AnswerResponse"
         },
         {
-            "name": "QuestionsAboutActivities",
+            "name": "AskQuestionsAboutActivities",
             "statement": "What is your question?",
             "response": self.AskActivitiesQuestionResponse,
             "stateType": "AnswerResponse"
@@ -85,8 +85,8 @@ class Session2QuestionsAndEnd:
         self.ID = self.shortTermData.data["id"]
         self.username = self.shortTermData.data["name"]
         self.goal = self.shortTermData.data["goal"]
-        self.finalGoal = self.shortTermData["finalGoal"]
-        self.milestone = self.shortTermData["milestone"]
+        self.finalGoal = self.shortTermData.data["finalGoal"]
+        self.milestone = self.shortTermData.data["milestone"]
         return "What are you struggling with?"
 
     def AskStruggleResponse(self, response):
@@ -101,7 +101,7 @@ class Session2QuestionsAndEnd:
         return [], nextState
 
     def AskOtherOpinionsResponse(self, response):
-        nextState = "ContinueAfterStatusUpdateSession2"
+        nextState = "ContinueAndTips"
         #Save everything to the file
         self.struggle = response
         self.shortTermData.data["experiences"].append({
@@ -140,7 +140,7 @@ class Session2QuestionsAndEnd:
         if decision is 0:
             nextState = "ReviewGoalsSession2"
         else:
-            nextState = "QuestionsAboutActivities"
+            nextState = "AskQuestionsAboutActivities"
 
         return [], nextState
 

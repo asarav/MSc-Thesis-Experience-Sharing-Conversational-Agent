@@ -97,7 +97,7 @@ class Session2Start:
         {
             "name": "NewGoalChosen",
             "statement": "Then we will continue with this new goal in mind.",
-            "response": "AskFeelingsAboutProgress",
+            "response": "AskFeelingsSession2",
             "stateType": "Statement"
         },
         {
@@ -114,8 +114,8 @@ class Session2Start:
         self.ID = self.shortTermData.data["id"]
         self.username = self.shortTermData.data["name"]
         self.goal = self.shortTermData.data["goal"]
-        self.finalGoal = self.shortTermData["finalGoal"]
-        self.milestone = self.shortTermData["milestone"]
+        self.finalGoal = self.shortTermData.data["finalGoal"]
+        self.milestone = self.shortTermData.data["milestone"]
         return "Welcome back " + self.username + ". How have you been? This is your second session. I hope you managed to meet your milestone."
 
     def ReviewOfGoalsAndExpectationsStatement(self):
@@ -173,23 +173,22 @@ class Session2Start:
                     nextState = "ProgressInsufficientSession2"
                 else:
                     nextState = "ProgressSufficientSession2"
-            nextState = ""
         return [], nextState
 
     def ProgressSufficientStatement(self):
         statement = "Looks like you are on track to reach "
         if self.goal is 0:
-            statement = statement + self.goal + " calories in your daily caloric intake."
+            statement = statement + str(self.finalGoal) + " calories in your daily caloric intake."
         else:
-            statement = statement + self.goal + " grams of sugar in your daily sugar intake."
+            statement = statement + str(self.finalGoal) + " grams of sugar in your daily sugar intake."
         return statement + " Great job!"
 
     def ProgressInsufficientStatement(self):
         statement = "It looks like you are falling behind. At the current rate, you will not reach your final goal of "
         if self.goal is 0:
-            statement = statement + self.goal + " maximum calories in your daily caloric intake."
+            statement = statement + str(self.finalGoal) + " maximum calories in your daily caloric intake."
         else:
-            statement = statement + self.goal + " maximum grams of sugar in your daily sugar intake."
+            statement = statement + str(self.finalGoal) + " maximum grams of sugar in your daily sugar intake."
         return statement
 
     def SharedMemoryReferencePraise(self):
@@ -201,10 +200,10 @@ class Session2Start:
     def IncreaseDifficultyOrContinue(self, response):
         nextState = "AskFeelingsSession2"
         if self.goal is 0:
-            if self.newCalories > self.finalGoal or self.newCalories > (self.milestone + (self.finalGoal - self.milestone)/2):
+            if self.newCalories < self.finalGoal or self.newCalories < (self.milestone - (self.milestone - self.finalGoal)/2):
                 nextState = "MoreAmbitiousGoal"
         else:
-            if self.newSugar > self.finalGoal or self.newSugar > (self.milestone + (self.finalGoal - self.milestone)/2):
+            if self.newSugar < self.finalGoal or self.newSugar < (self.milestone - (self.milestone - self.finalGoal)/2):
                 nextState = "MoreAmbitiousGoal"
         return [], nextState
 
@@ -212,7 +211,7 @@ class Session2Start:
         nextState = "PresentAndConfirmEasierGoal"
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
-            nextState = "AskFeelingsAboutProgress"
+            nextState = "AskFeelingsSession2"
         else:
             nextState = "PresentAndConfirmEasierGoal"
         return [], nextState
@@ -221,7 +220,7 @@ class Session2Start:
         nextState = "PresentAndConfirmHarderGoal"
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
-            nextState = "AskFeelingsAboutProgress"
+            nextState = "AskFeelingsSession2"
         else:
             nextState = "PresentAndConfirmHarderGoal"
         return [], nextState
@@ -257,7 +256,7 @@ class Session2Start:
             return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
 
     def PresentAndConfirmEasierGoalResponse(self, response):
-        nextState = "AskFeelingsAboutProgress"
+        nextState = "AskFeelingsSession2"
         decision = self.responseUtils.YesOrNo(response)
         if decision is 1:
             self.shortTermData.data["previousGoal"] = self.finalGoal
@@ -268,7 +267,7 @@ class Session2Start:
         return [], nextState
 
     def PresentAndConfirmHarderGoalStatement(self, response):
-        nextState = "AskFeelingsAboutProgress"
+        nextState = "AskFeelingsSession2"
         decision = self.responseUtils.YesOrNo(response)
         if decision is 1:
             self.shortTermData.data["previousGoal"] = self.finalGoal
