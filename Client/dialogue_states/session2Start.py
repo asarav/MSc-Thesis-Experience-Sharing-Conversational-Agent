@@ -168,7 +168,7 @@ class Session2Start:
                 else:
                     nextState = "ProgressSufficientSession2"
             else:
-                self.shortTermData.data["session2Progress"]["sugar"] = self.newCalories
+                self.shortTermData.data["session2Progress"]["sugar"] = self.newSugar
                 if self.newSugar > self.milestone:
                     nextState = "ProgressInsufficientSession2"
                 else:
@@ -286,4 +286,6 @@ class Session2Start:
             "Answer": response,
             "session": 2
         })
+
+        self.shortTermData.writeData()
         return [], nextState
