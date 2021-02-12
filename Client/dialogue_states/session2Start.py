@@ -195,7 +195,7 @@ class Session2Start:
         return self.shortTermData.chooseMemory(session=1, type=0)
 
     def SharedMemoryReferenceCriticsm(self):
-        return self.shortTermData.chooseMemory(session=1, type=0)
+        return self.shortTermData.chooseMemory(session=1, type=1)
 
     def IncreaseDifficultyOrContinue(self, response):
         nextState = "AskFeelingsSession2"
@@ -226,6 +226,7 @@ class Session2Start:
         return [], nextState
 
     def PresentAndConfirmEasierGoalStatement(self):
+        self.newGoal = self.milestone
         if self.goal is 0:
             statement = "I propose that you change your final goal to be " + str(self.milestone) + " calories."
             return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"

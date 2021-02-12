@@ -116,11 +116,11 @@ class Session2QuestionsAndEnd:
         if self.finalGoal is 0:
             newCalories = self.shortTermData.data["session2Progress"]["calories"]
             statement = statement + str(self.finalGoal) + " calories before we meet."
-            statement = statement + " This means you have " + str(self.finalGoal - newCalories) + " calories left to reach your goal."
+            statement = statement + " This means you have " + str(newCalories - self.finalGoal) + " calories left to reach your goal."
         else:
             newSugar = self.shortTermData.data["session2Progress"]["sugar"]
             statement = statement + str(self.finalGoal) + " grams of sugar before we meet."
-            statement = statement + " This means you have " + str(self.finalGoal - newSugar) + " grams of sugar left to reach your goal."
+            statement = statement + " This means you have " + str(newSugar - self.finalGoal) + " grams of sugar left to reach your goal."
 
         #Add some tips and strategies based on the struggles of the user
         statement + " For your diet, if you are not trying to remove food items, maybe try to focus on whole foods and complex carbohydrates such as beans, grains, and starchy vegetables. Pass on the simple sugars, like those in processed baked goods. Those can raise blood sugar without providing wholesome nutrition."

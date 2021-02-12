@@ -1,4 +1,4 @@
-from random import random
+import random
 
 import data_retrieval.jsonManager as jsonManager
 
@@ -38,11 +38,15 @@ class MemoryManager:
     def chooseMemory(self, session=1, type=0):
         experiences = self.data["experiences"]
 
-        chosenExperience = random.choice(range(0, len(experiences)))
+        notFound = True
+        while notFound:
+            chosenExperience = random.choice(range(0, len(experiences)))
+            if self.data["experiences"][chosenExperience]["session"] is session:
+                notFound = False
 
         #Set the data as used and save it just in case
         self.data["experiences"][chosenExperience]["used"] = True
-        self.writeData(self.data)
+        self.writeData()
 
         if type is 0:
             chosenPhrase = random.choice(range(0, len(experiences[chosenExperience]["praise"])))
