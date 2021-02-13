@@ -8,7 +8,7 @@ import spacy
 
 
 class SearchBasedConversation:
-    def __init__(self, conversations, chatbotName):        
+    def __init__(self, conversations, chatbotName, isQuestionAnswering=True):
         self.nlp = spacy.load('en_core_web_md')
         self.chatbot = ChatBot(chatbotName,
                 logic_adapters=[
@@ -19,15 +19,17 @@ class SearchBasedConversation:
                     }
                 ])
 
+        self.isQuestionAnswering = isQuestionAnswering
+
         self.conversations = conversations
 
         self.answered = [False] * len(self.conversations)
 
         self.trainer = ListTrainer(self.chatbot)
 
-        # Train each conversation 3 times
+        # Train each conversation 2 times
         for conversation in self.conversations:
-            for i in range(3):
+            for i in range(2):
                 self.trainer.train(conversation)
 
 
@@ -89,12 +91,12 @@ class SearchBasedConversation:
         answer = self.conversations[maxQuestionIndex]
         print(answer)
 
-        if self.answered[maxQuestionIndex]:
+        if self.answered[maxQuestionIndex] and self.isQuestionAnswering:
             return "I may have already given this answer, but maybe it might be useful. " + answer[1]
 
         self.answered[maxQuestionIndex] = True
 
-        if maxQuestion < 0.7:
+        if maxQuestion < 0.75 and self.isQuestionAnswering:
             return "I'm not sure if this is the correct answer, but I'll try my best. " + answer[1]
         else:
             return answer[1]

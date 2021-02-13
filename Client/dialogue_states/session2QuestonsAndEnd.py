@@ -2,7 +2,7 @@ import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.memoryManager as shortTermData
 import management_utils.diabetesConversation as diabetesConversation
-from management_utils import calorieRestrictionConversation, sugarRestrictionConversation
+from management_utils import calorieRestrictionConversation, sugarRestrictionConversation, struggleConversation
 
 
 class Session2QuestionsAndEnd:
@@ -10,6 +10,7 @@ class Session2QuestionsAndEnd:
         self.responseUtils = ResponseManager.ResponseManager()
         self.calorieRestrictionAnswers = SBC.SearchBasedConversation(calorieRestrictionConversation.conversation, "Calorie Restriction Questions")
         self.sugarReductionAnswers = SBC.SearchBasedConversation(sugarRestrictionConversation.conversation, "Sugar Reduction Questions")
+        self.struggleAnswers = SBC.SearchBasedConversation(struggleConversation.conversation, "Struggle Questions", False)
         self.ID = "1234"
         self.username = ""
         self.firstTimeActivitiesQuestion = True
@@ -109,6 +110,8 @@ class Session2QuestionsAndEnd:
             "Answer": response,
             "session": 2
         })
+
+        self.getStruggleAdvice = self.struggleAnswers.askQuestion(response)
         return [], nextState
 
     def ContinueAndTipsStatement(self):
@@ -123,7 +126,12 @@ class Session2QuestionsAndEnd:
             statement = statement + " This means you have " + str(newSugar - self.finalGoal) + " grams of sugar left to reach your goal."
 
         #Add some tips and strategies based on the struggles of the user
-        statement + " For your diet, if you are not trying to remove food items, maybe try to focus on whole foods and complex carbohydrates such as beans, grains, and starchy vegetables. Pass on the simple sugars, like those in processed baked goods. Those can raise blood sugar without providing wholesome nutrition."
+        statement = statement + " For your diet, if you are not trying to remove food items, maybe try to focus on whole foods and complex carbohydrates such as beans, grains, and starchy vegetables. Pass on the simple sugars, like those in processed baked goods. Those can raise blood sugar without providing wholesome nutrition."
+
+        statement = statement + " Regarding your struggles, I think I can offer some advice. "
+
+        statement = statement + self.getStruggleAdvice
+
         return statement
 
     def QuestionsAboutActivitiesStatement(self):

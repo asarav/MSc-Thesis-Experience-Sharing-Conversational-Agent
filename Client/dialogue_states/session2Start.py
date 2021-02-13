@@ -200,10 +200,10 @@ class Session2Start:
     def IncreaseDifficultyOrContinue(self, response):
         nextState = "AskFeelingsSession2"
         if self.goal is 0:
-            if self.newCalories < self.finalGoal or self.newCalories < (self.milestone - (self.milestone - self.finalGoal)/2):
+            if self.newCalories < self.finalGoal or self.newCalories < (self.milestone - ((self.milestone - self.finalGoal)/2)):
                 nextState = "MoreAmbitiousGoal"
         else:
-            if self.newSugar < self.finalGoal or self.newSugar < (self.milestone - (self.milestone - self.finalGoal)/2):
+            if self.newSugar < self.finalGoal or self.newSugar < (self.milestone - ((self.milestone - self.finalGoal)/2)):
                 nextState = "MoreAmbitiousGoal"
         return [], nextState
 

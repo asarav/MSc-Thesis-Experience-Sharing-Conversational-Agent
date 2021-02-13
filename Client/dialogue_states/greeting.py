@@ -95,6 +95,7 @@ class Greeting:
                 #Load long term memory into short term memory
                 self.shortTermData.readDataFromLongTermMemory(self.ID)
                 session = self.shortTermData.data["session"]
+                self.shortTermData.writeData()
                 if session is 2:
                     nextState = "Session2Start"
                 else:
