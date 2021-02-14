@@ -19,7 +19,7 @@ class Session2Start:
 
         #Load user data
         self.shortTermData = shortTermData.MemoryManager()
-        self.shortTermData.data["session"] = 1
+        self.shortTermData.data["session"] = 2
 
         self.states = [
         {
