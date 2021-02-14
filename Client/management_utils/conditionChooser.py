@@ -17,21 +17,25 @@ class ConditionChooser:
         print(onlyfiles)
 
         for file in onlyfiles:
+            if file == "session.json":
+                continue
             print(file)
             manager = jsonManager()
             manager.readJSON(mypath + "/" + file)
             fileData = manager.data
 
             if "condition" in fileData:
-                print("Condition Found")
+                conditions[fileData["condition"]] = conditions[fileData["condition"]] + 1
             else:
                 print("Condition Not Found")
 
         # Choose the condition where the number of users is the lowest (0 to 2).
-        min = -1
+        print(conditions)
+        min = conditions[0]
         chosenCondition = 0
-        for i in range(0, len(conditions)):
+        for i in range(1, len(conditions)):
             if conditions[i] < min:
-                print("Found Min")
+                chosenCondition = i
+                min = conditions[i]
 
-        return
+        return chosenCondition

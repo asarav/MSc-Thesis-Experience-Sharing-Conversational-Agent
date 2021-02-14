@@ -29,6 +29,8 @@ print(onlyfiles)
 
 for file in onlyfiles:
     print(file)
+    if file == "session.json":
+        continue
     manager = jsonManager()
     manager.readJSON(mypath + "/" + file)
     fileData = manager.data
