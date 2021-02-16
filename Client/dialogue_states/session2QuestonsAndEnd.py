@@ -117,11 +117,11 @@ class Session2QuestionsAndEnd:
     def ContinueAndTipsStatement(self):
         statement = "Let's continue. Our next session is our last, so that means that you will be trying to achieve your final goal of "
         if self.finalGoal is 0:
-            newCalories = self.shortTermData.data["session2Progress"]["calories"]
+            newCalories = self.shortTermData.data["diet"]["session2"]["calories"]
             statement = statement + str(self.finalGoal) + " calories before we meet."
             statement = statement + " This means you have " + str(newCalories - self.finalGoal) + " calories left to reach your goal."
         else:
-            newSugar = self.shortTermData.data["session2Progress"]["sugar"]
+            newSugar = self.shortTermData.data["diet"]["session2"]["sugar"]
             statement = statement + str(self.finalGoal) + " grams of sugar before we meet."
             statement = statement + " This means you have " + str(newSugar - self.finalGoal) + " grams of sugar left to reach your goal."
 

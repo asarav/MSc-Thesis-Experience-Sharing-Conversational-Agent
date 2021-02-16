@@ -160,19 +160,23 @@ class Session2Start:
         if decision is 0:
             nextState = "DetermineProgressSession2"
         else:
-            self.shortTermData.data["session2Progress"] = {}
+            self.shortTermData.data["diet"]["session2"] = {}
             if self.goal is 0:
-                self.shortTermData.data["session2Progress"]["calories"] = self.newCalories
+                self.shortTermData.data["diet"]["session2"]["calories"] = self.newCalories
                 if self.newCalories > self.milestone:
                     nextState = "ProgressInsufficientSession2"
+                    self.shortTermData.data["diet"]["session2"]["progressSufficient"] = False
                 else:
                     nextState = "ProgressSufficientSession2"
+                    self.shortTermData.data["diet"]["session2"]["progressSufficient"] = True
             else:
-                self.shortTermData.data["session2Progress"]["sugar"] = self.newSugar
+                self.shortTermData.data["diet"]["session2"]["sugar"] = self.newSugar
                 if self.newSugar > self.milestone:
                     nextState = "ProgressInsufficientSession2"
+                    self.shortTermData.data["diet"]["session2"]["progressSufficient"] = False
                 else:
                     nextState = "ProgressSufficientSession2"
+                    self.shortTermData.data["diet"]["session2"]["progressSufficient"] = True
         return [], nextState
 
     def ProgressSufficientStatement(self):
