@@ -21,11 +21,13 @@ val Start : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        furhat.ask(statmentOutput)
+        furhat.say(statmentOutput)
         if (gesture.equals("None", false) && gestureTiming) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
+        delay(1300)
+        furhat.listen(timeout=10000)
     }
 
     onResponse {
@@ -53,11 +55,13 @@ val Second : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        furhat.ask(statmentOutput)
+        furhat.say(statmentOutput)
         if (gesture.equals("None", false) && gestureTiming) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
+        delay(1300)
+        furhat.listen(timeout=10000)
     }
 
     onResponse {
