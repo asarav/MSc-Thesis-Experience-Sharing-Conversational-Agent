@@ -10,6 +10,8 @@ import spacy
 class SearchBasedConversation:
     def __init__(self, conversations, chatbotName, isQuestionAnswering=True):
         self.nlp = spacy.load('en_core_web_md')
+
+        '''
         self.chatbot = ChatBot(chatbotName,
                 logic_adapters=[
                     {
@@ -18,6 +20,7 @@ class SearchBasedConversation:
                         "response_selection_method": response_selection.get_first_response
                     }
                 ])
+        '''
 
         self.isQuestionAnswering = isQuestionAnswering
 
@@ -25,20 +28,20 @@ class SearchBasedConversation:
 
         self.answered = [False] * len(self.conversations)
 
-        self.trainer = ListTrainer(self.chatbot)
+        #self.trainer = ListTrainer(self.chatbot)
 
         # Train each conversation 2 times
-        for conversation in self.conversations:
-            for i in range(2):
-                self.trainer.train(conversation)
+        #for conversation in self.conversations:
+        #    for i in range(2):
+        #        self.trainer.train(conversation)
 
 
     def askQuestion(self, question):
         print(question)
 
-        response = self.chatbot.get_response(question)
-        print(response.confidence)
-        print(response)
+        #response = self.chatbot.get_response(question)
+        #print(response.confidence)
+        #print(response)
 
         #Try TF-IDF
         similarities = []
