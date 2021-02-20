@@ -4,6 +4,8 @@ from dialogue_states.session1Start import Session1Start
 from dialogue_states.session1GoalSetting import Session1GoalSetting
 from dialogue_states.session2QuestonsAndEnd import Session2QuestionsAndEnd
 from dialogue_states.session2Start import Session2Start
+from dialogue_states.session3Retrospective import Session3Retrospective
+from dialogue_states.session3Start import Session3Start
 from management_utils.response_manager import ResponseManager
 import random
 
@@ -15,18 +17,25 @@ class Manager:
         #Set the starting state here.
         self.currentStateName = "AskUserID"
         self.Greeting = Greeting()
+
+        #TODO: It would be nice to just load the classes and states that are needed instead of all of them.
         self.session1Start = Session1Start()
         self.session1GoalSetting = Session1GoalSetting()
         self.session1End = Session1End()
         self.session2Start = Session2Start()
         self.session2QuestionsAndEnd = Session2QuestionsAndEnd()
+        self.session3Start = Session3Start()
+        self.session3Retrospective = Session3Retrospective()
         self.states = self.states + \
                       self.Greeting.states + \
                       self.session1Start.states + \
                       self.session1GoalSetting.states +\
                       self.session1End.states +\
                       self.session2Start.states +\
-                      self.session2QuestionsAndEnd.states
+                      self.session2QuestionsAndEnd.states +\
+                      self.session3Start.states +\
+                      self.session3Retrospective.states
+
         self.responseManager = ResponseManager()
         self.repeat = False
 

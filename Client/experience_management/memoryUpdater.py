@@ -222,7 +222,7 @@ for file in onlyfiles:
                                     keywordPraise = keywordPraise + "calorie restriction."
                                 else:
                                     keywordPraise = keywordPraise + "sugar reduction."
-                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
+                                keywordPraise = keywordPraise + " You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " It looks like you had that in the back of your head as you were working towards your goal, because the results so far are very promising. Keep it up."
 
                                 print("KeywordPraise")
@@ -304,7 +304,7 @@ for file in onlyfiles:
                                     keywordPraise = keywordPraise + "calorie restriction."
                                 else:
                                     keywordPraise = keywordPraise + "sugar reduction."
-                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
+                                keywordPraise = keywordPraise + " You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " It looks like you had that in the back of your head as you were working towards your goal, because you managed to reach your milestone, and I hope it helped you when you were working towards your final goal as well."
 
                                 print("KeywordPraise")
@@ -489,7 +489,7 @@ for file in onlyfiles:
 
                             # Rewording with sentiment
                             rewordedCriticism = rewordPhrase(filteredAnswer)
-                            rewordedCriticism = "In our first session, you said " + rewordedCriticism + " when O asked you how you would feel when you accomplished your goal."
+                            rewordedCriticism = "In our first session, you said " + rewordedCriticism + " when I asked you how you would feel when you accomplished your goal."
                             if sentimentBool:
                                 rewordedCriticism = rewordedCriticism + " When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal. I believe that you will one day make those feelings a reality."
                             else:
@@ -564,6 +564,145 @@ for file in onlyfiles:
 
 
                     # SESSION 2 MEMORIES
+                    elif question == "Now that you have started, how do you feel about the progress you have made?":
+                        # Keyword
+                        keywordPraise = ""
+                        if len(keywords) > 0:
+                            keywordPraise = "In our second session, I asked you how you felt about the progress you made. "
+                            keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                            if sentimentBool:
+                                keywordPraise = keywordPraise + " It sounded like things were looking up for you, and I imagine that helped you reach your final goal."
+                            else:
+                                keywordPraise = keywordPraise + " It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal."
+                            keywordPraise = keywordPraise + " Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating."
+
+                            print("KeywordPraise")
+                            print(keywordPraise)
+                            praisePhrases.append(keywordPraise)
+
+                        # Rewording with sentiment (rewording only does not allow for deeper meaning to be interpretted)
+                        rewordedPraise = rewordPhrase(filteredAnswer)
+                        rewordedPraise = "In our second session, you said " + rewordedPraise + " when asked how you felt about the progress you made so far."
+                        if sentimentBool:
+                            rewordedPraise = rewordedPraise + " It sounded like things were looking up for you, and I imagine that helped you reach your final goal."
+                        else:
+                            rewordedPraise = rewordedPraise + " It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal."
+                        rewordedPraise = rewordedPraise + " Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating."
+
+                        print("Reworded Praise")
+                        print(rewordedPraise)
+                        praisePhrases.append(rewordedPraise)
+
+                        # Second generate variants for criticism
+                        # Keyword
+                        keywordCriticism = ""
+                        if len(keywords) > 0:
+                            keywordCriticism = "In our second session, I asked you how you felt about the progress you made. "
+                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                            if sentimentBool:
+                                keywordCriticism = keywordCriticism + " It sounded like things were looking up for you, which is a bit unfortunate, but it looks like you made some progress regardless of whether you met your goal or not."
+                            else:
+                                keywordCriticism = keywordCriticism + " It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow."
+                            criticismPhrases.append(keywordCriticism)
+
+                        # Rewording with sentiment
+                        rewordedCriticism = rewordPhrase(filteredAnswer)
+                        rewordedCriticism = "In our second session, you said " + rewordedCriticism + " when asked how you felt about the progress you made so far."
+                        if sentimentBool:
+                            rewordedCriticism = rewordedCriticism + " It sounded like things were looking up for you, which is a bit unfortunate, but it looks like you made some progress regardless of whether you met your goal or not."
+                        else:
+                            rewordedCriticism = rewordedCriticism + " It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow."
+                        criticismPhrases.append(rewordedCriticism)
+
+
+
+
+                    elif question == "What are you struggling with?":
+                        # Keyword
+                        keywordPraise = ""
+                        if len(keywords) > 0:
+                            keywordPraise = "In our second session, I asked what you were struggling with. "
+                            keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
+                            keywordPraise = keywordPraise + " It sounds like you managed to at least partially address some of these struggles, because you did well in meeting your final goal."
+
+                            print("KeywordPraise")
+                            print(keywordPraise)
+                            praisePhrases.append(keywordPraise)
+
+                        # Rewording with sentiment (rewording only does not allow for deeper meaning to be interpretted)
+                        rewordedPraise = rewordPhrase(filteredAnswer)
+                        rewordedPraise = "In our second session, you said " + rewordedPraise + " when asked how you felt about the progress you made so far."
+                        if sentimentBool:
+                            rewordedPraise = rewordedPraise + " It sounded like the struggles that you had were not that difficult to solve to begin with, and you managed to overcome them to ."
+                        else:
+                            rewordedPraise = rewordedPraise + " It sounded like those struggles were quite challenging, but you managed to get past them, so great job!"
+
+                        print("Reworded Praise")
+                        print(rewordedPraise)
+                        praisePhrases.append(rewordedPraise)
+
+                        # Second generate variants for criticism
+                        # Keyword
+                        keywordCriticism = ""
+                        if len(keywords) > 0:
+                            keywordCriticism = "In our second session, I asked what you were struggling with. "
+                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                            keywordCriticism = keywordCriticism + " It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way."
+                            criticismPhrases.append(keywordCriticism)
+
+                        # Rewording with sentiment
+                        rewordedCriticism = rewordPhrase(filteredAnswer)
+                        rewordedCriticism = "In our second session, you said " + rewordedCriticism + " when asked how you felt about the progress you made so far."
+                        keywordCriticism = keywordCriticism + " It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way."
+                        criticismPhrases.append(rewordedCriticism)
+
+
+
+
+                    elif question == "How do you think your family, friends or coworkers would react if they heard about you reaching your goal?":
+                        # Keyword
+                        keywordPraise = ""
+                        if len(keywords) > 0:
+                            keywordPraise = "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. "
+                            keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
+
+                            if sentimentBool:
+                                keywordPraise = keywordPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne."
+                            else:
+                                keywordPraise = keywordPraise + " You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job."
+
+                            print("KeywordPraise")
+                            print(keywordPraise)
+                            praisePhrases.append(keywordPraise)
+
+                        # Rewording with sentiment (rewording only does not allow for deeper meaning to be interpretted)
+                        rewordedPraise = rewordPhrase(filteredAnswer)
+                        rewordedPraise = "In our second session, you said " + rewordedPraise + " how you think your family, friends or coworkers would react if they heard about you reaching your goal."
+                        if sentimentBool:
+                            rewordedPraise = rewordedPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne."
+                        else:
+                            rewordedPraise = rewordedPraise + " You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job."
+
+                        print("Reworded Praise")
+                        print(rewordedPraise)
+                        praisePhrases.append(rewordedPraise)
+
+                        # Second generate variants for criticism
+                        # Keyword
+                        keywordCriticism = ""
+                        if len(keywords) > 0:
+                            keywordCriticism = "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. "
+                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+
+                            keywordCriticism = keywordCriticism + " Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
+
+                            criticismPhrases.append(keywordCriticism)
+
+                        # Rewording with sentiment
+                        rewordedCriticism = rewordPhrase(filteredAnswer)
+                        rewordedCriticism = "In our second session, you said " + rewordedCriticism + " when I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal."
+                        rewordedCriticism = rewordedCriticism + " Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
+                        criticismPhrases.append(rewordedCriticism)
 
                     #Add reworded phrases to data
                     newExperience = experience

@@ -64,37 +64,7 @@ class Session3Start:
             "statement": "Let's talk about what went right and what went wrong",
             "response": "ReviewFirstSessionSession3",
             "stateType": "Statement"
-        },
-        {
-            "name": "ReviewFirstSessionSession3",
-            "statement": self.ReviewFirstSessionStatement,
-            "response": self.ReviewFirstSessionStatementResponse,
-            "stateType": "Statement"
-        },
-        {
-            "name": "ReviewFirstSessionExperienceSuccessSession3",
-            "statement": self.ReviewFirstSessionExperienceSuccessStatement,
-            "response": "FirstMilestoneReached",
-            "stateType": "Statement"
-        },
-        {
-            "name": "ReviewFirstSessionExperienceFailureSession3",
-            "statement": self.ReviewFirstSessionExperienceFailureStatement,
-            "response": "FirstMilestoneNotReached",
-            "stateType": "Statement"
-        },
-        {
-            "name": "FirstMilestoneReached",
-            "statement": self.ReviewFirstSessionExperienceSuccessStatement,
-            "response": "FirstMilestoneReached",
-            "stateType": "Statement"
-        },
-        {
-            "name": "FirstMilestoneNotReached",
-            "statement": self.ReviewFirstSessionExperienceFailureStatement,
-            "response": "ReviewSecondSession",
-            "stateType": "Statement"
-        },
+        }
         ]
 
     def Session3StartStatement(self):
@@ -168,7 +138,5 @@ class Session3Start:
                 else:
                     nextState = "AchievementReachedSession3"
                     self.shortTermData.data["diet"]["session3"]["progressSufficient"] = True
+            self.shortTermData.writeData()
         return [], nextState
-
-    def ReviewFirstSessionStatement(self):
-        return ""

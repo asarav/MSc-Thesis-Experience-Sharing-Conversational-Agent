@@ -39,8 +39,10 @@ class MemoryManager:
         experiences = self.data["experiences"]
 
         notFound = True
+        chosenExperience = 0
         while notFound:
             chosenExperience = random.choice(range(0, len(experiences)))
+            #Ensure that the experience is from a proper session.
             if self.data["experiences"][chosenExperience]["session"] is session:
                 notFound = False
 
