@@ -42,7 +42,7 @@ class Session3Retrospective:
         {
             "name": "FirstMilestoneExperienceReflectionSession3",
             "statement": self.FirstMilestoneExperienceReflection,
-            "response": "AskFirstExperienceOpinion",
+            "response": "AskFirstExperienceOpinionSession3",
             "stateType": "Statement"
         },
         {
@@ -59,13 +59,13 @@ class Session3Retrospective:
         },
         {
             "name": "FinalGoalReachedSession3",
-            "statement": self.ReviewFirstSessionExperienceSuccessStatement,
+            "statement": self.ReviewSecondSessionExperienceSuccessStatement,
             "response": "FinalGoalExperienceReflectionSession3",
             "stateType": "Statement"
         },
         {
             "name": "FinalGoalNotReachedSession3",
-            "statement": self.ReviewFirstSessionExperienceFailureStatement,
+            "statement": self.ReviewSecondSessionExperienceFailureStatement,
             "response": "FinalGoalExperienceReflectionSession3",
             "stateType": "Statement"
         },
@@ -89,7 +89,7 @@ class Session3Retrospective:
         },
         {
             "name": "FutureWorkSession3",
-            "statement": self.FutureWorkStatement,
+            "statement": self.FutureWorkSession3,
             "response": "AskOpinionFutureWorkSession3",
             "stateType": "Statement"
         },
@@ -195,30 +195,30 @@ class Session3Retrospective:
         if self.goal is 0:
             #Check if caloric intake is less than or equal to milestone
             caloricIntake = self.shortTermData.data["diet"]["session3"]["calories"]
-            if caloricIntake <= self.milestone:
+            if caloricIntake <= self.finalGoal:
                 nextState = "FinalGoalReachedSession3"
             else:
                 nextState = "FinalGoalNotReachedSession3"
         else:
             #Check if sugar intake is less than or equal to milestone :
             sugarIntake = self.shortTermData.data["diet"]["session3"]["sugar"]
-            if sugarIntake <= self.milestone:
+            if sugarIntake <= self.finalGoal:
                 nextState = "FinalGoalReachedSession3"
             else:
                 nextState = "FinalGoalNotReachedSession3"
 
         return [], nextState
 
-    def ReviewFirstSessionExperienceSuccessStatement(self):
+    def ReviewSecondSessionExperienceSuccessStatement(self):
         self.finalGoalSuccess = True
         return "Today you reached your final goal and ultimately achieved an improvement in your diet habits."
 
-    def ReviewFirstSessionExperienceFailureStatement(self):
+    def ReviewSecondSessionExperienceFailureStatement(self):
         self.finalGoalSuccess = False
         return "Unfortunately, you did not reach your final goal, which means that there is more work that must be done to successfully gain an improvement in your diet habits."
 
-    def FirstMilestoneExperienceReflection(self):
-        if self.milestoneSuccess:
+    def FinalGoalExperienceReflection(self):
+        if self.finalGoalSuccess:
             return self.shortTermData.chooseMemory(session=2, type=0)
         else:
             return self.shortTermData.chooseMemory(session=2, type=1)
@@ -252,4 +252,8 @@ class Session3Retrospective:
 
     def ValedictionSessionStatement(self):
         name = self.shortTermData.data["name"]
+        #Save data
+        self.shortTermData.data["session"] = 4
+        self.shortTermData.writeData()
+        self.shortTermData.writeDataToLongTermMemory(self.shortTermData.data["id"])
         return "Thank you for spending these sessions with me " + str(name) + " to work on your diet. If you stay focused, determined, and consistent you will eventually get wherever it is you want to be. I hope you enjoy the rest of your day and the rest of your journey towards managing your diet. Goodbye."

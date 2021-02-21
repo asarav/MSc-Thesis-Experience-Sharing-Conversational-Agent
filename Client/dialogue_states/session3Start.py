@@ -26,7 +26,7 @@ class Session3Start:
         {
             "name": "ReviewOfGoalsAndExpectationsSession3",
             "statement": self.ReviewOfGoalsAndExpectationsStatement,
-            "response": "DetermineProgressSession2",
+            "response": "DetermineProgressSession3",
             "stateType": "Statement"
         },
         {

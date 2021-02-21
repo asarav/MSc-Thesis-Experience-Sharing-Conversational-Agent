@@ -231,7 +231,7 @@ for file in onlyfiles:
 
                             # Rewording with sentiment (rewording only does not allow for deeper meaning to be interpretted)
                             rewordedPraise = rewordPhrase(filteredAnswer)
-                            rewordedPraise = "In our first session, you said " + rewordedPraise + " when asked about I asked you why you would like to work on "
+                            rewordedPraise = "In our first session, you said " + rewordedPraise + " when asked about why you would like to work on "
                             if goal is 0:
                                 rewordedPraise = rewordedPraise + "calorie restriction."
                             else:
@@ -313,7 +313,7 @@ for file in onlyfiles:
 
                             # Rewording with sentiment (rewording only does not allow for deeper meaning to be interpretted)
                             rewordedPraise = rewordPhrase(filteredAnswer)
-                            rewordedPraise = "In our first session, you said " + rewordedPraise + " when asked about I asked you why you would like to work on "
+                            rewordedPraise = "In our first session, you said " + rewordedPraise + " when asked about why you would like to work on "
                             if goal is 0:
                                 rewordedPraise = rewordedPraise + "calorie restriction."
                             else:
