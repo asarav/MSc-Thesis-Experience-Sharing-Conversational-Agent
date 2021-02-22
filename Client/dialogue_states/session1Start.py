@@ -2,6 +2,7 @@ import management_utils.response_manager as ResponseManager
 import management_utils.search_based_conversation as SBC
 import data_retrieval.memoryManager as shortTermData
 import management_utils.diabetesConversation as diabetesConversation
+from management_utils.conditionChooser import ConditionChooser
 
 
 class Session1Start:
@@ -19,6 +20,8 @@ class Session1Start:
         #Load user data
         self.shortTermData = shortTermData.MemoryManager()
         self.shortTermData.data["session"] = 1
+
+        self.conditionChooser = ConditionChooser()
 
         self.states = [
         {
@@ -131,6 +134,8 @@ class Session1Start:
         self.ID = self.shortTermData.data["id"]
         self.username = self.shortTermData.data["name"]
         self.shortTermData.data["physicalData"] = {}
+
+        self.shortTermData.data["condition"] = self.conditionChooser.getCondition()
         return "Great. Nice to meet you " + self.username + ". Let's start improving your diet"
 
     def AnswerDiabetesQuestionsResponse(self, response):

@@ -121,6 +121,13 @@ class Session3Retrospective:
         self.goal = self.shortTermData.data["goal"]
         self.finalGoal = self.shortTermData.data["finalGoal"]
         self.milestone = self.shortTermData.data["milestone"]
+
+        if "condition" in self.shortTermData.data:
+            self.condition = self.shortTermData.data["condition"]
+        else:
+            self.condition = 2
+            self.shortTermData.data["condition"] = 2
+
         statement = "In our first session, you were given a milestone of " + str(self.milestone)
         if self.goal is 0:
             statement = statement + " calories to reach."

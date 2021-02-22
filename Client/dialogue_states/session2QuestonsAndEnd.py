@@ -88,6 +88,13 @@ class Session2QuestionsAndEnd:
         self.goal = self.shortTermData.data["goal"]
         self.finalGoal = self.shortTermData.data["finalGoal"]
         self.milestone = self.shortTermData.data["milestone"]
+
+        if "condition" in self.shortTermData.data:
+            self.condition = self.shortTermData.data["condition"]
+        else:
+            self.condition = 2
+            self.shortTermData.data["condition"] = 2
+
         return "What are you struggling with?"
 
     def AskStruggleResponse(self, response):

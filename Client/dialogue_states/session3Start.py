@@ -75,6 +75,13 @@ class Session3Start:
         self.goal = self.shortTermData.data["goal"]
         self.finalGoal = self.shortTermData.data["finalGoal"]
         self.milestone = self.shortTermData.data["milestone"]
+
+        if "condition" in self.shortTermData.data:
+            self.condition = self.shortTermData.data["condition"]
+        else:
+            self.condition = 2
+            self.shortTermData.data["condition"] = 2
+
         return "Welcome back " + self.username + ". How have you been? This is your third session. I hope you managed to meet your final goal."
 
     def ReviewOfGoalsAndExpectationsStatement(self):
