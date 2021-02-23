@@ -49,13 +49,13 @@ class Session2Start:
         {
             "name": "ProgressSufficientSession2",
             "statement": self.ProgressSufficientStatement,
-            "response": "SharedMemoryReferencePraiseSession2",
+            "response": self.SharedMemoryReferencePraiseSelect,
             "stateType": "Statement"
         },
         {
             "name": "ProgressInsufficientSession2",
             "statement": self.ProgressInsufficientStatement,
-            "response": "SharedMemoryReferenceCriticismSession2",
+            "response": self.SharedMemoryReferenceCriticismSelect,
             "stateType": "Statement"
         },
         {
@@ -203,8 +203,24 @@ class Session2Start:
             statement = statement + str(self.finalGoal) + " maximum grams of sugar in your daily sugar intake."
         return statement
 
+    def SharedMemoryReferencePraiseSelect(self, response):
+        nextState = ""
+        if self.condition is 0:
+            _, nextState = self.IncreaseDifficultyOrContinue()
+        else:
+            nextState = "SharedMemoryReferencePraiseSession2"
+        return []
+
     def SharedMemoryReferencePraise(self):
         return self.shortTermData.chooseMemory(session=1, type=0)
+
+    def SharedMemoryReferenceCriticismSelect(self, response):
+        nextState = ""
+        if self.condition is 0:
+            nextState = "LessAmbitiousGoal"
+        else:
+            nextState = "SharedMemoryReferenceCriticismSession2"
+        return []
 
     def SharedMemoryReferenceCriticsm(self):
         return self.shortTermData.chooseMemory(session=1, type=1)

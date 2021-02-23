@@ -30,13 +30,13 @@ class Session3Retrospective:
         {
             "name": "FirstMilestoneReachedSession3",
             "statement": self.ReviewFirstSessionExperienceSuccessStatement,
-            "response": "FirstMilestoneExperienceReflectionSession3",
+            "response": self.FirstMilestoneExperienceReflectionSelect,
             "stateType": "Statement"
         },
         {
             "name": "FirstMilestoneNotReachedSession3",
             "statement": self.ReviewFirstSessionExperienceFailureStatement,
-            "response": "FirstMilestoneExperienceReflectionSession3",
+            "response": self.FirstMilestoneExperienceReflectionSelect,
             "stateType": "Statement"
         },
         {
@@ -60,13 +60,13 @@ class Session3Retrospective:
         {
             "name": "FinalGoalReachedSession3",
             "statement": self.ReviewSecondSessionExperienceSuccessStatement,
-            "response": "FinalGoalExperienceReflectionSession3",
+            "response": self.FinalGoalExperienceReflectionSelect,
             "stateType": "Statement"
         },
         {
             "name": "FinalGoalNotReachedSession3",
             "statement": self.ReviewSecondSessionExperienceFailureStatement,
-            "response": "FinalGoalExperienceReflectionSession3",
+            "response": self.FinalGoalExperienceReflectionSelect,
             "stateType": "Statement"
         },
         {
@@ -176,6 +176,14 @@ class Session3Retrospective:
                 statement = statement + " Because you did struggled, you were given the option of working towards a less ambitious goal which you took."
         return statement
 
+    def FirstMilestoneExperienceReflectionSelect(self, response):
+        nextState = ""
+        if self.condition is 0:
+            nextState = "ReviewSecondSessionSession3"
+        else:
+            nextState = "FirstMilestoneExperienceReflectionSession3"
+        return [], nextState
+
     def FirstMilestoneExperienceReflection(self):
         if self.milestoneSuccess:
             return self.shortTermData.chooseMemory(session=1, type=0)
@@ -223,6 +231,14 @@ class Session3Retrospective:
     def ReviewSecondSessionExperienceFailureStatement(self):
         self.finalGoalSuccess = False
         return "Unfortunately, you did not reach your final goal, which means that there is more work that must be done to successfully gain an improvement in your diet habits."
+
+    def FinalGoalExperienceReflectionSelect(self, response):
+        nextState = ""
+        if self.condition is 0:
+            nextState = "OverallProgressStatement"
+        else:
+            nextState = "FinalGoalExperienceReflectionSession3"
+        return [], nextState
 
     def FinalGoalExperienceReflection(self):
         if self.finalGoalSuccess:
