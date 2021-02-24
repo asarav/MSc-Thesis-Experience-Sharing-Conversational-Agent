@@ -40,6 +40,10 @@ class MemoryManager:
 
         notFound = True
         chosenExperience = 0
+
+        #For condition 2, choose a memory that has not already been used.
+        #For condition 1, choose a memory that has already been used. If there is not a memory that has been used, use any memory.
+
         while notFound:
             chosenExperience = random.choice(range(0, len(experiences)))
             #Ensure that the experience is from a proper session.
