@@ -38,4 +38,5 @@ class ConditionChooser:
                 chosenCondition = i
                 min = conditions[i]
 
+        print("Chosen Condition ", chosenCondition)
         return chosenCondition

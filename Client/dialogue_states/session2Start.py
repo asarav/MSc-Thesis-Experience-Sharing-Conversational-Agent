@@ -61,14 +61,20 @@ class Session2Start:
         {
             "name": "SharedMemoryReferencePraiseSession2",
             "statement": self.SharedMemoryReferencePraise,
-            "response": self.IncreaseDifficultyOrContinue,
+            "response": "SharedMemoryReflectionSession2",
             "stateType": "Statement"
         },
         {
             "name": "SharedMemoryReferenceCriticismSession2",
             "statement": self.SharedMemoryReferenceCriticsm,
-            "response": "LessAmbitiousGoal",
+            "response": "SharedMemoryReflectionSession2",
             "stateType": "Statement"
+        },
+        {
+            "name": "SharedMemoryReflectionSession2",
+            "statement": "Do you agree with this statement? Why or why not?",
+            "response": self.SharedMemoryReflection,
+            "stateType": "AnswerResponse"
         },
         {
             "name": "LessAmbitiousGoal",
@@ -206,12 +212,13 @@ class Session2Start:
     def SharedMemoryReferencePraiseSelect(self, response):
         nextState = ""
         if self.condition is 0:
-            _, nextState = self.IncreaseDifficultyOrContinue()
+            _, nextState = self.IncreaseDifficultyOrContinue(response)
         else:
             nextState = "SharedMemoryReferencePraiseSession2"
-        return []
+        return [], nextState
 
     def SharedMemoryReferencePraise(self):
+        self.praiseType = 0
         return self.shortTermData.chooseMemory(session=1, type=0)
 
     def SharedMemoryReferenceCriticismSelect(self, response):
@@ -220,10 +227,19 @@ class Session2Start:
             nextState = "LessAmbitiousGoal"
         else:
             nextState = "SharedMemoryReferenceCriticismSession2"
-        return []
+        return [], nextState
 
     def SharedMemoryReferenceCriticsm(self):
+        self.praiseType = 1
         return self.shortTermData.chooseMemory(session=1, type=1)
+
+    def SharedMemoryReflection(self, response):
+        nextState = ""
+        if self.praiseType is 0:
+            _, nextState = self.IncreaseDifficultyOrContinue(response)
+        else:
+            nextState = "LessAmbitiousGoal"
+        return [], nextState
 
     def IncreaseDifficultyOrContinue(self, response):
         nextState = "AskFeelingsSession2"

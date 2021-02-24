@@ -35,20 +35,35 @@ class MemoryManager:
         self.jsonSaved = True
 
     #Type refers to praise (0) or criticism (1)
-    def chooseMemory(self, session=1, type=0):
+    def chooseMemory(self, session=1, type=0, condition=2):
         experiences = self.data["experiences"]
 
         notFound = True
         chosenExperience = 0
 
-        #For condition 2, choose a memory that has not already been used.
         #For condition 1, choose a memory that has already been used. If there is not a memory that has been used, use any memory.
+        if condition is 1:
+            #Find a memory that has been used. Only refer to session 1 memories to avoid variation
+            for i in range(0, len(self.data["experiences"])):
+                if self.data["experiences"][i]["session"] is 1 and self.data["experiences"][i]["used"]:
+                    chosenExperience = i
+                    notFound = False
 
-        while notFound:
-            chosenExperience = random.choice(range(0, len(experiences)))
-            #Ensure that the experience is from a proper session.
-            if self.data["experiences"][chosenExperience]["session"] is session:
-                notFound = False
+            #If a memory has not been used, just choose one from session 1
+            if notFound:
+                while notFound:
+                    chosenExperience = random.choice(range(0, len(experiences)))
+                    # Ensure that the experience is from the proper session and not used.
+                    if self.data["experiences"][chosenExperience]["session"] is 1:
+                        notFound = False
+        #For condition 2, choose a memory that has not already been used.
+        elif condition is 2:
+            #Find a memory that has not been used
+            while notFound:
+                chosenExperience = random.choice(range(0, len(experiences)))
+                # Ensure that the experience is from the proper session and not used.
+                if self.data["experiences"][chosenExperience]["session"] is session and not self.data["experiences"][chosenExperience]["used"]:
+                    notFound = False
 
         #Set the data as used and save it just in case
         self.data["experiences"][chosenExperience]["used"] = True
