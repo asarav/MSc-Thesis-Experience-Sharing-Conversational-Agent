@@ -45,9 +45,11 @@ class MemoryManager:
         if condition is 1:
             #Find a memory that has been used. Only refer to session 1 memories to avoid variation
             for i in range(0, len(self.data["experiences"])):
-                if self.data["experiences"][i]["session"] is 1 and self.data["experiences"][i]["used"]:
-                    chosenExperience = i
-                    notFound = False
+                if self.data["experiences"][i]["session"] is 1:
+                    if "used" in self.data["experiences"][i]:
+                        if self.data["experiences"][i]["used"]:
+                            chosenExperience = i
+                            notFound = False
 
             #If a memory has not been used, just choose one from session 1
             if notFound:
@@ -62,8 +64,9 @@ class MemoryManager:
             while notFound:
                 chosenExperience = random.choice(range(0, len(experiences)))
                 # Ensure that the experience is from the proper session and not used.
-                if self.data["experiences"][chosenExperience]["session"] is session and not self.data["experiences"][chosenExperience]["used"]:
-                    notFound = False
+                if self.data["experiences"][chosenExperience]["session"] is session:
+                    if "used" not in self.data["experiences"][chosenExperience]:
+                        notFound = False
 
         #Set the data as used and save it just in case
         self.data["experiences"][chosenExperience]["used"] = True

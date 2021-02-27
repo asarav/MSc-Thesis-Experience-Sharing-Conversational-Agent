@@ -219,7 +219,7 @@ class Session2Start:
 
     def SharedMemoryReferencePraise(self):
         self.praiseType = 0
-        return self.shortTermData.chooseMemory(session=1, type=0)
+        return self.shortTermData.chooseMemory(session=1, type=0, condition=self.condition)
 
     def SharedMemoryReferenceCriticismSelect(self, response):
         nextState = ""
@@ -231,7 +231,7 @@ class Session2Start:
 
     def SharedMemoryReferenceCriticsm(self):
         self.praiseType = 1
-        return self.shortTermData.chooseMemory(session=1, type=1)
+        return self.shortTermData.chooseMemory(session=1, type=1, condition=self.condition)
 
     def SharedMemoryReflection(self, response):
         nextState = ""

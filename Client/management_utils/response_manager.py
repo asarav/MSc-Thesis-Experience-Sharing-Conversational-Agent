@@ -40,13 +40,13 @@ class ResponseManager:
 
     #Returns a 0,1,or 2. 0 is a no. 1 is a yes. 2 is neither a yes or a no.
     def YesOrNo(self, Response):
-        yes = ["yes", "okay", "yep", "yah", "yeah", "correct", "right", "agree", "agreed"]
+        yes = ["yes", "okay", "yep", "yah", "yeah", "correct", "right", "agree", "agreed", "sure", "fine", "guess", "chess"]
         no = ["no", "nope", "nah", "don't", "not", "nay", "now", "doubt", "know", "incorrect", "wrong", "disagree", "disagreed"]
         decision = 0
-        if self.MatchExpectedResponses(yes, Response):
-            decision = 1
-        elif self.MatchExpectedResponses(no, Response):
+        if self.MatchExpectedResponses(no, Response):
             decision = 0
+        elif self.MatchExpectedResponses(yes, Response):
+            decision = 1
         else:
             #Treat all other answers as though they are a no to prevent accidentally progressing in the flow.
             decision = 0

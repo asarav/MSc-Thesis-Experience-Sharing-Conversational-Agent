@@ -52,6 +52,18 @@ class Session1End:
             "stateType": "Statement"
         },
         {
+            "name": "AskFavoriteFood",
+            "statement": "Do you have any foods you like in particular? What is your favorite food?",
+            "response": self.AskFavoriteFoodResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "FavoriteFoodStatement",
+            "statement": "A good way to start is to take your favorite food and find a healthier option to eat instead.",
+            "response": "ReviewNextMilestone",
+            "stateType": "Statement"
+        },
+        {
             "name": "ReviewNextMilestone",
             "statement": self.ReviewNextMilestoneStatement,
             "response": self.ReviewNextMilestoneResponse,
@@ -92,7 +104,7 @@ class Session1End:
         nextState = ""
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
-            nextState = "ReviewNextMilestone"
+            nextState = "AskFavoriteFood"
         else:
             nextState = "AskGoalQuestion"
 
@@ -102,9 +114,23 @@ class Session1End:
         nextState = "AskGoalQuestion"
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
-            nextState = "ReviewNextMilestone"
+            nextState = "AskFavoriteFood"
         else:
             nextState = "AskGoalQuestion"
+        return [], nextState
+
+    def AskFavoriteFoodResponse(self, response):
+        nextState = "FavoriteFoodStatement"
+        #Try to extract just the relevant food
+        stopwords = ["I", "i", "like", "my", "favorite", "is"]
+        querywords = response.split()
+        resultwords = [word for word in querywords if word.lower() not in stopwords]
+        result = ' '.join(resultwords)
+
+        self.shortTermData.data["dietLikes"] = {
+            "question": result
+        }
+        self.shortTermData.writeData()
         return [], nextState
 
     def AnswerGoalQuestionsStatement(self):

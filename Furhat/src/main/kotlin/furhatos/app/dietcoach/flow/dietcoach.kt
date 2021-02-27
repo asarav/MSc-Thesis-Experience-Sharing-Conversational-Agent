@@ -26,8 +26,8 @@ val Start : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        delay(1300)
-        furhat.listen(timeout=10000)
+        delay(1500)
+        furhat.listen(timeout=15000)
     }
 
     onResponse {
@@ -60,8 +60,8 @@ val Second : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        delay(1300)
-        furhat.listen(timeout=10000)
+        delay(1500)
+        furhat.listen(timeout=15000)
     }
 
     onResponse {

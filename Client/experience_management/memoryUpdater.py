@@ -1,6 +1,7 @@
 from os import listdir
 from os.path import isfile, join
 
+from data_retrieval.dietItemManager import DietLikes
 from data_retrieval.jsonManager import jsonManager
 from experience_management.experienceManager import ExperienceManager
 import language_tool_python
@@ -34,8 +35,15 @@ for file in onlyfiles:
     manager = jsonManager()
     manager.readJSON(mypath + "/" + file)
     fileData = manager.data
+    dietLikeManager = DietLikes()
     if "session" in fileData:
         if (fileData["session"] is 2) or (fileData["session"] is 3):
+            #Add diet advice
+            if "dietLikes" in fileData:
+                dietLike = fileData["dietLikes"]
+                goal = fileData["goal"]
+                answer = dietLikeManager.getLikeStatement(dietLike["question"], goal)
+                fileData["dietLikes"]["answer"] = answer
             if "experiences" in fileData:
                 experiences = fileData["experiences"]
                 currentSession = fileData["session"]

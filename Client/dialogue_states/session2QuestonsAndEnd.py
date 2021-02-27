@@ -39,6 +39,12 @@ class Session2QuestionsAndEnd:
         {
             "name": "ContinueAndTips",
             "statement": self.ContinueAndTipsStatement,
+            "response": "StruggleTips",
+            "stateType": "Statement"
+        },
+        {
+            "name": "StruggleTips",
+            "statement": self.StruglesStatement,
             "response": "QuestionsAboutActivities",
             "stateType": "Statement"
         },
@@ -59,6 +65,18 @@ class Session2QuestionsAndEnd:
             "statement": self.ProvideActivitiesAnswer,
             "response": "QuestionsAboutActivities",
             "stateType": "Statement"
+        },
+        {
+            "name": "FavoriteFoodHealthyOption",
+            "statement": self.FavoriteFoodHealthyOptionStatement,
+            "response": "HealthyOptionOpinion",
+            "stateType": "Statement"
+        },
+        {
+            "name": "HealthyOptionOpinion",
+            "statement": "Do you agree with this? What do you think?",
+            "response": self.HealthyOptionOpinionResponse,
+            "stateType": "AnswerResponse"
         },
         {
             "name": "ReviewGoalsSession2",
@@ -123,7 +141,7 @@ class Session2QuestionsAndEnd:
 
     def ContinueAndTipsStatement(self):
         statement = "Let's continue. Our next session is our last, so that means that you will be trying to achieve your final goal of "
-        if self.finalGoal is 0:
+        if self.goal is 0:
             newCalories = self.shortTermData.data["diet"]["session2"]["calories"]
             statement = statement + str(self.finalGoal) + " calories before we meet."
             statement = statement + " This means you have " + str(newCalories - self.finalGoal) + " calories left to reach your goal."
@@ -135,10 +153,12 @@ class Session2QuestionsAndEnd:
         #Add some tips and strategies based on the struggles of the user
         statement = statement + " For your diet, if you are not trying to remove food items, maybe try to focus on whole foods and complex carbohydrates such as beans, grains, and starchy vegetables. Pass on the simple sugars, like those in processed baked goods. Those can raise blood sugar without providing wholesome nutrition."
 
-        statement = statement + " Regarding your struggles, I think I can offer some advice. "
+        return statement
+
+    def StruglesStatement(self):
+        statement = " Regarding your struggles, I think I can offer some advice. "
 
         statement = statement + self.getStruggleAdvice
-
         return statement
 
     def QuestionsAboutActivitiesStatement(self):
@@ -153,7 +173,11 @@ class Session2QuestionsAndEnd:
         nextState = ""
         decision = self.responseUtils.YesOrNo(response)
         if decision is 0:
-            nextState = "ReviewGoalsSession2"
+            if self.condition is 0 or self.condition is 1:
+                nextState = "ReviewGoalsSession2"
+            else:
+                #Maybe we can just limit this to the 3rd condition
+                nextState = "FavoriteFoodHealthyOption"
         else:
             nextState = "AskQuestionsAboutActivities"
 
@@ -170,6 +194,15 @@ class Session2QuestionsAndEnd:
 
     def ProvideActivitiesAnswer(self):
         return self.ActivitiesQuestionAnswer
+
+    def FavoriteFoodHealthyOptionStatement(self):
+        statement = "In the previous session, you mentioned what your favorite food was and I may have a recommendation. "
+        statement = statement + str(self.shortTermData.data["dietLikes"]["answer"])
+        return statement
+
+    def HealthyOptionOpinionResponse(self, response):
+        nextState = "ReviewGoalsSession2"
+        return [], nextState
 
     def ReviewGoalsSession2Statement(self):
         statement = "Great. Only one more session left and we will see if you reach your goal or not. It won't be easy, but I believe you will get there."

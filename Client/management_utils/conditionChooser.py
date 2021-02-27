@@ -12,7 +12,7 @@ class ConditionChooser:
         #Iterate through all files except the session file to get a total count of all three conditions.
         conditions = [0, 0, 0]
         # Look through all memory files
-        mypath = "../interaction_data"
+        mypath = "./interaction_data"
         onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
         print(onlyfiles)
 

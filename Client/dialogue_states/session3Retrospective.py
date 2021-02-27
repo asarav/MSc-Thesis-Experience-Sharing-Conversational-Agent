@@ -186,9 +186,9 @@ class Session3Retrospective:
 
     def FirstMilestoneExperienceReflection(self):
         if self.milestoneSuccess:
-            return self.shortTermData.chooseMemory(session=1, type=0)
+            return self.shortTermData.chooseMemory(session=1, type=0, condition=self.condition)
         else:
-            return self.shortTermData.chooseMemory(session=1, type=1)
+            return self.shortTermData.chooseMemory(session=1, type=1, condition=self.condition)
 
     def AskFirstExperienceOpinionStatement(self):
         return "Do you agree or disagree with this statement regarding your milestone? Why or why not?"
@@ -234,7 +234,7 @@ class Session3Retrospective:
 
     def FinalGoalExperienceReflectionSelect(self, response):
         nextState = ""
-        if self.condition is 0:
+        if self.condition is 0 or self.condition is 1:
             nextState = "OverallProgressStatement"
         else:
             nextState = "FinalGoalExperienceReflectionSession3"
@@ -242,9 +242,9 @@ class Session3Retrospective:
 
     def FinalGoalExperienceReflection(self):
         if self.finalGoalSuccess:
-            return self.shortTermData.chooseMemory(session=2, type=0)
+            return self.shortTermData.chooseMemory(session=2, type=0, condition=self.condition)
         else:
-            return self.shortTermData.chooseMemory(session=2, type=1)
+            return self.shortTermData.chooseMemory(session=2, type=1, condition=self.condition)
 
     def AskFinalGoalExperienceOpinionStatement(self):
         return "So, what do you think? Do you feel the same way or do you have a different opinion?"
@@ -265,7 +265,7 @@ class Session3Retrospective:
 
     def FutureWorkSession3(self):
         if self.finalGoalSuccess:
-            return "Now that you have met your final goal, you can try to maintain your current diet, or work towards more ambitious goals on your own. You can work at your own pace aim for what is best for you."
+            return "Now that you have met your final goal, you can try to maintain your current diet, or work towards more ambitious goals on your own. You can work at your own pace. Aim for what is best for you."
         else:
             return "Since you have not reached your final goal, what you can do in the future is try to break up goals into even more manageable chunks and work on them over a longer period of time to reduce the difficulty. Since consistency is what matters, as long as you are doing something everyday, you are making progress and will eventually reach your goal."
 
