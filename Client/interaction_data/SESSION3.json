@@ -67,8 +67,7 @@
                 "In our first session, I asked you how you would feel when you accomplished your goal. You said little bit longer. Although you did not reach your milestone, those feelings were valid. I hope you kept those feelings in mind as you worked towards your second goal.",
                 "In our first session, you said You think You'll live a little bit longer when I asked you how you would feel when you accomplished your goal. When you said that, you sounded a bit negative. This may have not hurt you in your milestone, but and this could have hurt you in your efforts to reach your goal. Stay motivated, positive and focused, and I'm sure feelings will be easier to achieve.",
                 "In our first session, I asked you how you would feel when you accomplished you goal, and you sounded a bit pessimistic. This may have hurt you when you were working towards your milestone, and I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal, so you've already made some progress."
-            ],
-            "used": true
+            ]
         },
         {
             "Question": "Now that you have started, how do you feel about the progress you have made?",
@@ -107,8 +106,7 @@
             "criticism": [
                 "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. You said pleasantly surprised. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well.",
                 "In our second session, you said You think they'll be pleasantly surprised when I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
-            ],
-            "used": true
+            ]
         }
     ],
     "diet": {
@@ -119,10 +117,6 @@
         "session2": {
             "calories": 1901,
             "progressSufficient": false
-        },
-        "session3": {
-            "calories": 1900,
-            "progressSufficient": true
         }
     },
     "session": 3,

@@ -15,13 +15,13 @@
             "session": 1,
             "praise": [
                 "In our first session, I asked you how you were feeling before we started. You said bit nervous. Honestly, I think you have nothing to worry about and that it's fine to be more excited, because you are doing great!",
-                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. When you said that, you sounded a bit negative, but as you can see, you have nothing to worry about. You are doing a great job.",
-                "In our first session, I asked you how you were feeling before you got started, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You have done well, and I'm sure you will continue to do well."
+                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts.",
+                "In our first session, I asked you how you were feeling before you got started, and you sounded optimistic and positive. Keep it up. Your optimism will help you in the long run."
             ],
             "criticism": [
                 "In our first session, I asked you how you were feeling before we started. You said bit nervous. Honestly, I think you don't need to worry and doing would be counterproductive. I think what would help would be to stay optimistic and focus on consistent activity. Stay focused, and I'm sure you will make it.",
-                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. When you said that, you sounded a bit negative, and this may be hurting you in your efforts to reach your goal. Stay motivated, positive and focused, and I'm sure you will reach your goal.",
-                "In our first session, I asked you how you were feeling before you got started, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal. You just need to take the first step."
+                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal.",
+                "In our first session, I asked you how you were feeling before you got started, and you sounded optimistic and positive. Even though you've run into some problems, I don't think this should change. Stay consistent and committed. You will get there."
             ]
         },
         {
@@ -29,13 +29,13 @@
             "Answer": "I think God will help me live longer and help my weight",
             "session": 1,
             "praise": [
-                "In our first session, I asked you why you would like to work on calorie restriction.You mentioned live longer. It looks like you had that in the back of your head as you were working towards your goal, because the results so far are very promising. Keep it up.",
-                "In our first session, you said You think will help you live longer and help your weight when asked about I asked you why you would like to work on calorie restriction. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts.",
+                "In our first session, I asked you why you would like to work on calorie restriction. You mentioned live longer. It looks like you had that in the back of your head as you were working towards your goal, because the results so far are very promising. Keep it up.",
+                "In our first session, you said You think will help you live longer and help your weight when asked about why you would like to work on calorie restriction. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts.",
                 "In our first session, I asked you why you wanted to work on calorie restriction, and you sounded optimistic and positive. Keep it up. Your optimism will help you in the long run."
             ],
             "criticism": [
                 "In our first session, I asked you why you would like to work on calorie restriction. You said live longer. You had some setbacks, but I think if you keep these thoughts in mind and focus, you will reach your goal.",
-                "In our first session, you said You think will help you live longer and help your weight when asked about I asked you why you would like to work on  When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal.",
+                "In our first session, you said You think will help you live longer and help your weight when I asked you why you would like to work on calorie restriction. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal.",
                 "In our first session, I asked you why you wanted to work on calorie restriction, and you sounded optimistic and positive. Even though you've run into some problems, I don't think this should change. Stay consistent and committed. You will get there."
             ]
         },
@@ -50,7 +50,7 @@
             ],
             "criticism": [
                 "In our first session, I asked you how you would feel when you accomplished your goal. You said feel happy. If you want to experience those feelings and make them a reality, you will need to take the first step. I know you have it in you.",
-                "In our first session, you said You think You'll feel happy asked you how you would feel when you accomplished your goal. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal. I believe that you will one day make those feelings a reality.",
+                "In our first session, you said You think You'll feel happy when I asked you how you would feel when you accomplished your goal. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal. I believe that you will one day make those feelings a reality.",
                 "In our first session, I asked you how you would feel when you accomplished your goal, and you sounded optimistic and positive. Even though you've run into some problems, I don't think this should change. Stay consistent and committed and those feelings will become a reality."
             ]
         },
@@ -65,7 +65,7 @@
             ],
             "criticism": [
                 "In our first session, I asked you how you would feel when you accomplished your goal. You said think. If you want to experience those feelings and make them a reality, you will need to take the first step. I know you have it in you.",
-                "In our first session, you said You think they like you if it more active asked you how you would feel when you accomplished your goal. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal. I believe that you will one day make those feelings a reality.",
+                "In our first session, you said You think they like you if it more active when I asked you how you would feel when you accomplished your goal. When you said that, you sounded positive, and I hope you maintain that level of positivity in your future efforts despite the shortcomings you have had in meeting your goal. I believe that you will one day make those feelings a reality.",
                 "In our first session, I asked you how you would feel when you accomplished your goal, and you sounded optimistic and positive. Even though you've run into some problems, I don't think this should change. Stay consistent and committed and those feelings will become a reality."
             ]
         }

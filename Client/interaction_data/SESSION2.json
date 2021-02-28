@@ -1,5 +1,5 @@
 {
-    "id": "SESSION3",
+    "id": "SESSION2",
     "name": "Nash",
     "physicalData": {
         "gender": "female",
@@ -15,28 +15,28 @@
             "session": 1,
             "praise": [
                 "In our first session, I asked you how you were feeling before we started. You said bit nervous. Given your ability to meet your milestone, there was nothing to worry about.",
-                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. You sounded quite optimistic, and I am sure that led you to reach your milestone in the second session.",
-                "In our first session, I asked you how you were feeling before you got started, and you sounded optimistic and positive. It looks like this helped you to reach your milestone."
+                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. You sounded a bit negative, but it seems that it did not affect you at all, because you managed to reach your milestone in the second session.",
+                "In our first session, I asked you how you were feeling before you got started, and you sounded a bit pessimistic, but it looks like this did not hold you back at all, because you managed to reach your final milestone."
             ],
             "criticism": [
                 "In our first session, I asked you how you were feeling before we started. You said bit nervous. It seems that you may have been a bit nervous or worried, because you did not manage to reach your milestone. A more optimistic and focused outlook may have served you better.",
-                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. You sounded a bit positive, and despite your shortcoming and inability to meet your milestone, I hope you stayed positive and focused on your goal.",
-                "In our first session, I asked you how you were feeling before you got started, and you sounded optimistic and positive. Even though you did not meet your milestone, I hope this did not change. Staying consistent and committed will surely help you in the long run."
+                "In our first session, you said you were a bit nervous when asked about how you were feeling before starting. You sounded a bit negative, and that might have hurt your ability to meet your milestone. A more positive and focused outlook may have worked to your benefit.",
+                "In our first session, I asked you how you were feeling before you got started, and you sounded a bit pessimistic, but I think if you were a bit more optimistic, you would have had more success. The fact that you are here and you want to work towards your goal already means you are making some progress."
             ],
             "used": true
         },
         {
             "Question": "Why would you like to work on this goal?",
-            "Answer": "Because I would like to be healthier",
+            "Answer": "because I would like to be healthier",
             "session": 1,
             "praise": [
                 "In our first session, I asked you why you would like to work on calorie restriction. You mentioned would like. It looks like you had that in the back of your head as you were working towards your goal, because you managed to reach your milestone, and I hope it helped you when you were working towards your final goal as well.",
-                "In our first session, you said Because You would like to be healthier when asked about why you would like to work on calorie restriction. When you said that, you sounded a bit negative, but it seems that there was no need to be negative, because you managed to reach your milestone. I hope you were able to improve on your milestone in your approach towards your final goal.",
+                "In our first session, you said because You would like to be healthier when asked about why you would like to work on calorie restriction. When you said that, you sounded a bit negative, but it seems that there was no need to be negative, because you managed to reach your milestone. I hope you were able to improve on your milestone in your approach towards your final goal.",
                 "In our first session, I asked you why you wanted to work on calorie restriction, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You managed to reach your milestone, and I'm sure that a more optimistic outlook will help you in other endeavors as well."
             ],
             "criticism": [
                 "In our first session, I asked you why you would like to work on calorie restriction. You said would like. You may not have met your milestone, but I think if you keep these thoughts in mind and focus, it will help you in future endeavors.",
-                "In our first session, you said Because You would like to be healthier when I asked you why you would like to work on calorie restriction. When you said that, you sounded a bit negative, and this may have hurt you in your efforts to reach your milestone. I hope you managed to stay motivated, positive and focused in your efforts to reach your final goal.",
+                "In our first session, you said because You would like to be healthier when I asked you why you would like to work on calorie restriction. When you said that, you sounded a bit negative, and this may have hurt you in your efforts to reach your milestone. I hope you managed to stay motivated, positive and focused in your efforts to reach your final goal.",
                 "In our first session, I asked you why you wanted to work on calorie restriction, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You met your first milestone, and I'm sure that optimism would have helped you with your final goal as well."
             ]
         },
@@ -67,48 +67,46 @@
                 "In our first session, I asked you how you would feel when you accomplished your goal. You said little bit longer. Although you did not reach your milestone, those feelings were valid. I hope you kept those feelings in mind as you worked towards your second goal.",
                 "In our first session, you said You think You'll live a little bit longer when I asked you how you would feel when you accomplished your goal. When you said that, you sounded a bit negative. This may have not hurt you in your milestone, but and this could have hurt you in your efforts to reach your goal. Stay motivated, positive and focused, and I'm sure feelings will be easier to achieve.",
                 "In our first session, I asked you how you would feel when you accomplished you goal, and you sounded a bit pessimistic. This may have hurt you when you were working towards your milestone, and I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal, so you've already made some progress."
-            ],
-            "used": true
+            ]
         },
         {
             "Question": "Now that you have started, how do you feel about the progress you have made?",
-            "Answer": "I feel positive and I think that I'm on the right track even though I did not meet my milestone",
+            "Answer": "I feel cut",
             "session": 2,
             "praise": [
-                "In our second session, I asked you how you felt about the progress you made. You said right track even though. It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal. Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating.",
-                "In our second session, you said You feel positive and You think that you were on the right track even though You did not meet your milestone when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal. Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating."
+                "In our second session, I asked you how you felt about the progress you made. You said feel cut. It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal. Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating.",
+                "In our second session, you said You feel cut when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal. Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating."
             ],
             "criticism": [
-                "In our second session, I asked you how you felt about the progress you made. You said right track even though. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow.",
-                "In our second session, you said You feel positive and You think that you were on the right track even though You did not meet your milestone when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow."
+                "In our second session, I asked you how you felt about the progress you made. You said feel cut. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow.",
+                "In our second session, you said You feel cut when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow."
             ]
         },
         {
             "Question": "What are you struggling with?",
-            "Answer": "I'm struggling with staying on track with my diet recording my calories and just not being hungry",
+            "Answer": "recording calories and not being hungry",
             "session": 2,
             "praise": [
-                "In our second session, I asked what you were struggling with. You mentioned diet recording. It sounds like you managed to at least partially address some of these struggles, because you did well in meeting your final goal.",
-                "In our second session, you said you were struggling with staying on track with your diet recording your calories and just not being hungry when asked how you felt about the progress you made so far. It sounded like those struggles were quite challenging, but you managed to get past them, so great job!"
+                "In our second session, I asked what you were struggling with. You mentioned recording calories. It sounds like you managed to at least partially address some of these struggles, because you did well in meeting your final goal.",
+                "In our second session, you said recording calories and not being hungry when asked how you felt about the progress you made so far. It sounded like those struggles were quite challenging, but you managed to get past them, so great job!"
             ],
             "criticism": [
-                "In our second session, I asked what you were struggling with. You said diet recording. It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way.",
-                "In our second session, you said you were struggling with staying on track with your diet recording your calories and just not being hungry when asked how you felt about the progress you made so far."
+                "In our second session, I asked what you were struggling with. You said recording calories. It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way.",
+                "In our second session, you said recording calories and not being hungry when asked how you felt about the progress you made so far."
             ]
         },
         {
             "Question": "How do you think your family, friends or coworkers would react if they heard about you reaching your goal?",
-            "Answer": "I think they'll be pleasantly surprised",
+            "Answer": "think they'll be pleasantly surprised",
             "session": 2,
             "praise": [
                 "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. You mentioned pleasantly surprised. You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job.",
-                "In our second session, you said You think they'll be pleasantly surprised how you think your family, friends or coworkers would react if they heard about you reaching your goal. You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job."
+                "In our second session, you said think they'll be pleasantly surprised how you think your family, friends or coworkers would react if they heard about you reaching your goal. You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job."
             ],
             "criticism": [
                 "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. You said pleasantly surprised. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well.",
-                "In our second session, you said You think they'll be pleasantly surprised when I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
-            ],
-            "used": true
+                "In our second session, you said think they'll be pleasantly surprised when I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
+            ]
         }
     ],
     "diet": {
@@ -121,18 +119,16 @@
             "progressSufficient": false
         },
         "session3": {
-            "calories": 1900,
+            "calories": 1800,
             "progressSufficient": true
         }
     },
-    "session": 3,
+    "session": 4,
     "milestone": 1900.0,
-    "finalGoal": 1900.0,
-    "condition": 2,
+    "finalGoal": 1800.0,
+    "condition": 1,
     "dietLikes": {
-        "question": "Pizza",
-        "answer": "While you could have something like Pizza Rolls, something like Dessert Pizza may be a healthier choice due to the lower amount of calories."
-    },
-    "previousGoal": 1800.0,
-    "goalChanged": true
+        "question": "I like pizza",
+        "answer": "While you could have something like Quesadilla Just Cheese From Fast Food, something like Dennys Macaroni & Cheese From Kids Menu may be a healthier choice due to the lower amount of calories."
+    }
 }
