@@ -727,7 +727,7 @@ for file in onlyfiles:
 
                         # Rewording with sentiment (rewording only does not allow for deeper meaning to be interpretted)
                         rewordedPraise = rewordPhrase(filteredAnswer)
-                        rewordedPraise = "In our second session, you said " + rewordedPraise + " how you think your family, friends or coworkers would react if they heard about you reaching your goal."
+                        rewordedPraise = "In our second session, you said " + rewordedPraise + " when asked how you think your family, friends or coworkers would react if they heard about you reaching your goal."
                         if sentimentBool:
                             rewordedPraise = rewordedPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne."
                         else:
