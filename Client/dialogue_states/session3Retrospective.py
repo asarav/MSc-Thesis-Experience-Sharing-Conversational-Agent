@@ -173,7 +173,7 @@ class Session3Retrospective:
             if goalChanged:
                 self.goalChangedAmbitious = False
                 self.goalChangedEasier = True
-                statement = statement + " Because you did struggled, you were given the option of working towards a less ambitious goal which you took."
+                statement = statement + " Because you struggled, you were given the option of working towards a less ambitious goal which you took."
         return statement
 
     def FirstMilestoneExperienceReflectionSelect(self, response):
