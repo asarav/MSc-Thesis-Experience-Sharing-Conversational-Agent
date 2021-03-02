@@ -382,7 +382,7 @@ for file in onlyfiles:
                             if sentimentBool:
                                 sentimentCriticism = sentimentCriticism + ", and you sounded optimistic and positive. Even though you did not meet your milestone, I don't think this should change and I hope you stayed consistent and committed in your efforts towards your final goal."
                             else:
-                                sentimentCriticism = sentimentCriticism + ", and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You met your first milestone, and I'm sure that optimism would have helped you with your final goal as well."
+                                sentimentCriticism = sentimentCriticism + ", and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You you may not have met your first milestone, but I'm sure that optimism would have helped you with your final goal."
                             criticismPhrases.append(sentimentCriticism)
 
 
