@@ -10,6 +10,9 @@ from nltk.tag import pos_tag
 import spacy
 from spacy import displacy
 from collections import Counter
+from gensim.summarization import keywords
+from gensim.summarization import mz_keywords
+
 import en_core_web_sm
 nlp = en_core_web_sm.load()
 
@@ -96,3 +99,10 @@ class ExperienceManager:
         print(answer)
         for token in answer:
             print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_, token.shape_, token.is_alpha, token.is_stop)
+
+    #Not as good as Rake, because it requires larger amounts of text, and usually outputs single words instead of phrases.
+    def GensimKeywordExtraction(self):
+        try:
+            return keywords(self.doc, words=2)
+        except:
+            return None

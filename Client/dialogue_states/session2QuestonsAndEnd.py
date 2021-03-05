@@ -202,6 +202,11 @@ class Session2QuestionsAndEnd:
 
     def HealthyOptionOpinionResponse(self, response):
         nextState = "ReviewGoalsSession2"
+        #Store response
+        self.shortTermData.data["ExperienceResponse"].append({
+            "answer": response,
+            "agree": self.responseUtils.YesOrNo(response)
+        })
         return [], nextState
 
     def ReviewGoalsSession2Statement(self):

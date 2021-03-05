@@ -195,6 +195,8 @@ class Session3Retrospective:
 
     def AskFirstExperienceOpinionResponse(self, response):
         #For now, we won't do anything with the response
+        #Store the response, whether they agree or disagree
+
         return [], "ReviewSecondSessionSession3"
 
     def ReviewSecondSessionStatement(self):
@@ -250,7 +252,10 @@ class Session3Retrospective:
         return "So, what do you think? Do you feel the same way or do you have a different opinion?"
 
     def AskFinalGoalExperienceOpinionResponse(self, response):
-        #For now, we won't do anything with the response
+        self.shortTermData.data["ExperienceResponse"].append({
+            "answer": response,
+            "agree": self.responseUtils.YesOrNo(response)
+        })
         return [], "OverallProgressStatement"
 
     def OverallProgressStatement(self):
@@ -270,7 +275,10 @@ class Session3Retrospective:
             return "Since you have not reached your final goal, what you can do in the future is try to break up goals into even more manageable chunks and work on them over a longer period of time to reduce the difficulty. Since consistency is what matters, as long as you are doing something everyday, you are making progress and will eventually reach your goal."
 
     def AskOpinionFutureWorkResponse(self, response):
-        # For now, we won't do anything with the response
+        self.shortTermData.data["ExperienceResponse"].append({
+            "answer": response,
+            "agree": self.responseUtils.YesOrNo(response)
+        })
         return [], "FutureWorkWarningSession3"
 
     def ValedictionSessionStatement(self):

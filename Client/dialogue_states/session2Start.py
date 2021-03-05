@@ -235,6 +235,12 @@ class Session2Start:
 
     def SharedMemoryReflection(self, response):
         nextState = ""
+        #Store the response and whether they agree or disagree
+        self.shortTermData.data["ExperienceResponse"] = []
+        self.shortTermData.data["ExperienceResponse"].append({
+            "answer": response,
+            "agree": self.responseUtils.YesOrNo(response)
+        })
         if self.praiseType is 0:
             _, nextState = self.IncreaseDifficultyOrContinue(response)
         else:
