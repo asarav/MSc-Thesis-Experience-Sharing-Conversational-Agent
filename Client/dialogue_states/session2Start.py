@@ -8,7 +8,6 @@ import diet_utils.mileStone as milestone
 class Session2Start:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
-        self.DiabetesAnswers = SBC.SearchBasedConversation(diabetesConversation.conversation, "Diabetes Questions")
         self.ID = "1234"
         self.username = ""
         self.firstTimeDiabetesQuestion = True

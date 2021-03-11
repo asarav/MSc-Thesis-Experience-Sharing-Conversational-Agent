@@ -140,7 +140,7 @@ class Session1Start:
 
     def AnswerDiabetesQuestionsResponse(self, response):
         nextState = "AskDiabetesQuestion"
-        decision = self.responseUtils.YesOrNo(response)
+        decision = self.responseUtils.YesOrNoSearch(response)
         if decision is 0:
             nextState = "ListGoals"
         else:

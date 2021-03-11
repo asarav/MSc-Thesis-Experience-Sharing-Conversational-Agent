@@ -54,6 +54,21 @@ class ResponseManager:
 
         return decision
 
+    def YesOrNoSearch(self, Response):
+        yes = ["yes", "okay", "yep", "yah", "yeah", "correct", "right", "agree", "agreed", "sure", "fine", "guess", "chess"]
+        no = ["no", "nope", "nah", "don't", "not", "nay", "now", "doubt", "know", "incorrect", "wrong", "disagree", "disagreed"]
+        decision = 0
+        if self.MatchExpectedResponses(no, Response):
+            decision = 0
+        elif self.MatchExpectedResponses(yes, Response):
+            decision = 1
+        else:
+            #Treat all other answers as though they are a yes to prevent accidentally progressing in the flow.
+            decision = 1
+            #decision = 2
+
+        return decision
+
     #Returns a 0,1,or 2. 0 is femalel. 1 is a male. 2 is neither.
     def DetermineGender(self, Response):
         male = ["male", "man", "boy", "masculine", "mail"]

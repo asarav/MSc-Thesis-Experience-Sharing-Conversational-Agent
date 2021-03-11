@@ -106,7 +106,7 @@ for file in onlyfiles:
                             keywordPraise = ""
                             if len(keywords) > 0:
                                 keywordPraise = "In our first session, I asked you how you were feeling before we started. "
-                                keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " Honestly, I think you have nothing to worry about and that it's fine to be more excited, because you are doing great!"
 
                                 print("KeywordPraise")
@@ -138,7 +138,7 @@ for file in onlyfiles:
                             keywordCriticism = ""
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you were feeling before we started. "
-                                keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " Honestly, I think you don't need to worry and doing would be counterproductive. I think what would help would be to stay optimistic and focus on consistent activity. Stay focused, and I'm sure you will make it."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -163,7 +163,7 @@ for file in onlyfiles:
                             keywordPraise = ""
                             if len(keywords) > 0:
                                 keywordPraise = "In our first session, I asked you how you were feeling before we started. "
-                                keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " Given your ability to meet your milestone, there was nothing to worry about."
 
                                 print("KeywordPraise")
@@ -195,7 +195,7 @@ for file in onlyfiles:
                             keywordCriticism = ""
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you were feeling before we started. "
-                                keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " It seems that you may have been a bit nervous or worried, because you did not manage to reach your milestone. A more optimistic and focused outlook may have served you better."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -274,7 +274,7 @@ for file in onlyfiles:
                                     keywordCriticism = keywordCriticism + "calorie restriction."
                                 else:
                                     keywordCriticism = keywordCriticism + "sugar reduction."
-                                keywordCriticism = keywordCriticism + " You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + " You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " You had some setbacks, but I think if you keep these thoughts in mind and focus, you will reach your goal."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -356,7 +356,7 @@ for file in onlyfiles:
                                     keywordCriticism = keywordCriticism + "calorie restriction."
                                 else:
                                     keywordCriticism = keywordCriticism + "sugar reduction."
-                                keywordCriticism = keywordCriticism + " You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + " You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " You may not have met your milestone, but I think if you keep these thoughts in mind and focus, it will help you in future endeavors."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -395,7 +395,7 @@ for file in onlyfiles:
                             keywordPraise = ""
                             if len(keywords) > 0:
                                 keywordPraise = "In our first session, I asked you how you would feel if you managed to achieve your goal. "
-                                keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " It looks like you had that in the back of your head as you were working towards your goal, because the results so far are very promising. Keep it up and those feelings will become reality."
 
                                 print("KeywordPraise")
@@ -427,7 +427,7 @@ for file in onlyfiles:
                             keywordCriticism = ""
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you would feel when you accomplished your goal. "
-                                keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " If you want to experience those feelings and make them a reality, you will need to take the first step. I know you have it in you."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -451,7 +451,7 @@ for file in onlyfiles:
                             keywordPraise = ""
                             if len(keywords) > 0:
                                 keywordPraise = "In our first session, I asked you how you would feel if you managed to achieve your goal. "
-                                keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " It looks like that was in your mind as you were working towards your milestone, and I hope it helped you in your efforts towards your final goal."
 
                                 print("KeywordPraise")
@@ -483,7 +483,7 @@ for file in onlyfiles:
                             keywordCriticism = ""
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you would feel when you accomplished your goal. "
-                                keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " Although you did not meet your milestone, I hope you kept those feelings in mind when you were working towards your final goal. Making a positive change in your diet is definitely worth it."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -501,7 +501,7 @@ for file in onlyfiles:
                             keywordPraise = ""
                             if len(keywords) > 0:
                                 keywordPraise = "In our first session, I asked you what achieving your goal would allow you to do. "
-                                keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " It looks like you had that in the back of your head as you were working towards your goal, because the results so far are very promising. Keep it up and you will surely be able to do those things one day."
 
                                 print("KeywordPraise")
@@ -533,7 +533,7 @@ for file in onlyfiles:
                             keywordCriticism = ""
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you would feel when you accomplished your goal. "
-                                keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " If you want to experience those feelings and make them a reality, you will need to take the first step. I know you have it in you."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -558,7 +558,7 @@ for file in onlyfiles:
                             keywordPraise = ""
                             if len(keywords) > 0:
                                 keywordPraise = "In our first session, I asked you what achieving your goal would allow you to do. "
-                                keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                                keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                                 keywordPraise = keywordPraise + " It looks like you had that in the back of your head as you were working towards your milestone, and I hope you kept it in mind as you worked towards your final goal."
 
                                 print("KeywordPraise")
@@ -590,7 +590,7 @@ for file in onlyfiles:
                             keywordCriticism = ""
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you would feel when you accomplished your goal. "
-                                keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                                keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                                 keywordCriticism = keywordCriticism + " Although you did not reach your milestone, those feelings were valid. I hope you kept those feelings in mind as you worked towards your second goal."
                                 criticismPhrases.append(keywordCriticism)
 
@@ -619,7 +619,7 @@ for file in onlyfiles:
                         keywordPraise = ""
                         if len(keywords) > 0:
                             keywordPraise = "In our second session, I asked you how you felt about the progress you made. "
-                            keywordPraise = keywordPraise + "You said " + keywords[0] + "."
+                            keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
                             if sentimentBool:
                                 keywordPraise = keywordPraise + " It sounded like things were looking up for you, and I imagine that helped you reach your final goal."
                             else:
@@ -648,7 +648,7 @@ for file in onlyfiles:
                         keywordCriticism = ""
                         if len(keywords) > 0:
                             keywordCriticism = "In our second session, I asked you how you felt about the progress you made. "
-                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                            keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                             if sentimentBool:
                                 keywordCriticism = keywordCriticism + " It sounded like things were looking up for you, which is a bit unfortunate, but it looks like you made some progress regardless of whether you met your goal or not."
                             else:
@@ -696,7 +696,7 @@ for file in onlyfiles:
                         keywordCriticism = ""
                         if len(keywords) > 0:
                             keywordCriticism = "In our second session, I asked what you were struggling with. "
-                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                            keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
                             keywordCriticism = keywordCriticism + " It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way."
                             criticismPhrases.append(keywordCriticism)
 
@@ -742,7 +742,7 @@ for file in onlyfiles:
                         keywordCriticism = ""
                         if len(keywords) > 0:
                             keywordCriticism = "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. "
-                            keywordCriticism = keywordCriticism + "You said " + keywords[0] + "."
+                            keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
 
                             keywordCriticism = keywordCriticism + " Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
 

@@ -99,7 +99,7 @@ class SearchBasedConversation:
 
         self.answered[maxQuestionIndex] = True
 
-        if maxQuestion < 0.75 and self.isQuestionAnswering:
+        if maxQuestion < 0.85 and self.isQuestionAnswering:
             return "I'm not sure if this is the correct answer, but I'll try my best. " + answer[1]
         else:
             return answer[1]

@@ -26,11 +26,13 @@ val Start : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        delay(1500)
+        delay(2000)
+        furhat.ledStrip.solid(java.awt.Color.RED)
         furhat.listen(timeout=15000)
     }
 
     onResponse {
+        furhat.ledStrip.solid(java.awt.Color.BLACK)
         val output : String = dialog.sendResponse(it.text)
         System.out.println(output)
 
@@ -60,11 +62,13 @@ val Second : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        delay(1500)
+        delay(2000)
+        furhat.ledStrip.solid(java.awt.Color.RED)
         furhat.listen(timeout=15000)
     }
 
     onResponse {
+        furhat.ledStrip.solid(java.awt.Color.BLACK)
         val output : String = dialog.sendResponse(it.text)
         System.out.println(output)
 

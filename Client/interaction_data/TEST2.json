@@ -1,5 +1,5 @@
 {
-    "id": "2",
+    "id": "TEST2",
     "name": "Leonard",
     "physicalData": {
         "gender": "male",
@@ -37,8 +37,7 @@
                 "In our first session, I asked you why you would like to work on sugar reduction. You mentioned heart disease. You had some setbacks, but I think if you keep these thoughts in mind and focus, you will reach your goal.",
                 "In our first session, you said you were worried about heart disease when I asked you why you would like to work on sugar reduction. When you said that, you sounded a bit negative, and this may be hurting you in your efforts to reach your goal. Stay motivated, positive and focused, and I'm sure you will reach your goal.",
                 "In our first session, I asked you why you wanted to work on sugar reduction, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal. You just need to take the first step."
-            ],
-            "used": true
+            ]
         },
         {
             "Question": "If you manage to achieve this goal, how do you think you will feel?",
@@ -69,51 +68,22 @@
                 "In our first session, you said You will feel less guilty about eating sugary foods when I asked you how you would feel when you accomplished your goal. When you said that, you sounded a bit negative, and this may be hurting you in your efforts to reach your goal. Stay motivated, positive and focused, and I'm sure you will reach your goal and make those feelings a reality.",
                 "In our first session, I asked you how you would feel when you accomplished you goal, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal. You just need to take the first step and before you know it, you will be able to do those things."
             ]
-        },
-        {
-            "Question": "Now that you have started, how do you feel about the progress you have made?",
-            "Answer": "a little bit disappointing",
-            "session": 2
-        },
-        {
-            "Question": "What are you struggling with?",
-            "Answer": "I'm hungry all the time",
-            "session": 2
-        },
-        {
-            "Question": "How do you think your family, friends or coworkers would react if they heard about you reaching your goal?",
-            "Answer": "I think they'll be pleasantly surprised",
-            "session": 2
         }
     ],
     "diet": {
         "session1": {
             "sugar": 50,
             "calories": 2000
-        },
-        "session2": {
-            "sugar": 48,
-            "progressSufficient": false
         }
     },
-    "session": 3,
+    "session": 2,
     "milestone": 47.5,
-    "finalGoal": 47.5,
+    "finalGoal": 45.0,
     "condition": 2,
     "dietLikes": {
         "question": "pasta",
         "answer": "While you could have something like Pasta Sauce, something like Gnocchi Cheese may be a healthier choice due to the lower amount of sugar."
     },
-    "previousGoal": 45.0,
-    "goalChanged": true,
-    "ExperienceResponse": [
-        {
-            "answer": "not sure I don't remember",
-            "agree": 0
-        },
-        {
-            "answer": "no because I don't really think anybody is just pasta sauce",
-            "agree": 0
-        }
-    ]
+    "previousGoal": 1800.0,
+    "goalChanged": true
 }

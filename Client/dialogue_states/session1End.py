@@ -102,7 +102,7 @@ class Session1End:
             self.dataLoaded = True
 
         nextState = ""
-        decision = self.responseUtils.YesOrNo(response)
+        decision = self.responseUtils.YesOrNoSearch(response)
         if decision is 0:
             nextState = "AskFavoriteFood"
         else:
@@ -112,7 +112,7 @@ class Session1End:
 
     def AnswerGoalQuestionsResponse(self, response):
         nextState = "AskGoalQuestion"
-        decision = self.responseUtils.YesOrNo(response)
+        decision = self.responseUtils.YesOrNoSearch(response)
         if decision is 0:
             nextState = "AskFavoriteFood"
         else:

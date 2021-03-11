@@ -171,7 +171,7 @@ class Session2QuestionsAndEnd:
 
     def QuestionsAboutActivitiesResponse(self, response):
         nextState = ""
-        decision = self.responseUtils.YesOrNo(response)
+        decision = self.responseUtils.YesOrNoSearch(response)
         if decision is 0:
             if self.condition is 0 or self.condition is 1:
                 nextState = "ReviewGoalsSession2"
@@ -196,7 +196,9 @@ class Session2QuestionsAndEnd:
         return self.ActivitiesQuestionAnswer
 
     def FavoriteFoodHealthyOptionStatement(self):
-        statement = "In the previous session, you mentioned what your favorite food was and I may have a recommendation. "
+        statement = "In the previous session, you mentioned what your favorite food was. " + "You mentioned "
+        statement = statement + str(self.shortTermData.data["dietLikes"]["question"])
+        statement = statement + ", and I may have a recommendation. "
         statement = statement + str(self.shortTermData.data["dietLikes"]["answer"])
         return statement
 

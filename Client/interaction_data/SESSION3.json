@@ -67,7 +67,8 @@
                 "In our first session, I asked you how you would feel when you accomplished your goal. You said live little bit longer. Although you did not reach your milestone, those feelings were valid. I hope you kept those feelings in mind as you worked towards your second goal.",
                 "In our first session, you said You think You'll live a little bit longer when I asked you how you would feel when you accomplished your goal. When you said that, you sounded a bit negative. This may have not hurt you in your milestone, but and this could have hurt you in your efforts to reach your goal. Stay motivated, positive and focused, and I'm sure feelings will be easier to achieve.",
                 "In our first session, I asked you how you would feel when you accomplished you goal, and you sounded a bit pessimistic. This may have hurt you when you were working towards your milestone, and I think it's fine to be a bit more optimistic. The fact that you are here shows that you want to work towards your goal, so you've already made some progress."
-            ]
+            ],
+            "used": true
         },
         {
             "Question": "Now that you have started, how do you feel about the progress you have made?",
@@ -80,7 +81,8 @@
             "criticism": [
                 "In our second session, I asked you how you felt about the progress you made. You said right track even though. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow.",
                 "In our second session, you said You feel positive and You think that you were on the right track even though You did not meet your milestone when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow."
-            ]
+            ],
+            "used": true
         },
         {
             "Question": "What are you struggling with?",
@@ -117,9 +119,13 @@
         "session2": {
             "calories": 1901,
             "progressSufficient": false
+        },
+        "session3": {
+            "calories": 1900,
+            "progressSufficient": true
         }
     },
-    "session": 3,
+    "session": 4,
     "milestone": 1900.0,
     "finalGoal": 1900.0,
     "condition": 2,
