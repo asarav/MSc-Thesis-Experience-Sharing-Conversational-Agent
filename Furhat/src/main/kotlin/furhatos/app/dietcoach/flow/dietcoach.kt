@@ -26,9 +26,9 @@ val Start : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        delay(2000)
+        delay(750)
         furhat.ledStrip.solid(java.awt.Color.RED)
-        furhat.listen(timeout=15000)
+        furhat.listen(timeout=15000, endSil=2000)
     }
 
     onResponse {
@@ -62,9 +62,9 @@ val Second : State = state(Interaction) {
             val gest = handleGesture(gesture)
             furhat.gesture(gest)
         }
-        delay(2000)
+        delay(750)
         furhat.ledStrip.solid(java.awt.Color.RED)
-        furhat.listen(timeout=15000)
+        furhat.listen(timeout=15000, endSil =2000)
     }
 
     onResponse {

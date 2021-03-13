@@ -89,11 +89,17 @@ class Session3Start:
         if self.goal is 0:
             statement = statement + "calorie restriction. Your goal is a caloric intake of " + str(self.finalGoal) + " calories."
             statement = statement + " When we last met, you managed to reach a caloric intake of " + str(self.shortTermData.data["diet"]["session2"]["calories"]) + " calories."
-            statement = statement + " This means that to reach your final goal, you had " + str((self.shortTermData.data["diet"]["session2"]["calories"] - self.finalGoal)) + " calories left."
+            achievementNumber = (self.shortTermData.data["diet"]["session2"]["calories"] - self.finalGoal)
+            statement = statement + " This means that to reach your final goal, you had " + str(achievementNumber) + " calories left."
+            if achievementNumber < 0:
+                statement = statement + " Although you overshot your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
         else:
             statement = statement + "sugar reduction. Your goal is a sugar intake of " + str(self.finalGoal) + " grams of sugar."
             statement = statement + " When we last met, you managed to reach a sugar intake of " + str(self.shortTermData.data["diet"]["session2"]["sugar"]) + " grams of sugar."
-            statement = statement + " This means that to reach your final goal, you had " + str((self.shortTermData.data["diet"]["session2"]["sugar"] - self.finalGoal)) + " grams of sugar left."
+            achievementNumber = (self.shortTermData.data["diet"]["session2"]["sugar"] - self.finalGoal)
+            statement = statement + " This means that to reach your final goal, you had " + str(achievementNumber) + " grams of sugar left."
+            if achievementNumber < 0:
+                statement = statement + " Although you overshot your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
         return statement
 
     def DetermineProgressStatement(self):
