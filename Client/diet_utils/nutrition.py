@@ -6,6 +6,8 @@ class Nutrition:
         self.heightMeters = self.height/100
         self.gender = gender
         self.BMI = self.weight / (self.heightMeters * self.heightMeters)
+        print("Nutrition Information")
+        print(self.age, self.weight, self.height, self.heightMeters, self.gender, self.BMI)
 
     def TotalEnergyExpenditure(self):
         if self.gender is "male":
@@ -49,8 +51,10 @@ class Nutrition:
     def AppropriateGoalsBMI(self):
         CI = True
         SI = True
+        print("BMI")
+        print(self.BMI)
         classification = self.BMIClassification(self.BMI)
-        if classification < 2:
+        if classification < 1:
             CI = False
 
         return CI, SI

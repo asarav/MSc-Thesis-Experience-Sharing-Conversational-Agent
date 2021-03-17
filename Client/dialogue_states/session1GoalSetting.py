@@ -97,8 +97,8 @@ class Session1GoalSetting:
         physicalData = self.shortTermData.data["physicalData"]
         self.gender = physicalData["gender"]
         self.age = physicalData["age"]
-        self.weight = physicalData["age"]
-        self.height = physicalData["age"]
+        self.weight = physicalData["weight"]
+        self.height = physicalData["height"]
         self.username = self.shortTermData.data["name"]
         self.ID = self.shortTermData.data["id"]
 
@@ -113,8 +113,10 @@ class Session1GoalSetting:
             self.acceptedGoals.append("sugar reduction")
 
         goalsString = "calorie restriction, and sugar reduction."
-        if len(self.acceptedGoals) is 0:
+        if len(self.acceptedGoals) == 1:
             goalsString = self.acceptedGoals[0]
+        elif len(self.acceptedGoals) == 0:
+            goalsString = "none."
 
         statement = "Based on the information you provided, I believe the following goals are appropriate for you: "
         return statement + goalsString

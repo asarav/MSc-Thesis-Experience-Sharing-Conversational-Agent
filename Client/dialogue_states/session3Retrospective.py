@@ -275,9 +275,8 @@ class Session3Retrospective:
             return "Since you have not reached your final goal, what you can do in the future is try to break up goals into even more manageable chunks and work on them over a longer period of time to reduce the difficulty. Since consistency is what matters, as long as you are doing something everyday, you are making progress and will eventually reach your goal."
 
     def AskOpinionFutureWorkResponse(self, response):
-        if self.condition is 0:
-            self.shortTermData.data["ExperienceResponse"] = []
-        self.shortTermData.data["ExperienceResponse"].append({
+        self.shortTermData.data["FutureWork"] = []
+        self.shortTermData.data["FutureWork"].append({
             "answer": response,
             "agree": self.responseUtils.YesOrNo(response)
         })

@@ -24,6 +24,12 @@ class Session2Start:
         {
             "name": "Session2Start",
             "statement": self.Session2StartStatement,
+            "response": self.Session2StartResponse,
+            "stateType": "AnswerResponse"
+        },
+        {
+            "name": "Session2StartContinuation",
+            "statement": "This is your second session. I hope you managed to meet your milestone.",
             "response": "ReviewOfGoalsAndExpectationsSession2",
             "stateType": "Statement"
         },
@@ -129,7 +135,12 @@ class Session2Start:
             self.shortTermData.data["condition"] = 2
 
 
-        return "Welcome back " + self.username + ". How have you been? This is your second session. I hope you managed to meet your milestone."
+        return "Welcome back " + self.username + ". How have you been?"
+
+    def Session2StartResponse(self, response):
+        #Don't do anything with the response
+        nextState = "Session2StartContinuation"
+        return [], nextState
 
     def ReviewOfGoalsAndExpectationsStatement(self):
         statement = "So, the diet related goal that you chose was "

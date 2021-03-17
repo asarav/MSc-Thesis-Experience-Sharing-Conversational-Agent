@@ -212,6 +212,26 @@ class ResponseManager:
             id = Statement.split("the ID is", 1)[1]
         elif "it is" in Statement:
             id = Statement.split("it is", 1)[1]
+        elif "hello my ID is" in Statement:
+            id = Statement.split("hello my ID is", 1)[1]
+        elif "hello my user ID is" in Statement:
+            id = Statement.split("hello my user ID is", 1)[1]
+        elif "hello the user ID is" in Statement:
+            id = Statement.split("hello the user ID is", 1)[1]
+        elif "hello the ID is" in Statement:
+            id = Statement.split("hello the ID is", 1)[1]
+        elif "hello it is" in Statement:
+            id = Statement.split("hello it is", 1)[1]
+        elif "hi my ID is" in Statement:
+            id = Statement.split("hi my ID is", 1)[1]
+        elif "hi my user ID is" in Statement:
+            id = Statement.split("hi my user ID is", 1)[1]
+        elif "hi the user ID is" in Statement:
+            id = Statement.split("hi the user ID is", 1)[1]
+        elif "hi the ID is" in Statement:
+            id = Statement.split("hi the ID is", 1)[1]
+        elif "hi it is" in Statement:
+            id = Statement.split("hi it is", 1)[1]
         else:
             id = Statement
         id.strip()

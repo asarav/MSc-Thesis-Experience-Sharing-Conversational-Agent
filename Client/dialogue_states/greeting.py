@@ -14,6 +14,7 @@ class Greeting:
         #Load the data here because it is the beginning of the interaction
         self.shortTermData = shortTermData.MemoryManager()
         self.shortTermData.readData()
+        self.shortTermData.data = {}
 
         self.states = [{
             "name": "AskUserID",
@@ -69,7 +70,7 @@ class Greeting:
     def AskUserIDStatement(self):
         if self.userIdFirstTime:
             self.userIdFirstTime = False
-            return "Hello there. I am Diet Bot. Before we start, what is your user id? Your user id is provided to you by Prolific."
+            return "Hello, I am Diet Bot. Before we start, what is your user id? Your user id is provided to you by Prolific."
         else:
             return "What is your user id?"
 
