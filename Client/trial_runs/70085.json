@@ -1,0 +1,146 @@
+{
+    "id": "70085",
+    "name": "Eric",
+    "physicalData": {
+        "gender": "male",
+        "age": 30,
+        "weight": 71,
+        "height": 176
+    },
+    "goal": 1,
+    "experiences": [
+        {
+            "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
+            "Answer": "I'm excited to control my diet been putting on some winter weight",
+            "session": 1,
+            "praise": [
+                "In our first session, I asked you how you were feeling before we started. You mentioned winter weight. Given your ability to meet your milestone, there was nothing to worry about.",
+                "In our first session, you said you were excited to control your diet been putting on some winter weight when asked about how you were feeling before starting. You sounded quite optimistic, and I am sure that led you to reach your milestone in the second session.",
+                "In our first session, I asked you how you were feeling before you got started, and you sounded optimistic and positive. It looks like this helped you to reach your milestone."
+            ],
+            "criticism": [
+                "In our first session, I asked you how you were feeling before we started. You mentioned winter weight. It seems that you may have been a bit nervous or worried, because you did not manage to reach your milestone. A more optimistic and focused outlook may have served you better.",
+                "In our first session, you said you were excited to control your diet been putting on some winter weight when asked about how you were feeling before starting. You sounded a bit positive, and despite your shortcoming and inability to meet your milestone, I hope you stayed positive and focused on your goal.",
+                "In our first session, I asked you how you were feeling before you got started, and you sounded optimistic and positive. Even though you did not meet your milestone, I hope this did not change. Staying consistent and committed will surely help you in the long run."
+            ]
+        },
+        {
+            "Question": "Why would you like to work on this goal?",
+            "Answer": "I got a sweet tooth and Netherlands has too much sweets",
+            "session": 1,
+            "praise": [
+                "In our first session, I asked you why you would like to work on sugar reduction. You mentioned sweet tooth. It looks like you had that in the back of your head as you were working towards your goal, because you managed to reach your milestone, and I hope it helped you when you were working towards your final goal as well.",
+                "In our first session, you said You got a sweet tooth and Netherlands has too much sweets when asked about why you would like to work on sugar reduction. When you said that, you sounded a bit negative, but it seems that there was no need to be negative, because you managed to reach your milestone. I hope you were able to improve on your milestone in your approach towards your final goal.",
+                "In our first session, I asked you why you wanted to work on sugar reduction, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You managed to reach your milestone, and I'm sure that a more optimistic outlook will help you in other endeavors as well."
+            ],
+            "criticism": [
+                "In our first session, I asked you why you would like to work on sugar reduction. You mentioned sweet tooth. You may not have met your milestone, but I think if you keep these thoughts in mind and focus, it will help you in future endeavors.",
+                "In our first session, you said You got a sweet tooth and Netherlands has too much sweets when I asked you why you would like to work on sugar reduction. When you said that, you sounded a bit negative, and this may have hurt you in your efforts to reach your milestone. I hope you managed to stay motivated, positive and focused in your efforts to reach your final goal.",
+                "In our first session, I asked you why you wanted to work on sugar reduction, and you sounded a bit pessimistic, but I think it's fine to be a bit more optimistic. You you may not have met your first milestone, but I'm sure that optimism would have helped you with your final goal."
+            ]
+        },
+        {
+            "Question": "If you manage to achieve this goal, how do you think you will feel?",
+            "Answer": "I will feel better about my health and how much longer I have to live",
+            "session": 1,
+            "praise": [
+                "In our first session, I asked you how you would feel if you managed to achieve your goal. You mentioned much longer. It looks like that was in your mind as you were working towards your milestone, and I hope it helped you in your efforts towards your final goal.",
+                "In our first session, you said You will feel better about your health and how much longer You have to live when asked how you would feel if you managed to achieve your goal. When you said that, you sounded a bit negative, but as you can see, you managed to meet your milestone. I hope you were able to gain a more optimistic mindset and apply it in your efforts towards your final goal.",
+                "In our first session, I asked you how you would feel when you accomplished your goal, and you sounded a bit pessimistic, but as you can see, you managed to meet your milestone. I hope you were able to gain a more optimistic mindset and apply it in your efforts towards your final goal."
+            ],
+            "criticism": [
+                "In our first session, I asked you how you would feel when you accomplished your goal. You mentioned much longer. Although you did not meet your milestone, I hope you kept those feelings in mind when you were working towards your final goal. Making a positive change in your diet is definitely worth it.",
+                "In our first session, you said You will feel better about your health and how much longer You have to live when I asked you how you would feel when you accomplished your goal. Although you did not meet your milestone, I hope you kept those feelings in mind when you were working towards your final goal. Making a positive change in your diet is definitely worth it."
+            ]
+        },
+        {
+            "Question": "What will achieving this goal allow you to do that you could not do before?",
+            "Answer": "I will enjoy more wine",
+            "session": 1,
+            "praise": [
+                "In our first session, I asked you what achieving your goal would allow you to do. You mentioned wine. It looks like you had that in the back of your head as you were working towards your milestone, and I hope you kept it in mind as you worked towards your final goal.",
+                "In our first session, you said You will enjoy more wine when asked what achieving your goal would allow you to do. When you said that, you sounded positive, and I hope you managed to maintain that level of positivity in your efforts towards your final goal. It did help you reach your milestone after all.",
+                "In our first session, I asked you what achieving your goal would allow you to do, and you sounded optimistic and positive. That is good, and it definitely helped with your milestone. Your optimism will help you in the long run and I hope that it helped you with your final goal."
+            ],
+            "criticism": [
+                "In our first session, I asked you how you would feel when you accomplished your goal. You mentioned wine. Although you did not reach your milestone, those feelings were valid. I hope you kept those feelings in mind as you worked towards your second goal.",
+                "In our first session, you said You will enjoy more wine when I asked you how you would feel when you accomplished your goal. When you said that, you sounded positive, and I hope you maintained that level of positivity in your efforts towards your final goal despite the shortcomings you have had in meeting your milestone. I believe that those feelings are valid and worth remembering.",
+                "In our first session, I asked you how you would feel when you accomplished your goal, and you sounded optimistic and positive. Even though you did not meet your milestone, I don't think this should change. If you wanted to see those feelings will become a reality, I believe and hope that you maintained that mindset."
+            ],
+            "used": true
+        },
+        {
+            "Question": "Now that you have started, how do you feel about the progress you have made?",
+            "Answer": "I feel good",
+            "session": 2,
+            "praise": [
+                "In our second session, I asked you how you felt about the progress you made. You mentioned feel good. It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal. Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating.",
+                "In our second session, you said You feel good when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which was unfortunate, but you managed to push through and reach your goal. Overall, looking back on things and how you managed to meet your final goal, I think it's time to start celebrating."
+            ],
+            "criticism": [
+                "In our second session, I asked you how you felt about the progress you made. You mentioned feel good. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow.",
+                "In our second session, you said You feel good when asked how you felt about the progress you made so far. It sounded like things were not looking up for you, which is a bit unfortunate, but hopefully you at least now know what is involved in working towards a goal, and what habits to follow."
+            ]
+        },
+        {
+            "Question": "What are you struggling with?",
+            "Answer": "not having chocolate",
+            "session": 2,
+            "praise": [
+                "In our second session, I asked what you were struggling with. You mentioned chocolate. It sounds like you managed to at least partially address some of these struggles, because you did well in meeting your final goal.",
+                "In our second session, you said not having chocolate when asked how you felt about the progress you made so far. It sounded like the struggles that you had were not that difficult to solve to begin with, and you managed to overcome them to ."
+            ],
+            "criticism": [
+                "In our second session, I asked what you were struggling with. You mentioned chocolate. It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way.",
+                "In our second session, you said not having chocolate when asked how you felt about the progress you made so far."
+            ]
+        },
+        {
+            "Question": "How do you think your family, friends or coworkers would react if they heard about you reaching your goal?",
+            "Answer": "yeah my wife will be happy about it",
+            "session": 2,
+            "praise": [
+                "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. You mentioned wife. Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne.",
+                "In our second session, you said my wife will be happy about it when asked how you think your family, friends or coworkers would react if they heard about you reaching your goal. Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne."
+            ],
+            "criticism": [
+                "In our second session, I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. You mentioned wife. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well.",
+                "In our second session, you said my wife will be happy about it when I asked you how you think your family, friends or coworkers would react if they heard about you reaching your goal. Although you haven't reached your goal, you have made some progress just by going through this process, and I think those in your inner circle will recognize that as well."
+            ]
+        }
+    ],
+    "diet": {
+        "session1": {
+            "sugar": 50,
+            "calories": 2000
+        },
+        "session2": {
+            "sugar": 30,
+            "progressSufficient": true
+        },
+        "session3": {
+            "sugar": 40,
+            "progressSufficient": true
+        }
+    },
+    "session": 4,
+    "milestone": 47.5,
+    "finalGoal": 40.0,
+    "condition": 1,
+    "dietLikes": {
+        "question": "chocolate",
+        "answer": "While you could have something like Fudge Chocolate, something like Truffles may be a healthier choice due to the lower amount of sugar."
+    },
+    "previousGoal": 45.0,
+    "goalChanged": true,
+    "ExperienceResponse": [
+        {
+            "answer": "I think it's true",
+            "agree": 1
+        },
+        {
+            "answer": "yes",
+            "agree": 1
+        }
+    ]
+}

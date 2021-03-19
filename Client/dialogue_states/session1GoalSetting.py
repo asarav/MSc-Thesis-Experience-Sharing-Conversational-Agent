@@ -17,7 +17,7 @@ class Session1GoalSetting:
         self.caloriesConsumed = 2000
         self.sugarConsumed = 50
         self.askedConsumption = False
-
+        self.generated = False
         #Load user data
         self.shortTermData = shortTermData.MemoryManager()
 
@@ -101,6 +101,10 @@ class Session1GoalSetting:
         self.height = physicalData["height"]
         self.username = self.shortTermData.data["name"]
         self.ID = self.shortTermData.data["id"]
+
+        if "generated" in self.shortTermData.data:
+            if self.shortTermData.data["generated"] is True:
+                self.generated = True
 
         self.nutrition = Nutrition(self.age, self.weight, self.height, self.gender)
         goals = self.nutrition.AppropriateGoals()
@@ -224,8 +228,12 @@ class Session1GoalSetting:
         if self.askedConsumption is False:
             goal = goal + "Now, let's try to get into the specifics. "
         if self.goal is 0:
+            if self.askedConsumption is False:
+                goal = goal + "Typically, a healthy range for caloric intake will depend on your level of activity, gender, and age, but a minimum of 1200 calories is required to stay healthy, and an upper limit of 3000 when you are active. 2000 calories tend to be typical. "
             goal = goal + "How many calories have you consumed yesterday?"
         else:
+            if self.askedConsumption is False:
+                goal = goal + "Typically, a healthy range for sugar intake will depend on your level of activity, gender, and age, but a maximum of 37.5 grams of sugar for men and 25 grams for women is recommended. With regards to a minimum, there is no recommended minimum for added sugars. "
             goal = goal + "How many grams of sugar did you consume yesterday?"
 
         self.askedConsumption = True
@@ -284,7 +292,7 @@ class Session1GoalSetting:
         return statement
 
     def ExplainIntermediateMilestoneStatement(self):
-        statement = "To reach this milestone, you will have an intermediate milestone that you should work towards and reach before our next meeting. This milestone is no more than "
+        statement = "To reach this final goal, you will have an intermediate milestone that you should work towards and reach before our next meeting. This milestone is no more than "
         if self.goal is 0:
             statement = statement + str(self.intermediateGoal) + " calories consumed in a day."
         else:

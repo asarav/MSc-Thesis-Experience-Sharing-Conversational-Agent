@@ -40,8 +40,8 @@ class ResponseManager:
 
     #Returns a 0,1,or 2. 0 is a no. 1 is a yes. 2 is neither a yes or a no.
     def YesOrNo(self, Response):
-        yes = ["yes", "okay", "yep", "yah", "yeah", "correct", "right", "agree", "agreed", "sure", "fine", "guess", "chess"]
-        no = ["no", "nope", "nah", "don't", "not", "nay", "now", "doubt", "know", "incorrect", "wrong", "disagree", "disagreed"]
+        yes = ["yes", "okay", "yep", "yah", "yeah", "correct", "right", "agree", "agreed", "sure", "fine", "guess", "chess", "it is"]
+        no = ["no", "nope", "nah", "don't", "not", "nay", "now", "doubt", "know", "incorrect", "wrong", "disagree", "disagreed", "isn't"]
         decision = 0
         if self.MatchExpectedResponses(no, Response):
             decision = 0
@@ -72,7 +72,7 @@ class ResponseManager:
     #Returns a 0,1,or 2. 0 is femalel. 1 is a male. 2 is neither.
     def DetermineGender(self, Response):
         male = ["male", "man", "boy", "masculine", "mail"]
-        female = ["female", "woman", "girl", "feminine"]
+        female = ["female", "woman", "girl", "feminine", "email", "gmail"]
         decision = 0
         if self.MatchExpectedResponses(female, Response):
             decision = 0
@@ -85,6 +85,8 @@ class ResponseManager:
 
     def GetNumber(self, Response):
         Response = Response.strip('"')
+        if Response == "mm":
+            return [2000]
         Response = Response.strip('cmkgftinlb')
         numbers = [int(word) for word in Response.split() if word.isdigit()]
         print(Response)
@@ -235,7 +237,23 @@ class ResponseManager:
         else:
             id = Statement
         id.strip()
+        #Hardcoded replacements
         id = id.replace(" ", "")
+        id = id.replace("for", "4")
+        id = id.replace("four", "4")
+        id = id.replace("floor", "4")
+        id = id.replace("to", "2")
+        id = id.replace("two", "2")
+        id = id.replace("free", "3")
+        id = id.replace("three", "3")
+        id = id.replace("sex", "6")
+        id = id.replace("six", "6")
+        id = id.replace("one", "1")
+        id = id.replace("seven", "7")
+        id = id.replace("eight", "8")
+        id = id.replace("ate", "8")
+        id = id.replace("nine", "9")
+        id = id.replace("ten", "10")
         return id.upper()
 
     def GetName(self, Statement):
@@ -251,6 +269,12 @@ class ResponseManager:
             id = Statement.split("I would like to be called", 1)[1]
         elif "i would like to be called" in Statement:
             id = Statement.split("i would like to be called", 1)[1]
+        elif "call me" in Statement:
+            id = Statement.split("call me", 1)[1]
+        elif "I'm called" in Statement:
+            id = Statement.split("I'm called", 1)[1]
+        elif "I am called" in Statement:
+            id = Statement.split("I am called", 1)[1]
         else:
             id = Statement
         id.strip()

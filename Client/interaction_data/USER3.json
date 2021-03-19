@@ -1,35 +1,35 @@
 {
-    "id": "USER6",
+    "id": "USER3",
     "generated": true,
-    "name": "Levent",
+    "name": "Nash",
     "prolificid": null,
     "physicalData": {
         "gender": "male",
-        "age": 24,
+        "age": 20,
         "weight": 80,
-        "height": 183
+        "height": 180
     },
-    "session": 1,
+    "session": 2,
     "condition": 2,
     "experiences": [
         {
             "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
-            "Answer": "I'm a bit excited",
+            "Answer": "that nervous",
             "session": 1
         },
         {
             "Question": "Why would you like to work on this goal?",
-            "Answer": "want to be out here",
+            "Answer": "I like to be healthier",
             "session": 1
         },
         {
             "Question": "If you manage to achieve this goal, how do you think you will feel?",
-            "Answer": "feel happy",
+            "Answer": "happy",
             "session": 1
         },
         {
             "Question": "What will achieving this goal allow you to do that you could not do before?",
-            "Answer": "be more active",
+            "Answer": "and I can be more active",
             "session": 1
         }
     ],
@@ -43,6 +43,6 @@
     "milestone": 1900.0,
     "finalGoal": 1800.0,
     "dietLikes": {
-        "question": "Hawthorne"
+        "question": "candy"
     }
 }

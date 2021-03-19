@@ -1,0 +1,13 @@
+{
+    "id": "USER6",
+    "generated": true,
+    "name": "Levent",
+    "prolificid": null,
+    "physicalData": {
+        "gender": "male",
+        "age": 24,
+        "weight": 80,
+        "height": 183
+    },
+    "session": 1
+}

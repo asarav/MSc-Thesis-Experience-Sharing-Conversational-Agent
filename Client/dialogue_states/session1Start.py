@@ -23,6 +23,8 @@ class Session1Start:
 
         self.conditionChooser = ConditionChooser()
 
+        self.generated = False
+
         self.states = [
         {
             "name": "GetStartedGreeting",
@@ -74,8 +76,8 @@ class Session1Start:
         },
         {
             "name": "ListGoals",
-            "statement": "There are two possible goals that you can choose. These are calorie restriction, and sugar reduction. Before we choose a goal, I would like to ask you for a few personal details so that we can ensure that the goal that is chosen is appropriate for you.",
-            "response": "AskGender",
+            "statement": self.ListGoalsStatement,
+            "response": self.ListGoalsResponse,
             "stateType": "Statement"
         },
         {
@@ -133,10 +135,18 @@ class Session1Start:
         self.shortTermData.readData()
         self.ID = self.shortTermData.data["id"]
         self.username = self.shortTermData.data["name"]
-        self.shortTermData.data["physicalData"] = {}
 
         self.shortTermData.data["condition"] = self.conditionChooser.getCondition()
-        return "Great. Nice to meet you " + self.username + ". Let's start improving your diet"
+        if "generated" in self.shortTermData.data:
+            if self.shortTermData.data["generated"] is True:
+                self.generated = True
+        else:
+            self.shortTermData.data["physicalData"] = {}
+
+        if self.generated:
+            return "I have already looked over the personal information you provided beforehand, so we can dive right into your diet and a goal to work on. " + "It is nice to meet you " + self.username + ". Let's work hard towards improving your diet."
+        else:
+            return "Great. Nice to meet you " + self.username + ". Let's start improving your diet"
 
     def AnswerDiabetesQuestionsResponse(self, response):
         nextState = "AskDiabetesQuestion"
@@ -172,6 +182,19 @@ class Session1Start:
 
     def ProvideDiabetesAnswer(self):
         return self.DiabetesQuestionAnswer
+
+    def ListGoalsStatement(self):
+        statement = "There are two possible goals that you can choose. These are calorie restriction, and sugar reduction. Before we choose a goal, I would like to ask you for a few personal details so that we can ensure that the goal that is chosen is appropriate for you."
+        if self.generated:
+            statement = "There are two possible goals that you can choose. These are calorie restriction, and sugar reduction."
+        return statement
+
+    def ListGoalsResponse(self, response):
+        nextState = "AskGender"
+        if self.generated:
+            self.shortTermData.writeData()
+            nextState = "ListGoals2"
+        return [], nextState
 
     def AskGenderResponse(self, response):
         nextState = "ConfirmGender"

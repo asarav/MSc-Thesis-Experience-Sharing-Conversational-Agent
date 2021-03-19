@@ -38,7 +38,7 @@ class Greeting:
         {
             "name": "Greeting",
             "statement": "I am Diet Bot. I am a conversational agent whose purpose is to help those with type 2 diabetes or who are at risk of being diagnosed with type 2 diabetes manage their diet. To begin, let's get acquainted.",
-            "response": "AskName",
+            "response": self.GetStartedState,
             "stateType": "Statement"
         },
         {
@@ -70,7 +70,7 @@ class Greeting:
     def AskUserIDStatement(self):
         if self.userIdFirstTime:
             self.userIdFirstTime = False
-            return "Hello, I am Diet Bot. Before we start, what is your user id? Your user id is provided to you by Prolific."
+            return "Hello, I am Diet Bot. Before we start, what is your user id? Your user id is provided to you by Prolific. If you were not recruited through Prolific, you may have already been given a user ID."
         else:
             return "What is your user id?"
 
@@ -92,17 +92,28 @@ class Greeting:
             self.shortTermData.data["id"] = self.ID
             reader = jsonManager()
             fileExists = reader.readJSON("interaction_data/" + self.ID + ".json")
+            print(fileExists)
             if fileExists:
                 #Load long term memory into short term memory
                 self.shortTermData.readDataFromLongTermMemory(self.ID)
                 session = self.shortTermData.data["session"]
+                print(session)
                 self.shortTermData.writeData()
-                if session is 2:
+                if session is 1:
+                    nextState = "Start"
+                elif session is 2:
                     nextState = "Session2Start"
                 else:
                     nextState = "Session3Start"
             else:
                 nextState = "Start"
+        return [], nextState
+
+    def GetStartedState(self, response):
+        nextState = "AskName"
+        if "generated" in self.shortTermData.data:
+            if self.shortTermData.data["generated"] is True:
+                nextState = "GetStartedGreeting"
         return [], nextState
 
     def AskNameResponse(self, response):

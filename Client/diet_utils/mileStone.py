@@ -1,5 +1,5 @@
 from diet_utils.nutrition import Nutrition
-
+import math
 
 class MileStone:
     def __init__(self, age, weight, height, gender):
@@ -22,7 +22,7 @@ class MileStone:
             finalGoal = current * 0.9
             milestone = current - (current - finalGoal)/2
             print("Sugar reduction")
-            return finalGoal, milestone
+            return math.floor(finalGoal), math.floor(milestone)
 
     def generatedAmbitiousGoal(self, goal, current):
         TTE = self.nutrition.TotalEnergyExpenditure()
@@ -38,4 +38,4 @@ class MileStone:
         else:
             finalGoal = current * 0.8
             print("Sugar reduction")
-            return finalGoal
+            return math.floor(finalGoal)
