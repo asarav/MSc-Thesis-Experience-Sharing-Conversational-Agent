@@ -1,7 +1,7 @@
-,id,condition,goals,milestoneAchievement,finalGoalAchievement,finalGoalAchievementWithoutGoalChange
-0,123,2,0,True,True,True
-1,70085,1,1,True,True,True
-2,SESSION1,0,0,False,True,False
-3,SESSION2,1,0,False,True,True
-4,SESSION3,2,0,False,True,False
-5,TEST2,2,1,True,False,False
+id,condition,goals,milestoneAchievement,finalGoalAchievement,finalGoalAchievementWithoutGoalChange,agreementPercentage,futureWork,milestoneAdherence,zeroedMilestoneAdherence,milestoneAdherenceWithoutGoalChange,zeroedMilestoneAdherenceWithoutGoalChange
+123,2,0,True,True,True,0.8333333333333334,False,1000.0,0.0,1200.0,0.0
+70085,1,1,True,True,True,1.0,False,17.5,0.0,22.5,0.0
+SESSION1,0,0,False,True,False,0.0,False,101.0,1.0,1.0,1.0
+SESSION2,1,0,False,True,True,0.0,False,1.0,1.0,1.0,1.0
+SESSION3,2,0,False,True,False,0.0,False,1.0,1.0,101.0,101.0
+TEST2,2,1,True,False,False,0.6666666666666666,True,8.5,1.0,11.5,0.0

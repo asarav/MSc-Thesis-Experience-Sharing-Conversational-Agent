@@ -3,6 +3,7 @@ import management_utils.search_based_conversation as SBC
 import data_retrieval.memoryManager as shortTermData
 from management_utils import calorieRestrictionConversation
 from management_utils import sugarRestrictionConversation
+from management_utils.questionDetector import QuestionDetector
 
 
 class Session1End:
@@ -10,6 +11,7 @@ class Session1End:
         self.responseUtils = ResponseManager.ResponseManager()
         self.calorieRestrictionAnswers = SBC.SearchBasedConversation(calorieRestrictionConversation.conversation, "Calorie Restriction Questions")
         self.sugarReductionAnswers = SBC.SearchBasedConversation(sugarRestrictionConversation.conversation, "Sugar Reduction Questions")
+        self.questionDetector = QuestionDetector()
         self.username = ""
         self.gender = 0
         self.age = 18
@@ -112,11 +114,20 @@ class Session1End:
 
     def AnswerGoalQuestionsResponse(self, response):
         nextState = "AskGoalQuestion"
-        decision = self.responseUtils.YesOrNoSearch(response)
-        if decision is 0:
-            nextState = "AskFavoriteFood"
+        #Determine if a question is asked here. If not, go through the yes/no process
+        if self.questionDetector.IsQuestion(response):
+            self.GoalQuestionAnswer = ""
+            if self.goal is 0:
+                self.GoalQuestionAnswer = self.calorieRestrictionAnswers.askQuestion(response)
+            else:
+                self.GoalQuestionAnswer = self.sugarReductionAnswers.askQuestion(response)
+            nextState = "GoalAnswer"
         else:
-            nextState = "AskGoalQuestion"
+            decision = self.responseUtils.YesOrNoSearch(response)
+            if decision is 0:
+                nextState = "AskFavoriteFood"
+            else:
+                nextState = "AskGoalQuestion"
         return [], nextState
 
     def AskFavoriteFoodResponse(self, response):

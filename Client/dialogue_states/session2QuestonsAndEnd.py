@@ -3,6 +3,7 @@ import management_utils.search_based_conversation as SBC
 import data_retrieval.memoryManager as shortTermData
 import management_utils.diabetesConversation as diabetesConversation
 from management_utils import calorieRestrictionConversation, sugarRestrictionConversation, struggleConversation
+from management_utils.questionDetector import QuestionDetector
 
 
 class Session2QuestionsAndEnd:
@@ -11,6 +12,7 @@ class Session2QuestionsAndEnd:
         self.calorieRestrictionAnswers = SBC.SearchBasedConversation(calorieRestrictionConversation.conversation, "Calorie Restriction Questions")
         self.sugarReductionAnswers = SBC.SearchBasedConversation(sugarRestrictionConversation.conversation, "Sugar Reduction Questions")
         self.struggleAnswers = SBC.SearchBasedConversation(struggleConversation.conversation, "Struggle Questions", False)
+        self.questionDetector = QuestionDetector()
         self.ID = "1234"
         self.username = ""
         self.firstTimeActivitiesQuestion = True
@@ -171,15 +173,24 @@ class Session2QuestionsAndEnd:
 
     def QuestionsAboutActivitiesResponse(self, response):
         nextState = ""
-        decision = self.responseUtils.YesOrNoSearch(response)
-        if decision is 0:
-            if self.condition is 0 or self.condition is 1:
-                nextState = "ReviewGoalsSession2"
+        #Determine if a question is asked here. If not, go through the yes/no process
+        if self.questionDetector.IsQuestion(response):
+            self.ActivitiesQuestionAnswer = ""
+            if self.goal is 0:
+                self.ActivitiesQuestionAnswer = self.calorieRestrictionAnswers.askQuestion(response)
             else:
-                #Maybe we can just limit this to the 3rd condition
-                nextState = "FavoriteFoodHealthyOption"
+                self.ActivitiesQuestionAnswer = self.sugarReductionAnswers.askQuestion(response)
+            nextState = "ActivitiesAnswer"
         else:
-            nextState = "AskQuestionsAboutActivities"
+            decision = self.responseUtils.YesOrNoSearch(response)
+            if decision is 0:
+                if self.condition is 0 or self.condition is 1:
+                    nextState = "ReviewGoalsSession2"
+                else:
+                    #Maybe we can just limit this to the 3rd condition
+                    nextState = "FavoriteFoodHealthyOption"
+            else:
+                nextState = "AskQuestionsAboutActivities"
 
         return [], nextState
 

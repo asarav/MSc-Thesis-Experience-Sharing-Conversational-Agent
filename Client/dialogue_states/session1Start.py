@@ -3,12 +3,14 @@ import management_utils.search_based_conversation as SBC
 import data_retrieval.memoryManager as shortTermData
 import management_utils.diabetesConversation as diabetesConversation
 from management_utils.conditionChooser import ConditionChooser
+from management_utils.questionDetector import QuestionDetector
 
 
 class Session1Start:
     def __init__(self):
         self.responseUtils = ResponseManager.ResponseManager()
         self.DiabetesAnswers = SBC.SearchBasedConversation(diabetesConversation.conversation, "Diabetes Questions")
+        self.questionDetector = QuestionDetector()
         self.ID = "1234"
         self.username = ""
         self.firstTimeDiabetesQuestion = True
@@ -150,11 +152,17 @@ class Session1Start:
 
     def AnswerDiabetesQuestionsResponse(self, response):
         nextState = "AskDiabetesQuestion"
-        decision = self.responseUtils.YesOrNoSearch(response)
-        if decision is 0:
-            nextState = "ListGoals"
+
+        #Determine if a question is asked here. If not, go through the yes/no process
+        if self.questionDetector.IsQuestion(response):
+            self.DiabetesQuestionAnswer = self.DiabetesAnswers.askQuestion(response)
+            nextState = "DiabetesAnswer"
         else:
-            nextState = "AskDiabetesQuestion"
+            decision = self.responseUtils.YesOrNoSearch(response)
+            if decision is 0:
+                nextState = "ListGoals"
+            else:
+                nextState = "AskDiabetesQuestion"
         return [], nextState
 
     def CurrentFeelingsResponse(self, response):
