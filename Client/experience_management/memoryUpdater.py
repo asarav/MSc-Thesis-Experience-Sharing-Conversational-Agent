@@ -39,7 +39,7 @@ for file in onlyfiles:
     if "session" in fileData:
         if (fileData["session"] is 2) or (fileData["session"] is 3):
             #Add diet advice
-            if "dietLikes" in fileData:
+            if "dietLikes" in fileData and fileData["session"] is 2:
                 dietLike = fileData["dietLikes"]
                 goal = fileData["goal"]
                 answer = dietLikeManager.getLikeStatement(dietLike["question"], goal)

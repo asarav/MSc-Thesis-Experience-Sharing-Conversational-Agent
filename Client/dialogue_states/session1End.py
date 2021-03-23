@@ -133,7 +133,7 @@ class Session1End:
     def AskFavoriteFoodResponse(self, response):
         nextState = "FavoriteFoodStatement"
         #Try to extract just the relevant food
-        stopwords = ["I", "i", "like", "my", "favorite", "is"]
+        stopwords = ["I", "i", "like", "my", "favorite", "is", "think", "food", "meal"]
         querywords = response.split()
         resultwords = [word for word in querywords if word.lower() not in stopwords]
         result = ' '.join(resultwords)

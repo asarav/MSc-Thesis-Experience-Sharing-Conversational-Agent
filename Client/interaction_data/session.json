@@ -1,35 +1,35 @@
 {
-    "id": "USER6",
+    "id": "TEST1",
     "generated": true,
-    "name": "Levent",
+    "name": "Mark",
     "prolificid": null,
     "physicalData": {
         "gender": "male",
-        "age": 24,
-        "weight": 80,
-        "height": 183
+        "age": 60,
+        "weight": 77,
+        "height": 182
     },
     "session": 2,
-    "condition": 2,
+    "condition": 0,
     "experiences": [
         {
             "Question": "Are you feeling excited to start? Nervous? What feelings are you having right now?",
-            "Answer": "I'm a bit excited",
+            "Answer": "I'm excited",
             "session": 1
         },
         {
             "Question": "Why would you like to work on this goal?",
-            "Answer": "want to be out here",
+            "Answer": "Eskimo cc-1",
             "session": 1
         },
         {
             "Question": "If you manage to achieve this goal, how do you think you will feel?",
-            "Answer": "feel happy",
+            "Answer": "released",
             "session": 1
         },
         {
             "Question": "What will achieving this goal allow you to do that you could not do before?",
-            "Answer": "be more active",
+            "Answer": "eating candy",
             "session": 1
         }
     ],
@@ -37,12 +37,12 @@
     "diet": {
         "session1": {
             "sugar": 50,
-            "calories": 2000
+            "calories": 1800
         }
     },
-    "milestone": 1900.0,
-    "finalGoal": 1800.0,
+    "milestone": 1710.0,
+    "finalGoal": 1620.0,
     "dietLikes": {
-        "question": "Hawthorne"
+        "question": "pasta"
     }
 }

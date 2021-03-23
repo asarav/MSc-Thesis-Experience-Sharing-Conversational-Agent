@@ -8,10 +8,10 @@ from sklearn.metrics import classification_report
 
 class QuestionDetector:
     def __init__(self):
-        if path.exists("../models/vectorizer.pk") and path.exists("../models/gradientBooster.pk"):
+        if path.exists("./models/vectorizer.pk") and path.exists("./models/gradientBooster.pk"):
             print("exists")
-            v = open("../models/vectorizer.pk", 'rb')
-            g = open("../models/gradientBooster.pk", 'rb')
+            v = open("./models/vectorizer.pk", 'rb')
+            g = open("./models/gradientBooster.pk", 'rb')
             self.vectorizer = pickle.load(v)
             self.gb = pickle.load(g)
         else:

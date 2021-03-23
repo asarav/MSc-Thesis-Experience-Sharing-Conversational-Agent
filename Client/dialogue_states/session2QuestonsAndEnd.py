@@ -211,6 +211,7 @@ class Session2QuestionsAndEnd:
         statement = statement + str(self.shortTermData.data["dietLikes"]["question"])
         statement = statement + ", and I may have a recommendation. "
         statement = statement + str(self.shortTermData.data["dietLikes"]["answer"])
+        statement = statement + " Give it a try. Maybe it will help, and before long, you will find yourself hititng your diet goals!"
         return statement
 
     def HealthyOptionOpinionResponse(self, response):

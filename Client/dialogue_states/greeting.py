@@ -70,7 +70,7 @@ class Greeting:
     def AskUserIDStatement(self):
         if self.userIdFirstTime:
             self.userIdFirstTime = False
-            return "Hello, I am Diet Bot. Before we start, what is your user id? Your user id is provided to you by Prolific. If you were not recruited through Prolific, you may have already been given a user ID."
+            return "Hello, I am Diet Bot. Before we start, what is your user id? Your user id should have been provided to you by the experimenter."
         else:
             return "What is your user id?"
 
