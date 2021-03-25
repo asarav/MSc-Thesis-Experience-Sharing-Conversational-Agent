@@ -208,6 +208,8 @@ class ResponseManager:
             id = Statement.split("my ID is", 1)[1]
         elif "my user ID is" in Statement:
             id = Statement.split("my user ID is", 1)[1]
+        elif "user ID is" in Statement:
+            id = Statement.split("user ID is", 1)[1]
         elif "the user ID is" in Statement:
             id = Statement.split("the user ID is", 1)[1]
         elif "the ID is" in Statement:
@@ -239,8 +241,11 @@ class ResponseManager:
         id.strip()
         #Hardcoded replacements
         id = id.replace(" ", "")
+        id = id.replace("one", "1")
+        id = id.replace("won", "1")
         id = id.replace("for", "4")
         id = id.replace("four", "4")
+        id = id.replace("Four", "4")
         id = id.replace("floor", "4")
         id = id.replace("to", "2")
         id = id.replace("two", "2")
@@ -248,13 +253,22 @@ class ResponseManager:
         id = id.replace("three", "3")
         id = id.replace("sex", "6")
         id = id.replace("six", "6")
-        id = id.replace("one", "1")
         id = id.replace("seven", "7")
         id = id.replace("eight", "8")
         id = id.replace("ate", "8")
         id = id.replace("nine", "9")
         id = id.replace("ten", "10")
-        return id.upper()
+
+        id = id.upper()
+
+        if id.startswith("TEST"):
+            return id
+        else:
+            numbers = re.findall("(\d+)", id)
+            if len(numbers) > 0:
+                return "TEST" + str(numbers[0])
+            else:
+                return id
 
     def GetName(self, Statement):
         if "my name is" in Statement:

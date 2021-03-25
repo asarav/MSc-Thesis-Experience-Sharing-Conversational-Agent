@@ -37,7 +37,7 @@ class Greeting:
         },
         {
             "name": "Greeting",
-            "statement": "I am Diet Bot. I am a conversational agent whose purpose is to help those with type 2 diabetes or who are at risk of being diagnosed with type 2 diabetes manage their diet. To begin, let's get acquainted.",
+            "statement": "I am Diet Bot. I am a conversational agent whose purpose is to help you work towards a diet related goal to reduce your chances of getting type 2 diabetes and improve your overall health. To begin, let's get acquainted.",
             "response": self.GetStartedState,
             "stateType": "Statement"
         },

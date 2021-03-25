@@ -139,7 +139,7 @@ for file in onlyfiles:
                             if len(keywords) > 0:
                                 keywordCriticism = "In our first session, I asked you how you were feeling before we started. "
                                 keywordCriticism = keywordCriticism + "You mentioned " + keywords[0] + "."
-                                keywordCriticism = keywordCriticism + " Honestly, I think you don't need to worry and doing would be counterproductive. I think what would help would be to stay optimistic and focus on consistent activity. Stay focused, and I'm sure you will make it."
+                                keywordCriticism = keywordCriticism + " Honestly, I think you don't need to worry and doing so would be counterproductive. I think what would help would be to stay optimistic and focus on consistent activity. Stay focused, and I'm sure you will make it."
                                 criticismPhrases.append(keywordCriticism)
 
                             #Rewording with sentiment

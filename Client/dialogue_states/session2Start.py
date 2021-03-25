@@ -150,6 +150,8 @@ class Session2Start:
         else:
             statement = statement + "sugar reduction. When we last met, you were given a final goal of " + str(self.finalGoal) + " maximum grams of sugar consumed in a day."
             statement = statement + " To reach this, you were given a milestone of a daily sugar intake of " + str(self.milestone) + " grams of sugar to reach by today."
+        if self.finalGoal == self.milestone:
+            statement = statement + " If your milestone and your final goal are the same or similar, that means that your intake was already fairly low to begin with, so your focus will be more on maintenance of a particular intake. Remember, maintaining a habit can be challenging as well, so be sure to give it your all."
         return statement
 
     def DetermineProgressStatement(self):
