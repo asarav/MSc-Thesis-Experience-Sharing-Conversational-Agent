@@ -5,7 +5,7 @@ from os.path import isfile, join
 from data_retrieval.jsonManager import jsonManager
 import pandas as pd
 
-mypath = "../trial_runs"
+mypath = "../completed_sessions"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 print(onlyfiles)
 
@@ -157,8 +157,18 @@ for file in onlyfiles:
         zeroedMilestoneAdherenceWithoutGoalChange.append(zeroedMA)
 
 
-df = pd.DataFrame(list(zip(ids, conditions, goals, milestoneAchievement, finalGoalAchievement, finalGoalAchievementWithoutGoalChange, agreementPercentageExperiences, futureWork, milestoneAdherence, zeroedMilestoneAdherence, milestoneAdherenceWithoutGoalChange, zeroedMilestoneAdherenceWithoutGoalChange)),
+dfJson = pd.DataFrame(list(zip(ids, conditions, goals, milestoneAchievement, finalGoalAchievement, finalGoalAchievementWithoutGoalChange, agreementPercentageExperiences, futureWork, milestoneAdherence, zeroedMilestoneAdherence, milestoneAdherenceWithoutGoalChange, zeroedMilestoneAdherenceWithoutGoalChange)),
                   columns =['id', 'condition', 'goals', 'milestoneAchievement', 'finalGoalAchievement', 'finalGoalAchievementWithoutGoalChange', 'agreementPercentage', 'futureWork', 'milestoneAdherence', 'zeroedMilestoneAdherence', 'milestoneAdherenceWithoutGoalChange', 'zeroedMilestoneAdherenceWithoutGoalChange'])
 
+dfConsent = pd.read_csv("surveys/Consent.csv")
+dfQuestionnaire = pd.read_csv("surveys/Questionnaire.csv")
 
-df.to_csv("output_files/summary.csv", index=False)
+#Process consent form efficacy question
+print(dfConsent.head())
+
+#Maybe include gender and age
+
+#Process questionnaire results
+print(dfQuestionnaire.head())
+
+dfJson.to_csv("output_files/summary.csv", index=False)

@@ -170,6 +170,11 @@ class Session2Start:
                 self.newCalories = numbers[0]
             else:
                 self.newSugar = numbers[0]
+        else:
+            if self.goal is 0:
+                self.newCalories = self.milestone
+            else:
+                self.newSugar = self.milestone
         return [], nextState
 
     def ConfirmProgressStatement(self):

@@ -717,7 +717,7 @@ for file in onlyfiles:
                             keywordPraise = keywordPraise + "You mentioned " + keywords[0] + "."
 
                             if sentimentBool:
-                                keywordPraise = keywordPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne."
+                                keywordPraise = keywordPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive response."
                             else:
                                 keywordPraise = keywordPraise + " You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job."
 
@@ -729,7 +729,7 @@ for file in onlyfiles:
                         rewordedPraise = rewordPhrase(filteredAnswer)
                         rewordedPraise = "In our second session, you said " + rewordedPraise + " when asked how you think your family, friends or coworkers would react if they heard about you reaching your goal."
                         if sentimentBool:
-                            rewordedPraise = rewordedPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive resposne."
+                            rewordedPraise = rewordedPraise + " Well, you've reached your goal, so I imagine you will be able to see their reactions soon, and I hope that you are looking forward to a positive response."
                         else:
                             rewordedPraise = rewordedPraise + " You did not sound too optimistic, but you should realize that you have managed to accomplish a lot, and people will recognize that effort. Great job."
 

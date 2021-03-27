@@ -58,7 +58,7 @@ class DietLikes:
 
         statement = "While you could have something like " + str(top7Items[maxItem][0]) + ", something like " + str(top7Items[minItem][0]) + " may be a healthier choice "
         if goal is 0:
-            statement = statement + "due to the lower amount of calories."
+            statement = statement + "due to the lower amount of calories if it is available to you."
         else:
-            statement = statement + "due to the lower amount of sugar."
+            statement = statement + "due to the lower amount of sugar if it is available to you."
         return statement

@@ -122,6 +122,12 @@ class Session3Start:
                 self.newCalories = numbers[0]
             else:
                 self.newSugar = numbers[0]
+        else:
+            #In the case that there are no numbers, just use a default until it is fixed
+            if self.goal is 0:
+                self.newCalories = self.finalGoal
+            else:
+                self.newSugar = self.finalGoal
         return [], nextState
 
     def ConfirmProgressStatement(self):
