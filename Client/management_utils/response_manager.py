@@ -87,6 +87,18 @@ class ResponseManager:
         Response = Response.strip('"')
         if Response == "mm":
             return [2000]
+
+        Response = Response.replace("two", "3")
+        Response = Response.replace("three", "3")
+        Response = Response.replace("four", "4")
+        Response = Response.replace("five", "5")
+        Response = Response.replace("six", "6")
+        Response = Response.replace("sex", "6")
+        Response = Response.replace("seven", "7")
+        Response = Response.replace("eight", "8")
+        Response = Response.replace("nine", "10")
+        Response = Response.replace("ten", "10")
+
         Response = Response.strip('cmkgftinlb')
         numbers = [int(word) for word in Response.split() if word.isdigit()]
         print(Response)
@@ -124,16 +136,15 @@ class ResponseManager:
     def GetGoal(self, Response):
         calorieRestriction = ["calorie", "caloric"]
         sugarReduction = ["sugar", "glucose"]
+        #No more diet composition change
         dietCompositionChange = ["diet", "composition"]
         decision = 0
         if self.MatchExpectedResponses(calorieRestriction, Response):
             decision = 0
         elif self.MatchExpectedResponses(sugarReduction, Response):
             decision = 1
-        elif self.MatchExpectedResponses(dietCompositionChange, Response):
-            decision = 2
         else:
-            decision = 3
+            decision = 1
 
         return decision
 
@@ -249,7 +260,9 @@ class ResponseManager:
         id = id.replace("floor", "4")
         id = id.replace("to", "2")
         id = id.replace("two", "2")
+        id = id.replace("tube", "2")
         id = id.replace("free", "3")
+        id = id.replace("five", "5")
         id = id.replace("three", "3")
         id = id.replace("sex", "6")
         id = id.replace("six", "6")

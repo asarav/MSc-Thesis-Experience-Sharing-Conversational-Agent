@@ -16,11 +16,13 @@ def rewordPhrase(answer):
     rewordedPraise = rewordedPraise.replace("I", "You")
     rewordedPraise = rewordedPraise.replace(" me ", " you ")
     rewordedPraise = rewordedPraise.replace(" me.", "you.")
-    rewordedPraise = rewordedPraise = rewordedPraise.replace(" my ", " your ")
+    rewordedPraise = rewordedPraise.replace(" my ", " your ")
     rewordedPraise = rewordedPraise.replace("My ", "Your ")
     rewordedPraise = rewordedPraise.replace(" my.", " your.")
     rewordedPraise = rewordedPraise.replace(" mine ", " yours ")
     rewordedPraise = rewordedPraise.replace(" mine.", " yours.")
+    rewordedPraise = rewordedPraise.replace(" myself.", " yourself.")
+    rewordedPraise = rewordedPraise.replace(" myself ", " yourself ")
     return rewordedPraise
 
 #Look through all memory files
@@ -703,7 +705,7 @@ for file in onlyfiles:
                         # Rewording with sentiment
                         rewordedCriticism = rewordPhrase(filteredAnswer)
                         rewordedCriticism = "In our second session, you said " + rewordedCriticism + " when asked how you felt about the progress you made so far."
-                        keywordCriticism = keywordCriticism + " It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way."
+                        rewordedCriticism = rewordedCriticism + " It sounded like those things may have still been a problem in your efforts towards your final goal. Although you did not reach your final goal, I hope you at least gained some experience by going through this process and learned a bit about diet along the way."
                         criticismPhrases.append(rewordedCriticism)
 
 

@@ -13,6 +13,7 @@ ids = []
 prolificID = []
 goalChanged = []
 gender = []
+age = []
 milestoneAchievement = []
 finalGoalAchievement = []
 finalGoalAchievementWithoutGoalChange = []
@@ -35,6 +36,15 @@ for file in onlyfiles:
         print(file)
         id = fileData["id"]
         ids.append(id)
+
+        if "prolificid" in fileData:
+            prolificID.append(fileData["prolificid"])
+        else:
+            prolificID.append(None)
+
+        gender.append(fileData["physicalData"]["gender"])
+        age.append(fileData["physicalData"]["age"])
+
         #Milestone achievement
         condition = fileData["condition"]
         conditions.append(fileData["condition"])
@@ -156,19 +166,204 @@ for file in onlyfiles:
         milestoneAdherenceWithoutGoalChange.append(MA)
         zeroedMilestoneAdherenceWithoutGoalChange.append(zeroedMA)
 
-
-dfJson = pd.DataFrame(list(zip(ids, conditions, goals, milestoneAchievement, finalGoalAchievement, finalGoalAchievementWithoutGoalChange, agreementPercentageExperiences, futureWork, milestoneAdherence, zeroedMilestoneAdherence, milestoneAdherenceWithoutGoalChange, zeroedMilestoneAdherenceWithoutGoalChange)),
-                  columns =['id', 'condition', 'goals', 'milestoneAchievement', 'finalGoalAchievement', 'finalGoalAchievementWithoutGoalChange', 'agreementPercentage', 'futureWork', 'milestoneAdherence', 'zeroedMilestoneAdherence', 'milestoneAdherenceWithoutGoalChange', 'zeroedMilestoneAdherenceWithoutGoalChange'])
-
 dfConsent = pd.read_csv("surveys/Consent.csv")
 dfQuestionnaire = pd.read_csv("surveys/Questionnaire.csv")
 
-#Process consent form efficacy question
-print(dfConsent.head())
+priorEfficacy = [None]*len(ids)
 
-#Maybe include gender and age
+#Process consent form efficacy question
+for index, row in dfConsent.iterrows():
+    Consentid = row["Q1"].strip().upper()
+    Consentid = Consentid.replace(" ", "")
+
+    isProlific = False
+    if len(Consentid) < 20:
+        isProlific = False
+    else:
+        # Probably prolific
+        isProlific = True
+
+    #Find index of id
+    index = 0
+    try:
+        if isProlific:
+            index = prolificID.index(Consentid)
+        else:
+            index = ids.index(Consentid)
+    except ValueError:
+        print("Not Found ", Consentid, isProlific)
+        continue
+
+    print(Consentid)
+    print(index)
+    priorEfficacy[index] = row["Q15"]
+
+print("QUESTIONNAIRE")
+
+education = [None]*len(ids)
+fakeNatural = [None]*len(ids)
+machineHuman = [None]*len(ids)
+postEfficacy = [None]*len(ids)
+conscious = [None]*len(ids)
+artificialLifelike = [None]*len(ids)
+rigidElegant = [None]*len(ids)
+deadAlive = [None]*len(ids)
+stagnantLively = [None]*len(ids)
+mechanicalOrganic = [None]*len(ids)
+inertInteractive = [None]*len(ids)
+apatheticResponsive = [None]*len(ids)
+dislikeLike = [None]*len(ids)
+unfriendlyFriendly = [None]*len(ids)
+unkindKind = [None]*len(ids)
+unpleasantPleasant = [None]*len(ids)
+awfulNice = [None]*len(ids)
+incompetentCompetent = [None]*len(ids)
+ignorantKnowledgeable = [None]*len(ids)
+irresponsibleResponsible = [None]*len(ids)
 
 #Process questionnaire results
-print(dfQuestionnaire.head())
+for index, row in dfQuestionnaire.iterrows():
+    QuestionID = row["ID"].strip().upper()
+    QuestionID = QuestionID.replace(" ", "")
+    print(QuestionID)
+    isProlific = False
+    if len(QuestionID) < 20:
+        isProlific = False
+    else:
+        # Probably prolific
+        isProlific = True
+
+    #Find index of id
+    index = 0
+    try:
+        if isProlific:
+            index = prolificID.index(QuestionID)
+        else:
+            index = ids.index(QuestionID)
+    except ValueError:
+        print("Not Found ", QuestionID, isProlific)
+        continue
+
+    print(QuestionID)
+    print(index)
+    postEfficacy[index] = row["Efficacy"]
+    education[index] = row["Education Level"]
+    machineHuman[index] = row["Machine or Human"]
+    fakeNatural[index] = row["Fake or Natural"]
+    conscious[index] = row["Unconsciousconscious"]
+    artificialLifelike[index] = row["Artificiallifelike"]
+    rigidElegant[index] = row["rigidlyelegantly"]
+    deadAlive[index] = row["DeadAlive"]
+    stagnantLively[index] = row["StagnantLively"]
+    mechanicalOrganic[index] = row["MechanicalOrganic"]
+    inertInteractive[index] = row["InertInteractive"]
+    apatheticResponsive[index] = row["ApatheticResponsive"]
+    dislikeLike[index] = row["DislikeLike"]
+    unfriendlyFriendly[index] = row["UnfriendlyFriendly"]
+    unkindKind[index] = row["UnkindKind"]
+    unpleasantPleasant[index] = row["UnpleasantPleasant"]
+    awfulNice[index] = row["AwfulNice"]
+    incompetentCompetent[index] = row["IncompetentCompetent"]
+    ignorantKnowledgeable[index] = row["IgnorantKnowledgeabl"]
+    irresponsibleResponsible[index] = row["IrresponsibleRespons"]
+    row["UnintelligentIntelli"]
+    row["FoolishSensible"]
+    #Before
+    row["AnxiousRelaxed1"]
+    row["AgitatedCalm1"]
+    row["QuiescentSurprised1"]
+    #After
+    row["AnxiousRelaxed2"]
+    row["AgitatedCalm2"]
+    row["QuiescentSurprised2"]
+
+    row["TypeOfRelationship"]
+
+    row["UsefulOrNot"]
+    row["UsefulOrNotObesity"]
+    row["Convenience"]
+    row["Preference"]
+
+    row["Motivation"]
+    row["Diabetes"]
+
+    row["FamilyHistory"]
+    row["SimilarSystem"]
+
+    row["Duration"]
+
+    row["Number of Sessions"]
+    row["Understanding"]
+
+
+columnContents = list(zip(ids,
+                   conditions,
+                   goals,
+                   milestoneAchievement,
+                   finalGoalAchievement,
+                   finalGoalAchievementWithoutGoalChange,
+                          agreementPercentageExperiences,
+                          futureWork,
+                          milestoneAdherence,
+                          zeroedMilestoneAdherence,
+                          milestoneAdherenceWithoutGoalChange,
+                          zeroedMilestoneAdherenceWithoutGoalChange,
+                          priorEfficacy,
+                          postEfficacy,
+                          education,
+                          fakeNatural,
+                          machineHuman,
+                          conscious,
+                          artificialLifelike,
+                          rigidElegant,
+                          deadAlive,
+                          stagnantLively,
+                          mechanicalOrganic,
+                          inertInteractive,
+                          apatheticResponsive,
+                          dislikeLike,
+                          unfriendlyFriendly,
+                          unkindKind,
+                          unpleasantPleasant,
+                          awfulNice,
+                          incompetentCompetent,
+                          ignorantKnowledgeable,
+                          irresponsibleResponsible))
+columnNames = ['id',
+               'condition',
+               'goals',
+               'milestoneAchievement',
+               'finalGoalAchievement',
+               'finalGoalAchievementWithoutGoalChange',
+               'agreementPercentage',
+               'futureWork',
+               'milestoneAdherence',
+               'zeroedMilestoneAdherence',
+               'milestoneAdherenceWithoutGoalChange',
+               'zeroedMilestoneAdherenceWithoutGoalChange',
+               'priorEfficacy',
+               'postEfficacy',
+               'education',
+               'fakeNatural',
+               'machineHuman',
+               'consciousUnconscious',
+               'artificialLifelike',
+               'rigidElegant',
+               'deadAlive',
+               'stagnantLively',
+               'mechanicalOrganic',
+               'inertInteractive',
+               'apatheticResponsive',
+               'dislikeLike',
+               'unfriendlyFriendly',
+               'unkindKind',
+               'unpleasantPleasant',
+               'awfulNice',
+               'incompetentCompetent',
+               'ignorantKnowledgeable',
+               'irresponsibleResponsible']
+
+dfJson = pd.DataFrame(columnContents,
+                  columns =columnNames)
 
 dfJson.to_csv("output_files/summary.csv", index=False)
