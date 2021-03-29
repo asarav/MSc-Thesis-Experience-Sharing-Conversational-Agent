@@ -220,7 +220,26 @@ awfulNice = [None]*len(ids)
 incompetentCompetent = [None]*len(ids)
 ignorantKnowledgeable = [None]*len(ids)
 irresponsibleResponsible = [None]*len(ids)
-
+unintelligentIntelligent = [None]*len(ids)
+foolishSensible = [None]*len(ids)
+anxiousRelaxedBefore = [None]*len(ids)
+agitatedCalmBefore = [None]*len(ids)
+quiescentSurprisedBefore = [None]*len(ids)
+anxiousRelaxedAfter = [None]*len(ids)
+agitatedCalmAfter = [None]*len(ids)
+quiescentSurprisedAfter = [None]*len(ids)
+typeOfRelationship = [None]*len(ids)
+usefulOrNotDiabetes = [None]*len(ids)
+usefulOrNotObesity = [None]*len(ids)
+convenience = [None]*len(ids)
+preference = [None]*len(ids)
+motivation = [None]*len(ids)
+diabetes = [None]*len(ids)
+familyHistoryDiabetes = [None]*len(ids)
+similarSystem = [None]*len(ids)
+duration = [None]*len(ids)
+numberOfSessions = [None]*len(ids)
+understandingDiabetes = [None]*len(ids)
 #Process questionnaire results
 for index, row in dfQuestionnaire.iterrows():
     QuestionID = row["ID"].strip().upper()
@@ -266,34 +285,34 @@ for index, row in dfQuestionnaire.iterrows():
     incompetentCompetent[index] = row["IncompetentCompetent"]
     ignorantKnowledgeable[index] = row["IgnorantKnowledgeabl"]
     irresponsibleResponsible[index] = row["IrresponsibleRespons"]
-    row["UnintelligentIntelli"]
-    row["FoolishSensible"]
+    unintelligentIntelligent[index] = row["UnintelligentIntelli"]
+    foolishSensible[index] = row["FoolishSensible"]
     #Before
-    row["AnxiousRelaxed1"]
-    row["AgitatedCalm1"]
-    row["QuiescentSurprised1"]
+    anxiousRelaxedBefore[index] = row["AnxiousRelaxed1"]
+    agitatedCalmBefore[index] = row["AgitatedCalm1"]
+    quiescentSurprisedBefore[index] = row["QuiescentSurprised1"]
     #After
-    row["AnxiousRelaxed2"]
-    row["AgitatedCalm2"]
-    row["QuiescentSurprised2"]
+    anxiousRelaxedAfter[index] = row["AnxiousRelaxed2"]
+    agitatedCalmAfter[index] = row["AgitatedCalm2"]
+    quiescentSurprisedAfter[index] = row["QuiescentSurprised2"]
 
-    row["TypeOfRelationship"]
+    typeOfRelationship[index] = row["TypeOfRelationship"]
 
-    row["UsefulOrNot"]
-    row["UsefulOrNotObesity"]
-    row["Convenience"]
-    row["Preference"]
+    usefulOrNotDiabetes[index] = row["UsefulOrNot"]
+    usefulOrNotObesity[index] = row["UsefulOrNotObesity"]
+    convenience[index] = row["Convenience"]
+    preference[index] = row["Preference"]
 
-    row["Motivation"]
-    row["Diabetes"]
+    motivation[index] = row["Motivation"]
+    diabetes[index] = row["Diabetes"]
 
-    row["FamilyHistory"]
-    row["SimilarSystem"]
+    familyHistoryDiabetes[index] = row["FamilyHistory"]
+    similarSystem[index] = row["SimilarSystem"]
 
-    row["Duration"]
+    duration[index] = row["Duration"]
 
-    row["Number of Sessions"]
-    row["Understanding"]
+    numberOfSessions[index] = row["Number of Sessions"]
+    understandingDiabetes[index] = row["Understanding"]
 
 
 columnContents = list(zip(ids,
@@ -328,7 +347,27 @@ columnContents = list(zip(ids,
                           awfulNice,
                           incompetentCompetent,
                           ignorantKnowledgeable,
-                          irresponsibleResponsible))
+                          irresponsibleResponsible,
+                          unintelligentIntelligent,
+                          foolishSensible,
+                          anxiousRelaxedBefore,
+                          agitatedCalmBefore,
+                          quiescentSurprisedBefore,
+                          anxiousRelaxedAfter,
+                          agitatedCalmAfter,
+                          quiescentSurprisedAfter,
+                          typeOfRelationship,
+                          usefulOrNotDiabetes,
+                          usefulOrNotObesity,
+                          convenience,
+                          preference,
+                          motivation,
+                          diabetes,
+                          familyHistoryDiabetes,
+                          similarSystem,
+                          duration,
+                          numberOfSessions,
+                          understandingDiabetes))
 columnNames = ['id',
                'condition',
                'goals',
@@ -361,7 +400,27 @@ columnNames = ['id',
                'awfulNice',
                'incompetentCompetent',
                'ignorantKnowledgeable',
-               'irresponsibleResponsible']
+               'irresponsibleResponsible',
+               'unintelligentIntelligent',
+               'foolishSensible',
+               'anxiousRelaxedBefore',
+               'agitatedCalmBefore',
+               'quiescentSurprisedBefore',
+               'anxiousRelaxedAfter',
+               'agitatedCalmAfter',
+               'quiescentSurprisedAfter',
+               'typeOfRelationship',
+               'usefulOrNotDiabetes',
+               'usefulOrNotObesity',
+               'convenience',
+               'preference',
+               'motivation',
+               'diabetes',
+               'familyHistoryDiabetes',
+               'similarSystem',
+               'duration',
+               'numberOfSessions',
+               'understandingDiabetes']
 
 dfJson = pd.DataFrame(columnContents,
                   columns =columnNames)
