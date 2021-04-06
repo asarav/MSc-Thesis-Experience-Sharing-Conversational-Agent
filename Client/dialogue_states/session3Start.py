@@ -101,7 +101,7 @@ class Session3Start:
             achievementNumber = (self.shortTermData.data["diet"]["session2"]["sugar"] - self.finalGoal)
             statement = statement + " This means that to reach your final goal, you had " + str(achievementNumber) + " grams of sugar left."
             if achievementNumber < 0:
-                statement = statement + " Although you  movershot your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
+                statement = statement + " Although you overshot your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
             elif achievementNumber == 0:
                 statement = statement + " Although you met your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
         return statement

@@ -155,7 +155,7 @@ class Session2Start:
         return statement
 
     def DetermineProgressStatement(self):
-        statement = "So did you meet your goal? "
+        statement = "So did you meet your milestone? "
         if self.goal is 0:
             statement = statement + "What was your daily caloric intake yesterday?"
         else:

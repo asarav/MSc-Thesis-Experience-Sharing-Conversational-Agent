@@ -34,8 +34,6 @@ height = input("Enter height: ")
 height = int(height)
 print("Height is: " + str(height))
 
-#Get Condition?
-
 #Create json file
 manager = data_retrieval.jsonManager.jsonManager()
 manager.data["id"] = id
