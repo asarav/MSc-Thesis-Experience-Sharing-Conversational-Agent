@@ -90,7 +90,7 @@ class Session3Start:
             statement = statement + "calorie restriction. Your goal is a caloric intake of " + str(self.finalGoal) + " calories."
             statement = statement + " When we last met, you managed to reach a caloric intake of " + str(self.shortTermData.data["diet"]["session2"]["calories"]) + " calories."
             achievementNumber = (self.shortTermData.data["diet"]["session2"]["calories"] - self.finalGoal)
-            statement = statement + " This means that to reach your final goal, you had " + str(achievementNumber) + " calories left."
+            statement = statement + " This means that to reach your final goal, you had " + str(int(achievementNumber)) + " calories left."
             if achievementNumber < 0:
                 statement = statement + " Although you overshot your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
             elif achievementNumber == 0:
@@ -99,7 +99,7 @@ class Session3Start:
             statement = statement + "sugar reduction. Your goal is a sugar intake of " + str(self.finalGoal) + " grams of sugar."
             statement = statement + " When we last met, you managed to reach a sugar intake of " + str(self.shortTermData.data["diet"]["session2"]["sugar"]) + " grams of sugar."
             achievementNumber = (self.shortTermData.data["diet"]["session2"]["sugar"] - self.finalGoal)
-            statement = statement + " This means that to reach your final goal, you had " + str(achievementNumber) + " grams of sugar left."
+            statement = statement + " This means that to reach your final goal, you had " + str(int(achievementNumber)) + " grams of sugar left."
             if achievementNumber < 0:
                 statement = statement + " Although you overshot your final goal, consistency is what makes a habit, so let's find out what changed since our previous session."
             elif achievementNumber == 0:
