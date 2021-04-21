@@ -295,10 +295,10 @@ class Session2Start:
     def PresentAndConfirmEasierGoalStatement(self):
         self.newGoal = self.milestone
         if self.goal is 0:
-            statement = "I propose that you change your final goal to be " + str(self.milestone) + " calories."
+            statement = "I propose that you change your final goal to be " + str(int(self.milestone)) + " calories."
             return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
         else:
-            statement = "I propose that you change your final goal to be " + str(self.milestone) + " grams of sugar."
+            statement = "I propose that you change your final goal to be " + str(int(self.milestone)) + " grams of sugar."
             return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this easier goal?"
 
     def PresentAndConfirmHarderGoalStatement(self):
@@ -311,14 +311,14 @@ class Session2Start:
         if self.goal is 0:
             initialConsumption = self.shortTermData.data["diet"]["session1"]["calories"]
             self.newGoal = getGoal.generatedAmbitiousGoal(self.goal, initialConsumption)
-            statement = "I propose that you change your final goal to be " + str(self.newGoal) + " calories."
+            statement = "I propose that you change your final goal to be " + str(int(self.newGoal)) + " calories."
             if self.newGoal == self.finalGoal or self.newGoal <= self.shortTermData.data["diet"]["session2"]["calories"]:
                 statement = statement + " If the new goal is same as your previous goal or consumption, this is because your previous goal was on the boundary of what may have been considered safe."
             return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this harder goal?"
         else:
             initialConsumption = self.shortTermData.data["diet"]["session1"]["sugar"]
             self.newGoal = getGoal.generatedAmbitiousGoal(self.goal, initialConsumption)
-            statement = "I propose that you change your final goal to be " + str(self.newGoal) + " grams of sugar."
+            statement = "I propose that you change your final goal to be " + str(int(self.newGoal)) + " grams of sugar."
             if self.newGoal == self.finalGoal or self.newGoal <= self.shortTermData.data["diet"]["session2"]["sugar"]:
                 statement = statement + " If the new goal is same as your previous goal or consumption, this is because your previous goal was on the boundary of what may have been considered safe."
             return statement + " If you decide not to work toward this new goal, you can continue towards the originally planned goal. Would you like to work towards this harder goal?"

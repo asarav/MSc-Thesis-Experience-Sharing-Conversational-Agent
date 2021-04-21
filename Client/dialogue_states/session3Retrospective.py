@@ -196,7 +196,10 @@ class Session3Retrospective:
     def AskFirstExperienceOpinionResponse(self, response):
         #For now, we won't do anything with the response
         #Store the response, whether they agree or disagree
-
+        self.shortTermData.data["ExperienceResponse"].append({
+            "answer": response,
+            "agree": self.responseUtils.YesOrNo(response)
+        })
         return [], "ReviewSecondSessionSession3"
 
     def ReviewSecondSessionStatement(self):

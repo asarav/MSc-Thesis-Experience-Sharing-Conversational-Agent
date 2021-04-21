@@ -227,9 +227,9 @@ class Session2QuestionsAndEnd:
         statement = "Great. Only one more session left and we will see if you reach your goal or not. It won't be easy, but I believe you will get there."
         statement = statement + " Your final goal is "
         if self.goal is 0:
-            statement = statement + str(self.finalGoal) + " maximum calories in your daily intake."
+            statement = statement + str(int(self.finalGoal)) + " maximum calories in your daily intake."
         else:
-            statement = statement + str(self.finalGoal) + " maximum grams of sugar in your daily intake."
+            statement = statement + str(int(self.finalGoal)) + " maximum grams of sugar in your daily intake."
         statement = statement + " Does that make sense?"
         return statement
 
@@ -248,7 +248,7 @@ class Session2QuestionsAndEnd:
     def ExplainGoalsSession2Statement(self):
         statement = "Your final goal is "
         if self.goal is 0:
-            statement = statement + str(self.finalGoal) + " calories. This means you should reduce some of the food items you are eating, or choose healthier alternatives with fewer calories."
+            statement = statement + str(int(self.finalGoal)) + " calories. This means you should reduce some of the food items you are eating, or choose healthier alternatives with fewer calories."
         else:
-            statement = statement + str(self.finalGoal) + " grams of sugar. This means you should reduce some of the food items you are eating that have high levels of sugar, or choose healthier alternatives with fewer grams of sugar."
+            statement = statement + str(int(self.finalGoal)) + " grams of sugar. This means you should reduce some of the food items you are eating that have high levels of sugar, or choose healthier alternatives with fewer grams of sugar."
         return statement

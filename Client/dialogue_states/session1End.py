@@ -31,7 +31,7 @@ class Session1End:
         self.states = [
         {
             "name": "AskMilestoneQuestions",
-            "statement": "Do you have any questions on how to reach this milestone or any strategies?",
+            "statement": "Do you have any questions on how to reach this milestone?",
             "response": self.AskMilestoneQuestionsResponse,
             "stateType": "AnswerResponse"
         },

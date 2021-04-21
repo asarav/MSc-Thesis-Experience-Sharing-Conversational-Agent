@@ -240,6 +240,7 @@ similarSystem = [None]*len(ids)
 duration = [None]*len(ids)
 numberOfSessions = [None]*len(ids)
 understandingDiabetes = [None]*len(ids)
+countryOfOrigin = [None]*len(ids)
 #Process questionnaire results
 for index, row in dfQuestionnaire.iterrows():
     QuestionID = row["ID"].strip().upper()
@@ -314,10 +315,15 @@ for index, row in dfQuestionnaire.iterrows():
     numberOfSessions[index] = row["Number of Sessions"]
     understandingDiabetes[index] = row["Understanding"]
 
+    countryOfOrigin[index] = row["Country of Origin"]
+
 
 columnContents = list(zip(ids,
                    conditions,
                    goals,
+                   gender,
+                   age,
+                   countryOfOrigin,
                    milestoneAchievement,
                    finalGoalAchievement,
                    finalGoalAchievementWithoutGoalChange,
@@ -371,6 +377,9 @@ columnContents = list(zip(ids,
 columnNames = ['id',
                'condition',
                'goals',
+               'gender',
+               'age',
+               'countryOfOrigin',
                'milestoneAchievement',
                'finalGoalAchievement',
                'finalGoalAchievementWithoutGoalChange',
@@ -426,3 +435,11 @@ dfJson = pd.DataFrame(columnContents,
                   columns =columnNames)
 
 dfJson.to_csv("output_files/summary.csv", index=False)
+
+condition1 = dfJson.loc[dfJson['condition'] == 0]
+condition2 = dfJson.loc[dfJson['condition'] == 1]
+condition3 = dfJson.loc[dfJson['condition'] == 2]
+
+condition1.to_csv("output_files/summary_1.csv", index=False)
+condition2.to_csv("output_files/summary_2.csv", index=False)
+condition3.to_csv("output_files/summary_3.csv", index=False)
