@@ -1,3 +1,5 @@
+from statistics import mean, stdev
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -103,6 +105,141 @@ def anthropomorphismBarChart(data, data_std, labels):
     fig.tight_layout()
     plt.show()
 
+def getAnimacy(data):
+    deadAlive = data["deadAlive"].mean()
+    stagnantLively = data["stagnantLively"].mean()
+    mechanicalOrganic = data["mechanicalOrganic"].mean()
+    inertInteractive = data["inertInteractive"].mean()
+    apatheticResponsive = data["apatheticResponsive"].mean()
+
+    return [deadAlive, stagnantLively, mechanicalOrganic, inertInteractive, apatheticResponsive],\
+           [data["deadAlive"].std(), data["stagnantLively"].std(), data["mechanicalOrganic"].std(), data["inertInteractive"].std(), data["apatheticResponsive"].std()]
+
+def animacyBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Dead Alive', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Stagnant Lively', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Mechanical Organic', yerr=data_std[:, 2])
+    rects4 = ax.bar(x + (3 * width), data[:, 3], width, color='#73C2FB', label='Inert Interactive', yerr=data_std[:, 3])
+    rects5 = ax.bar(x + (4 * width), data[:, 4], width, color='red', label='Apathetic Responsive', yerr=data_std[:, 4])
+
+    ax.set_ylabel('Likert Item Value')
+    ax.set_ylim(0, 6)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Animacy')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+    autolabel(rects3, ax)
+    autolabel(rects4, ax)
+    autolabel(rects5, ax)
+
+    fig.tight_layout()
+    plt.show()
+
+def getLikeability(data):
+    dislikeLike = data["dislikeLike"].mean()
+    unfriendlyFriendly = data["unfriendlyFriendly"].mean()
+    unkindKind = data["unkindKind"].mean()
+    unpleasantPleasant = data["unpleasantPleasant"].mean()
+    awfulNice = data["awfulNice"].mean()
+
+    return [dislikeLike, unfriendlyFriendly, unkindKind, unpleasantPleasant, awfulNice],\
+           [data["dislikeLike"].std(), data["unfriendlyFriendly"].std(), data["unkindKind"].std(), data["unpleasantPleasant"].std(), data["awfulNice"].std()]
+
+def likeabilityBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Dislike Like', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Unfriendly Friendly', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Unkind Kind', yerr=data_std[:, 2])
+    rects4 = ax.bar(x + (3 * width), data[:, 3], width, color='#73C2FB', label='Unpleasant Pleasant', yerr=data_std[:, 3])
+    rects5 = ax.bar(x + (4 * width), data[:, 4], width, color='red', label='Awful Nice', yerr=data_std[:, 4])
+
+    ax.set_ylabel('Likert Item Value')
+    ax.set_ylim(0, 6)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Likeability')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+    autolabel(rects3, ax)
+    autolabel(rects4, ax)
+    autolabel(rects5, ax)
+
+    fig.tight_layout()
+    plt.show()
+
+def getPerceivedIntelligence(data):
+    incompetentCompetent = data["incompetentCompetent"].mean()
+    ignorantKnowledgeable = data["ignorantKnowledgeable"].mean()
+    irresponsibleResponsible = data["irresponsibleResponsible"].mean()
+    unintelligentIntelligent = data["unintelligentIntelligent"].mean()
+    foolishSensible = data["foolishSensible"].mean()
+
+    return [incompetentCompetent, ignorantKnowledgeable, irresponsibleResponsible, unintelligentIntelligent, foolishSensible],\
+           [data["incompetentCompetent"].std(), data["ignorantKnowledgeable"].std(), data["irresponsibleResponsible"].std(), data["unintelligentIntelligent"].std(), data["foolishSensible"].std()]
+
+def perceivedIntelligenceBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Incompetent Competent', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Ignorant Knowledgeable', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Irresponsible Responsible', yerr=data_std[:, 2])
+    rects4 = ax.bar(x + (3 * width), data[:, 3], width, color='#73C2FB', label='Unintelligent Intelligent', yerr=data_std[:, 3])
+    rects5 = ax.bar(x + (4 * width), data[:, 4], width, color='red', label='Foolish Sensible', yerr=data_std[:, 4])
+
+    ax.set_ylabel('Likert Item Value')
+    ax.set_ylim(0, 6)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Perceived Intelligence')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+    autolabel(rects3, ax)
+    autolabel(rects4, ax)
+    autolabel(rects5, ax)
+
+    fig.tight_layout()
+    plt.show()
+
 def replaceItemInList(toReplace, substitute, data):
     return [substitute if x == toReplace else x for x in data]
 
@@ -136,6 +273,93 @@ def relationshipHistogram(data, title="Type of Relationship"):
     plt.title(title)
     plt.show()
 
+def motivationDifferences(data):
+    prior = data["motivationBefore"].tolist()
+    during = data["motivation"].tolist()
+    post = data["motivationAfter"].tolist()
+    diffPD = []
+    diffDA = []
+    for i in range(0, len(prior)):
+        diffPD.append(during[i] - prior[i])
+        diffDA.append(post[i] - during[i])
+
+    return [mean(diffPD), mean(diffDA)], [stdev(diffPD), stdev(diffDA)]
+
+def motivationDifferencesBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Before to During Change', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='During to After Change', yerr=data_std[:, 1])
+
+    ax.set_ylabel('Average Change in motivation')
+    ax.set_ylim(-2, 2)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Change in Motivation')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+
+    fig.tight_layout()
+    plt.show()
+
+def safetyDifferences(data):
+    anxiousBefore = data["anxiousRelaxedBefore"].tolist()
+    agitatedCalmBefore = data["agitatedCalmBefore"].tolist()
+    quiescentSurprisedBefore = data["quiescentSurprisedBefore"].tolist()
+    anxiousAfter = data["anxiousRelaxedAfter"].tolist()
+    agitatedCalmAfter = data["agitatedCalmAfter"].tolist()
+    quiescentSurprisedAfter = data["quiescentSurprisedAfter"].tolist()
+    diffAnxious = []
+    diffCalm = []
+    diffSurprised = []
+    for i in range(0, len(anxiousBefore)):
+        diffAnxious.append(anxiousAfter[i] - anxiousBefore[i])
+        diffCalm.append(agitatedCalmAfter[i] - agitatedCalmBefore[i])
+        diffSurprised.append(quiescentSurprisedAfter[i] - quiescentSurprisedBefore[i])
+
+    return [mean(diffAnxious), mean(diffCalm), mean(diffSurprised)], [stdev(diffAnxious), stdev(diffCalm), stdev(diffSurprised)]
+
+def safetyDifferencesBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Anxious/Relaxed', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Agitated/Calm', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Quiescent/Surprised', yerr=data_std[:, 2])
+
+    ax.set_ylabel('Average Change in motivation')
+    ax.set_ylim(-2, 2)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Change in Safety')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+
+    fig.tight_layout()
+    plt.show()
 
 data = pd.read_csv("output_files/summary.csv")
 data1 = pd.read_csv("output_files/summary_1.csv")
@@ -167,7 +391,41 @@ second, secondError = getAnthropomorphism(data2)
 third, thirdError = getAnthropomorphism(data3)
 
 anthropomorphismBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+all, allError = getAnimacy(data)
+first, firstError = getAnimacy(data1)
+second, secondError = getAnimacy(data2)
+third, thirdError = getAnimacy(data3)
+
+animacyBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+all, allError = getLikeability(data)
+first, firstError = getLikeability(data1)
+second, secondError = getLikeability(data2)
+third, thirdError = getLikeability(data3)
+
+likeabilityBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+all, allError = getPerceivedIntelligence(data)
+first, firstError = getPerceivedIntelligence(data1)
+second, secondError = getPerceivedIntelligence(data2)
+third, thirdError = getPerceivedIntelligence(data3)
+
+perceivedIntelligenceBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
 relationshipHistogram(data)
 educationHistogram(data)
 
+all, allError = motivationDifferences(data)
+first, firstError = motivationDifferences(data1)
+second, secondError = motivationDifferences(data2)
+third, thirdError = motivationDifferences(data3)
 
+motivationDifferencesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+all, allError = safetyDifferences(data)
+first, firstError = safetyDifferences(data1)
+second, secondError = safetyDifferences(data2)
+third, thirdError = safetyDifferences(data3)
+
+safetyDifferencesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])

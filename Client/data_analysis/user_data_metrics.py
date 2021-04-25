@@ -234,6 +234,8 @@ usefulOrNotObesity = [None]*len(ids)
 convenience = [None]*len(ids)
 preference = [None]*len(ids)
 motivation = [None]*len(ids)
+motivationBefore = [None]*len(ids)
+motivationAfter = [None]*len(ids)
 diabetes = [None]*len(ids)
 familyHistoryDiabetes = [None]*len(ids)
 similarSystem = [None]*len(ids)
@@ -304,7 +306,10 @@ for index, row in dfQuestionnaire.iterrows():
     convenience[index] = row["Convenience"]
     preference[index] = row["Preference"]
 
+    motivationBefore[index] = row["MotivationBefore"]
     motivation[index] = row["Motivation"]
+    motivationAfter[index] = row["MotivationAfter"]
+
     diabetes[index] = row["Diabetes"]
 
     familyHistoryDiabetes[index] = row["FamilyHistory"]
@@ -367,7 +372,9 @@ columnContents = list(zip(ids,
                           usefulOrNotObesity,
                           convenience,
                           preference,
+                          motivationBefore,
                           motivation,
+                          motivationAfter,
                           diabetes,
                           familyHistoryDiabetes,
                           similarSystem,
@@ -423,7 +430,9 @@ columnNames = ['id',
                'usefulOrNotObesity',
                'convenience',
                'preference',
+               'motivationBefore',
                'motivation',
+               'motivationAfter',
                'diabetes',
                'familyHistoryDiabetes',
                'similarSystem',

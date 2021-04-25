@@ -99,7 +99,7 @@ class ResponseManager:
         Response = Response.replace("nine", "10")
         Response = Response.replace("ten", "10")
 
-        Response = Response.strip('cmkgftinlb')
+        Response = Response.strip('cmkgftinlb+,')
         numbers = [int(word) for word in Response.split() if word.isdigit()]
         print(Response)
         print(type(Response))
