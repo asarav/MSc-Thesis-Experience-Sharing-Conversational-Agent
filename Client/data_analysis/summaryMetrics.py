@@ -41,6 +41,33 @@ def ageHistogram(data, title="Participants by Age"):
     plt.title(title)
     plt.show()
 
+def firstTimeInteractingHistogram(data, title="First Time Interacting with Robot"):
+    genders = data["firstTime"].tolist()
+
+    plotHistogram(genders, 2)
+    plt.title(title)
+    plt.show()
+
+def diabetesHistogram(data, title="Has Diabetes"):
+    genders = data["diabetes"].tolist()
+
+    plotHistogram(genders, 2)
+    plt.title(title)
+    plt.show()
+
+def familyHistoryHistogram(data, title="Family History"):
+    genders = data["familyHistoryDiabetes"].tolist()
+
+    plotHistogram(genders, 2)
+    plt.title(title)
+    plt.show()
+
+def similarSystemHistogram(data, title="Would use Similar System for other Health Goals"):
+    genders = data["similarSystem"].tolist()
+
+    plotHistogram(genders, 2)
+    plt.title(title)
+    plt.show()
 
 def subcategorybar(X, vals, width=0.8):
     n = len(vals)
@@ -246,7 +273,7 @@ def replaceItemInList(toReplace, substitute, data):
 def educationHistogram(data, title="Education Levels of Participants"):
     education = data["education"].tolist()
     education = replaceItemInList(0, "None", education)
-    education = replaceItemInList(1, "GED/Secondary", education)
+    education = replaceItemInList(9, "GED/Secondary", education)
     education = replaceItemInList(2, "High School", education)
     education = replaceItemInList(3, "Technical", education)
     education = replaceItemInList(4, "Bachelors", education)
@@ -300,7 +327,7 @@ def motivationDifferencesBarChart(data, data_std, labels):
     rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='During to After Change', yerr=data_std[:, 1])
 
     ax.set_ylabel('Average Change in motivation')
-    ax.set_ylim(-2, 2)
+    ax.set_ylim(-1.5, 2)
     ax.set_xticks(x + width + width / 2)
     ax.set_xticklabels(x_labels)
     ax.set_xlabel('Conditions')
@@ -357,6 +384,51 @@ def safetyDifferencesBarChart(data, data_std, labels):
 
     autolabel(rects1, ax)
     autolabel(rects2, ax)
+    autolabel(rects3, ax)
+
+    fig.tight_layout()
+    plt.show()
+
+def dietDiabetes(data):
+    usefulOrNotDiabetes = data["usefulOrNotDiabetes"].tolist()
+    usefulOrNotObesity = data["usefulOrNotObesity"].tolist()
+    convenience = data["convenience"].tolist()
+    preference = data["preference"].tolist()
+    understandingDiabetes = data["understandingDiabetes"].tolist()
+
+    return [mean(usefulOrNotDiabetes), mean(usefulOrNotObesity), mean(convenience), mean(preference), mean(understandingDiabetes)], [stdev(usefulOrNotDiabetes), stdev(usefulOrNotObesity), stdev(convenience), stdev(preference), stdev(understandingDiabetes)]
+
+def dietDiabetesBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Useful Or Not Diabetes', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Useful Or Not Obesity', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Convenience', yerr=data_std[:, 2])
+    rects4 = ax.bar(x + (3 * width), data[:, 3], width, color='#73C2FB', label='Preference', yerr=data_std[:, 3])
+    rects5 = ax.bar(x + (4 * width), data[:, 4], width, color='red', label='Understanding Diabetes', yerr=data_std[:, 4])
+
+    ax.set_ylabel('Likert Item Value')
+    ax.set_ylim(0, 6)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Diet, Diabetes, Preferences')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+    autolabel(rects3, ax)
+    autolabel(rects4, ax)
+    autolabel(rects5, ax)
 
     fig.tight_layout()
     plt.show()
@@ -429,3 +501,11 @@ second, secondError = safetyDifferences(data2)
 third, thirdError = safetyDifferences(data3)
 
 safetyDifferencesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+all, allError = dietDiabetes(data)
+first, firstError = dietDiabetes(data1)
+second, secondError = dietDiabetes(data2)
+third, thirdError = dietDiabetes(data3)
+
+dietDiabetesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+

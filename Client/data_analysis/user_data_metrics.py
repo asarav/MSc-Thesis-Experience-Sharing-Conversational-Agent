@@ -243,6 +243,11 @@ duration = [None]*len(ids)
 numberOfSessions = [None]*len(ids)
 understandingDiabetes = [None]*len(ids)
 countryOfOrigin = [None]*len(ids)
+engagement = [None]*len(ids)
+autonomy = [None]*len(ids)
+positiveNegative = [None]*len(ids)
+firstTime = [None]*len(ids)
+
 #Process questionnaire results
 for index, row in dfQuestionnaire.iterrows():
     QuestionID = row["ID"].strip().upper()
@@ -310,8 +315,13 @@ for index, row in dfQuestionnaire.iterrows():
     motivation[index] = row["Motivation"]
     motivationAfter[index] = row["MotivationAfter"]
 
+    engagement[index] = row["Engagement"]
+    autonomy[index] = row["Autonomy"]
+    positiveNegative[index] = row["PositiveNegative"]
+
     diabetes[index] = row["Diabetes"]
 
+    firstTime[index] = row["FirstTime"]
     familyHistoryDiabetes[index] = row["FamilyHistory"]
     similarSystem[index] = row["SimilarSystem"]
 
@@ -375,7 +385,11 @@ columnContents = list(zip(ids,
                           motivationBefore,
                           motivation,
                           motivationAfter,
+                          engagement,
+                          autonomy,
+                          positiveNegative,
                           diabetes,
+                          firstTime,
                           familyHistoryDiabetes,
                           similarSystem,
                           duration,
@@ -433,7 +447,11 @@ columnNames = ['id',
                'motivationBefore',
                'motivation',
                'motivationAfter',
+               'engagement',
+               'autonomy',
+               'positiveNegative',
                'diabetes',
+               'firstTime',
                'familyHistoryDiabetes',
                'similarSystem',
                'duration',
