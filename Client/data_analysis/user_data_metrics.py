@@ -26,6 +26,14 @@ zeroedMilestoneAdherence = []
 milestoneAdherenceWithoutGoalChange = []
 zeroedMilestoneAdherenceWithoutGoalChange = []
 
+milestoneDifference = []
+goalDifference = []
+goalDifferenceWithoutChange = []
+day1Consumption = []
+day2Consumption = []
+day3Consumption = []
+
+
 for file in onlyfiles:
     if file == "session.json":
         continue
@@ -104,13 +112,45 @@ for file in onlyfiles:
         else:
             futureWork.append(False)
 
+        if goal is 0:
+            day1 = fileData["diet"]["session1"]["calories"]
+            milestoneDifference.append((fileData["diet"]["session2"]["calories"] - fileData["milestone"])/day1)
+            goalDifference.append((fileData["diet"]["session3"]["calories"] - fileData["finalGoal"])/day1)
+            if "goalChanged" in fileData:
+                if fileData["goalChanged"]:
+                    goalDifferenceWithoutChange.append((fileData["diet"]["session3"]["calories"] - fileData["previousGoal"])/day1)
+                else:
+                    goalDifferenceWithoutChange.append((fileData["diet"]["session3"]["calories"] - fileData["finalGoal"])/day1)
+            else:
+                goalDifferenceWithoutChange.append((fileData["diet"]["session3"]["calories"] - fileData["finalGoal"])/day1)
+            day1Consumption.append(day1)
+            day2Consumption.append(fileData["diet"]["session2"]["calories"])
+            day3Consumption.append(fileData["diet"]["session3"]["calories"])
+        else:
+            day1 = fileData["diet"]["session1"]["sugar"]
+            milestoneDifference.append((fileData["diet"]["session2"]["sugar"] - fileData["milestone"])/day1)
+            goalDifference.append((fileData["diet"]["session3"]["sugar"] - fileData["finalGoal"])/day1)
+            if "goalChanged" in fileData:
+                if fileData["goalChanged"]:
+                    goalDifferenceWithoutChange.append((fileData["diet"]["session3"]["sugar"] - fileData["previousGoal"])/day1)
+                else:
+                    goalDifferenceWithoutChange.append((fileData["diet"]["session3"]["sugar"] - fileData["finalGoal"])/day1)
+            else:
+                goalDifferenceWithoutChange.append((fileData["diet"]["session3"]["sugar"] - fileData["finalGoal"])/day1)
+
+            day1Consumption.append(day1)
+            day2Consumption.append(fileData["diet"]["session2"]["sugar"])
+            day3Consumption.append(fileData["diet"]["session3"]["sugar"])
+
         #Milestone adherence with goal change
         MA = 0
         zeroedMA = 0
         if goal is 0:
+            day1 = fileData["diet"]["session1"]["calories"]
             milestone = fileData["milestone"]
             finalGoal = fileData["finalGoal"]
             MA = abs(milestone - fileData["diet"]["session2"]["calories"]) + abs(finalGoal - fileData["diet"]["session3"]["calories"])
+            MA = MA/day1
             zeroedMD = milestone - fileData["diet"]["session2"]["calories"]
             zeroedFD = finalGoal - fileData["diet"]["session3"]["calories"]
             if zeroedMD > 0:
@@ -118,10 +158,13 @@ for file in onlyfiles:
             if zeroedFD > 0:
                 zeroedFD = 0
             zeroedMA = abs(zeroedMD) + abs(zeroedFD)
+            zeroedMA = zeroedMA/day1
         else:
+            day1 = fileData["diet"]["session1"]["sugar"]
             milestone = fileData["milestone"]
             finalGoal = fileData["finalGoal"]
             MA = abs(milestone - fileData["diet"]["session2"]["sugar"]) + abs(finalGoal - fileData["diet"]["session3"]["sugar"])
+            MA = MA/day1
             zeroedMD = milestone - fileData["diet"]["session2"]["sugar"]
             zeroedFD = finalGoal - fileData["diet"]["session3"]["sugar"]
             if zeroedMD > 0:
@@ -129,6 +172,7 @@ for file in onlyfiles:
             if zeroedFD > 0:
                 zeroedFD = 0
             zeroedMA = abs(zeroedMD) + abs(zeroedFD)
+            zeroedMA = zeroedMA/day1
         milestoneAdherence.append(MA)
         zeroedMilestoneAdherence.append(zeroedMA)
 
@@ -136,12 +180,14 @@ for file in onlyfiles:
         MA = 0
         zeroedMA = 0
         if goal is 0:
+            day1 = fileData["diet"]["session1"]["calories"]
             milestone = fileData["milestone"]
             finalGoal = fileData["finalGoal"]
             if "goalChanged" in fileData:
                 if fileData["goalChanged"]:
                     finalGoal = fileData["previousGoal"]
             MA = abs(milestone - fileData["diet"]["session2"]["calories"]) + abs(finalGoal - fileData["diet"]["session3"]["calories"])
+            MA = MA/day1
             zeroedMD = milestone - fileData["diet"]["session2"]["calories"]
             zeroedFD = finalGoal - fileData["diet"]["session3"]["calories"]
             if zeroedMD > 0:
@@ -149,13 +195,16 @@ for file in onlyfiles:
             if zeroedFD > 0:
                 zeroedFD = 0
             zeroedMA = abs(zeroedMD) + abs(zeroedFD)
+            zeroedMA = zeroedMA/day1
         else:
+            day1 = fileData["diet"]["session1"]["sugar"]
             milestone = fileData["milestone"]
             finalGoal = fileData["finalGoal"]
             if "goalChanged" in fileData:
                 if fileData["goalChanged"]:
                     finalGoal = fileData["previousGoal"]
             MA = abs(milestone - fileData["diet"]["session2"]["sugar"]) + abs(finalGoal - fileData["diet"]["session3"]["sugar"])
+            MA = MA/day1
             zeroedMD = milestone - fileData["diet"]["session2"]["sugar"]
             zeroedFD = finalGoal - fileData["diet"]["session3"]["sugar"]
             if zeroedMD > 0:
@@ -163,8 +212,11 @@ for file in onlyfiles:
             if zeroedFD > 0:
                 zeroedFD = 0
             zeroedMA = abs(zeroedMD) + abs(zeroedFD)
+            zeroedMA = zeroedMA/day1
         milestoneAdherenceWithoutGoalChange.append(MA)
         zeroedMilestoneAdherenceWithoutGoalChange.append(zeroedMA)
+
+
 
 dfConsent = pd.read_csv("surveys/Consent.csv")
 dfQuestionnaire = pd.read_csv("surveys/Questionnaire.csv")
@@ -191,7 +243,7 @@ for index, row in dfConsent.iterrows():
         else:
             index = ids.index(Consentid)
     except ValueError:
-        print("Not Found ", Consentid, isProlific)
+        print("Not Found Consent ", Consentid, isProlific)
         continue
 
     print(Consentid)
@@ -204,6 +256,7 @@ education = [None]*len(ids)
 fakeNatural = [None]*len(ids)
 machineHuman = [None]*len(ids)
 postEfficacy = [None]*len(ids)
+efficacyChange = [None]*len(ids)
 conscious = [None]*len(ids)
 artificialLifelike = [None]*len(ids)
 rigidElegant = [None]*len(ids)
@@ -236,6 +289,8 @@ preference = [None]*len(ids)
 motivation = [None]*len(ids)
 motivationBefore = [None]*len(ids)
 motivationAfter = [None]*len(ids)
+motivationBeforeDuringChange = [None]*len(ids)
+motivationDuringAfterChange = [None]*len(ids)
 diabetes = [None]*len(ids)
 familyHistoryDiabetes = [None]*len(ids)
 similarSystem = [None]*len(ids)
@@ -268,12 +323,13 @@ for index, row in dfQuestionnaire.iterrows():
         else:
             index = ids.index(QuestionID)
     except ValueError:
-        print("Not Found ", QuestionID, isProlific)
+        print("Not Found Questionnaire", QuestionID, isProlific)
         continue
 
     print(QuestionID)
     print(index)
     postEfficacy[index] = row["Efficacy"]
+    efficacyChange[index] = int(postEfficacy[index]) - int(priorEfficacy[index])
     education[index] = row["Education Level"]
     machineHuman[index] = row["Machine or Human"]
     fakeNatural[index] = row["Fake or Natural"]
@@ -314,6 +370,8 @@ for index, row in dfQuestionnaire.iterrows():
     motivationBefore[index] = row["MotivationBefore"]
     motivation[index] = row["Motivation"]
     motivationAfter[index] = row["MotivationAfter"]
+    motivationBeforeDuringChange[index] = int(row["Motivation"]) - int(row["MotivationBefore"])
+    motivationDuringAfterChange[index] = int(row["MotivationAfter"]) - int(row["Motivation"])
 
     engagement[index] = row["Engagement"]
     autonomy[index] = row["Autonomy"]
@@ -348,8 +406,15 @@ columnContents = list(zip(ids,
                           zeroedMilestoneAdherence,
                           milestoneAdherenceWithoutGoalChange,
                           zeroedMilestoneAdherenceWithoutGoalChange,
+                          milestoneDifference,
+                          goalDifference,
+                          goalDifferenceWithoutChange,
+                          day1Consumption,
+                          day2Consumption,
+                          day3Consumption,
                           priorEfficacy,
                           postEfficacy,
+                          efficacyChange,
                           education,
                           fakeNatural,
                           machineHuman,
@@ -385,6 +450,8 @@ columnContents = list(zip(ids,
                           motivationBefore,
                           motivation,
                           motivationAfter,
+                          motivationBeforeDuringChange,
+                          motivationDuringAfterChange,
                           engagement,
                           autonomy,
                           positiveNegative,
@@ -410,8 +477,15 @@ columnNames = ['id',
                'zeroedMilestoneAdherence',
                'milestoneAdherenceWithoutGoalChange',
                'zeroedMilestoneAdherenceWithoutGoalChange',
+               'milestoneDifference',
+               'goalDifference',
+               'goalDifferenceWithoutChange',
+               'day1Consumption',
+               'day2Consumption',
+               'day3Consumption',
                'priorEfficacy',
                'postEfficacy',
+               'efficacyChange',
                'education',
                'fakeNatural',
                'machineHuman',
@@ -447,6 +521,8 @@ columnNames = ['id',
                'motivationBefore',
                'motivation',
                'motivationAfter',
+               'motivationBeforeDuringChange',
+               'motivationDuringAfterChange',
                'engagement',
                'autonomy',
                'positiveNegative',

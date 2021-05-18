@@ -1,8 +1,11 @@
-from statistics import mean, stdev
+from statistics import mean, stdev, mode, median
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from collections import Counter
+
+np.set_printoptions(precision=4)
 
 def plotHistogram(valueList, binsNum, label="None"):
     plt.hist(valueList, bins=binsNum, alpha=0.5, label=label, edgecolor='black')
@@ -13,7 +16,10 @@ def efficacyHistogram(data, title="User Efficacy"):
     plt.legend(loc='upper right')
     plt.title(title)
     plt.show()
+    print("Efficacy")
+    print(data["priorEfficacy"].median())
     print("Prior Efficacy", data["priorEfficacy"].mean(), data["priorEfficacy"].std())
+    print(data["postEfficacy"].median())
     print("Post Efficacy", data["postEfficacy"].mean(), data["postEfficacy"].std())
 
 def efficacyDifference(data, title="User Efficacy Difference"):
@@ -22,9 +28,11 @@ def efficacyDifference(data, title="User Efficacy Difference"):
     diff = []
     for i in range(0, len(prior)):
         diff.append(post[i] - prior[i])
+    print("Efficacy Difference")
     plotHistogram(diff, 5)
     plt.title(title)
     plt.show()
+    print(median(diff))
     print("Efficacy Difference", np.mean(diff), np.std(diff))
 
 def genderHistogram(data, title="Participants by Gender"):
@@ -94,6 +102,8 @@ def getAnthropomorphism(data):
     artificialLifelike = data["artificialLifelike"].mean()
     rigidElegant = data["rigidElegant"].mean()
 
+    print("Antropomorphism")
+    print(data["fakeNatural"].median(), data["machineHuman"].median(), data["consciousUnconscious"].median(), data["artificialLifelike"].median(), data["rigidElegant"].median())
     return [fakeNatural, machineHuman, consciousUnconscious, artificialLifelike, rigidElegant],\
            [data["fakeNatural"].std(), data["machineHuman"].std(), data["consciousUnconscious"].std(), data["artificialLifelike"].std(), data["rigidElegant"].std()]
 
@@ -115,7 +125,7 @@ def anthropomorphismBarChart(data, data_std, labels):
     rects5 = ax.bar(x + (4 * width), data[:, 4], width, color='red', label='Rigid Elegant', yerr=data_std[:, 4])
 
     ax.set_ylabel('Likert Item Value')
-    ax.set_ylim(0, 6)
+    ax.set_ylim(0, 5)
     ax.set_xticks(x + width + width / 2)
     ax.set_xticklabels(x_labels)
     ax.set_xlabel('Conditions')
@@ -139,6 +149,9 @@ def getAnimacy(data):
     inertInteractive = data["inertInteractive"].mean()
     apatheticResponsive = data["apatheticResponsive"].mean()
 
+    print("Animacy")
+    print(data["deadAlive"].median(), data["stagnantLively"].median(), data["mechanicalOrganic"].median(),
+          data["inertInteractive"].median(), data["apatheticResponsive"].median())
     return [deadAlive, stagnantLively, mechanicalOrganic, inertInteractive, apatheticResponsive],\
            [data["deadAlive"].std(), data["stagnantLively"].std(), data["mechanicalOrganic"].std(), data["inertInteractive"].std(), data["apatheticResponsive"].std()]
 
@@ -184,6 +197,9 @@ def getLikeability(data):
     unpleasantPleasant = data["unpleasantPleasant"].mean()
     awfulNice = data["awfulNice"].mean()
 
+    print("Likeability")
+    print(data["dislikeLike"].median(), data["unfriendlyFriendly"].median(), data["unkindKind"].median(),
+          data["unpleasantPleasant"].median(), data["awfulNice"].median())
     return [dislikeLike, unfriendlyFriendly, unkindKind, unpleasantPleasant, awfulNice],\
            [data["dislikeLike"].std(), data["unfriendlyFriendly"].std(), data["unkindKind"].std(), data["unpleasantPleasant"].std(), data["awfulNice"].std()]
 
@@ -229,6 +245,9 @@ def getPerceivedIntelligence(data):
     unintelligentIntelligent = data["unintelligentIntelligent"].mean()
     foolishSensible = data["foolishSensible"].mean()
 
+    print("Perceived Intelligence")
+    print(data["incompetentCompetent"].median(), data["ignorantKnowledgeable"].median(), data["irresponsibleResponsible"].median(),
+          data["unintelligentIntelligent"].median(), data["foolishSensible"].median())
     return [incompetentCompetent, ignorantKnowledgeable, irresponsibleResponsible, unintelligentIntelligent, foolishSensible],\
            [data["incompetentCompetent"].std(), data["ignorantKnowledgeable"].std(), data["irresponsibleResponsible"].std(), data["unintelligentIntelligent"].std(), data["foolishSensible"].std()]
 
@@ -310,7 +329,9 @@ def motivationDifferences(data):
         diffPD.append(during[i] - prior[i])
         diffDA.append(post[i] - during[i])
 
-    return [mean(diffPD), mean(diffDA)], [stdev(diffPD), stdev(diffDA)]
+    print("Motivation")
+    print(median(post), median(during))
+    return [mean(post), mean(during)], [stdev(post), stdev(during)], diffPD, diffDA
 
 def motivationDifferencesBarChart(data, data_std, labels):
     length = len(data)
@@ -348,14 +369,20 @@ def safetyDifferences(data):
     anxiousAfter = data["anxiousRelaxedAfter"].tolist()
     agitatedCalmAfter = data["agitatedCalmAfter"].tolist()
     quiescentSurprisedAfter = data["quiescentSurprisedAfter"].tolist()
-    diffAnxious = []
-    diffCalm = []
-    diffSurprised = []
+    diffAnxious = anxiousAfter
+    diffCalm = agitatedCalmAfter
+    diffSurprised = quiescentSurprisedAfter
+
+    '''
     for i in range(0, len(anxiousBefore)):
         diffAnxious.append(anxiousAfter[i] - anxiousBefore[i])
         diffCalm.append(agitatedCalmAfter[i] - agitatedCalmBefore[i])
         diffSurprised.append(quiescentSurprisedAfter[i] - quiescentSurprisedBefore[i])
+    '''
 
+    print("Safety Differences")
+    print(median(diffAnxious), median(diffCalm),
+          median(diffSurprised))
     return [mean(diffAnxious), mean(diffCalm), mean(diffSurprised)], [stdev(diffAnxious), stdev(diffCalm), stdev(diffSurprised)]
 
 def safetyDifferencesBarChart(data, data_std, labels):
@@ -396,6 +423,9 @@ def dietDiabetes(data):
     preference = data["preference"].tolist()
     understandingDiabetes = data["understandingDiabetes"].tolist()
 
+    print("Diet Diabetes")
+    print(median(usefulOrNotDiabetes), median(usefulOrNotObesity),
+          median(convenience), median(preference), median(understandingDiabetes))
     return [mean(usefulOrNotDiabetes), mean(usefulOrNotObesity), mean(convenience), mean(preference), mean(understandingDiabetes)], [stdev(usefulOrNotDiabetes), stdev(usefulOrNotObesity), stdev(convenience), stdev(preference), stdev(understandingDiabetes)]
 
 def dietDiabetesBarChart(data, data_std, labels):
@@ -433,10 +463,61 @@ def dietDiabetesBarChart(data, data_std, labels):
     fig.tight_layout()
     plt.show()
 
+def boxPlot(data, labels, title):
+    fig, ax = plt.subplots()
+    ax.boxplot(data)
+    ax.set_xticklabels(labels)
+
+    plt.title(title)
+
+    plt.show()
+
+def claimsQuestions(data):
+    engagement = data["engagement"].tolist()
+    autonomy = data["autonomy"].tolist()
+    negativePositive = data["positiveNegative"].tolist()
+
+    print("Claims")
+    print(median(engagement), median(autonomy),
+          median(negativePositive))
+    return [mean(engagement), mean(autonomy), mean(negativePositive)], [stdev(engagement), stdev(autonomy), stdev(negativePositive)]
+
+def claimsBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Engagement', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Autonomy', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Negative/Positive Experience', yerr=data_std[:, 2])
+
+    ax.set_ylabel('Likert Item Value')
+    ax.set_ylim(0, 6)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Claims Questions')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+    autolabel(rects3, ax)
+
+    fig.tight_layout()
+    plt.show()
+
 data = pd.read_csv("output_files/summary.csv")
 data1 = pd.read_csv("output_files/summary_1.csv")
 data2 = pd.read_csv("output_files/summary_2.csv")
 data3 = pd.read_csv("output_files/summary_3.csv")
+
 '''
 #Efficacy
 efficacyHistogram(data)
@@ -448,64 +529,126 @@ efficacyDifference(data)
 efficacyDifference(data1)
 efficacyDifference(data2)
 efficacyDifference(data3)
-'''
+
 #Demographics
 
 #Age
 ageHistogram(data)
-#Gender
-genderHistogram(data)
 
 #Anthropomorphism
 all, allError = getAnthropomorphism(data)
+print(all, allError)
 first, firstError = getAnthropomorphism(data1)
+print(first, firstError)
 second, secondError = getAnthropomorphism(data2)
+print(second, secondError)
 third, thirdError = getAnthropomorphism(data3)
+print(third, thirdError)
 
 anthropomorphismBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
 all, allError = getAnimacy(data)
+print(all, allError)
 first, firstError = getAnimacy(data1)
+print(first, firstError)
 second, secondError = getAnimacy(data2)
+print(second, secondError)
 third, thirdError = getAnimacy(data3)
+print(third, thirdError)
 
 animacyBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
 all, allError = getLikeability(data)
+print(all, allError)
 first, firstError = getLikeability(data1)
+print(first, firstError)
 second, secondError = getLikeability(data2)
+print(second, secondError)
 third, thirdError = getLikeability(data3)
+print(third, thirdError)
 
 likeabilityBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
+
 all, allError = getPerceivedIntelligence(data)
+print(all, allError)
 first, firstError = getPerceivedIntelligence(data1)
+print(first, firstError)
 second, secondError = getPerceivedIntelligence(data2)
+print(second, secondError)
 third, thirdError = getPerceivedIntelligence(data3)
+print(third, thirdError)
 
 perceivedIntelligenceBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
 relationshipHistogram(data)
 educationHistogram(data)
 
-all, allError = motivationDifferences(data)
-first, firstError = motivationDifferences(data1)
-second, secondError = motivationDifferences(data2)
-third, thirdError = motivationDifferences(data3)
-
-motivationDifferencesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
 all, allError = safetyDifferences(data)
+print(all, allError)
 first, firstError = safetyDifferences(data1)
+print(first, firstError)
 second, secondError = safetyDifferences(data2)
+print(second, secondError)
 third, thirdError = safetyDifferences(data3)
+print(third, thirdError)
 
 safetyDifferencesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
 all, allError = dietDiabetes(data)
+print(all, allError)
 first, firstError = dietDiabetes(data1)
+print(first, firstError)
 second, secondError = dietDiabetes(data2)
+print(second, secondError)
 third, thirdError = dietDiabetes(data3)
+print(third, thirdError)
 
 dietDiabetesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
 
+
+all, allError = claimsQuestions(data)
+print(all, allError)
+first, firstError = claimsQuestions(data1)
+print(first, firstError)
+second, secondError = claimsQuestions(data2)
+print(second, secondError)
+third, thirdError = claimsQuestions(data3)
+print(third, thirdError)
+
+claimsBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+#Gender
+genderHistogram(data)
+
+_, _, all, allError = motivationDifferences(data)
+_, _, first, firstError = motivationDifferences(data1)
+_, _, second, secondError = motivationDifferences(data2)
+_, _, third, thirdError = motivationDifferences(data3)
+
+print(mode(first), mode(second), third)
+boxPlot([all, first, second, third], ["All", "First", "Second", "Third"], "Comparison of Motivation Change")
+
+all, allError, _, _ = motivationDifferences(data)
+print(all, allError)
+first, firstError, _, _ = motivationDifferences(data1)
+print(first, firstError)
+second, secondError, _, _ = motivationDifferences(data2)
+print(second, secondError)
+third, thirdError, _, _ = motivationDifferences(data3)
+print(third, thirdError)
+
+motivationDifferencesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
+
+relationshipHistogram(data)
+'''
+items = [data, data1, data2, data3]
+
+for item in items:
+    print("ITEM")
+    words = item["futureWork"].tolist()
+
+    #print(mean(words), stdev(words), median(words))
+    print(Counter(words).keys()) # equals to list(set(words))
+    print(Counter(words).values()) # counts the elements' frequency
