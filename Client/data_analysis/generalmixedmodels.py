@@ -48,28 +48,36 @@ plt.ylabel("Residuals")
 plt.show()
 '''
 
+def add5(column):
+    updated = column
+    for i in range(0, len(updated)):
+        updated[i] = updated[i] + 5
+    return updated
+
 data = pd.read_csv("output_files/summary.csv")
 
 modelData = data
 #Remove string data
 del modelData['id']
-del modelData['gender']
+#del modelData['gender']
 del modelData['countryOfOrigin']
 modelData['finalGoalAchievement'] = modelData['finalGoalAchievement'].astype(int)
 modelData['milestoneAchievement'] = modelData['milestoneAchievement'].astype(int)
 modelData['futureWork'] = modelData['futureWork'].astype(int)
 modelData['finalGoalAchievementWithoutGoalChange'] = modelData['finalGoalAchievementWithoutGoalChange'].astype(int)
+'''
+modelData['agitatedCalmChange'] = modelData['agitatedCalmChange'] + 5
+modelData['quiescentSurprisedChange'] = modelData['quiescentSurprisedChange'] + 5
+modelData['motivationDuringAfterChange'] = modelData['motivationDuringAfterChange'] + 5
+modelData['anxiousRelaxedChange'] = modelData['anxiousRelaxedChange'] + 5
+modelData['efficacyChange'] = modelData['efficacyChange'] + 5
+'''
 
-modelData.info()
-
-dependentVariable = "finalGoalAchievement"
+dependentVariable = "finalGoalAchievementWithoutGoalChange"
 
 mixed = smf.mixedlm(dependentVariable + " ~"
                     " milestoneAchievement+"
-                    "age+"
-                    "motivationBeforeDuringChange+"
                     "milestoneAdherence+"
-                    "condition+"
                     "agreementPercentage+"
                     "futureWork+"
                     "priorEfficacy+"
@@ -118,21 +126,24 @@ mixed = smf.mixedlm(dependentVariable + " ~"
                     "engagement+"
                     "autonomy+"
                     "positiveNegative+"
-                    "diabetes+"
-                    "firstTime+"
-                    "familyHistoryDiabetes+"
                     "similarSystem+"
                     "duration+"
                     "numberOfSessions+"
-                    "understandingDiabetes", modelData, groups = modelData["condition"])
+                    "understandingDiabetes", modelData, groups = modelData["condition"],
+                    re_formula="~firstTime+"
+                    "familyHistoryDiabetes+"
+                    "firstTime+"
+                    "gender+"
+                    "age+"
+                    "diabetes")
 mixed_fit = mixed.fit()
 #print the summary
 print(mixed_fit.summary())
 
 model = mixed_fit
 
-plt.scatter(data[dependentVariable] - model.resid, model.resid, alpha = 0.5)
-plt.title("Residual vs. Fitted")
+plt.scatter(data[dependentVariable] - model.resid_working, model.resid_working, alpha = 0.5)
+plt.title("Residual vs. Fitted for Final Goal Achievement without Goal Change")
 plt.xlabel("Fitted Values")
 plt.ylabel("Residuals")
 plt.show()
