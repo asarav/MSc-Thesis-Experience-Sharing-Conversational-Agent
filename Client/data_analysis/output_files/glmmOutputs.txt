@@ -1,0 +1,594 @@
+finalGoalAchievement
+
+REML criterion at convergence: 174.2
+
+Scaled residuals:
+
+     Min       1Q   Median       3Q      Max
+-1.59328 -0.36229  0.03149  0.41861  1.34380
+
+Random effects:
+ Groups   Name                  Variance  Std.Dev. Corr
+ groups   (Intercept)           4.699e-01 0.685498
+          firstTime             1.373e-01 0.370580 -1.00
+          gendermale            1.707e-02 0.130636  1.00 -1.00
+          gendernon binary      8.388e-02 0.289613  1.00 -1.00  1.00
+          familyHistoryDiabetes 6.102e-02 0.247028 -1.00  1.00 -1.00 -1.00
+          age                   2.213e-05 0.004704 -1.00  1.00 -1.00 -1.00  1.00
+          diabetes              2.907e-03 0.053918  1.00 -1.00  1.00  1.00 -1.00 -1.00
+ Residual                       8.842e-02 0.297354
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                   1.902768   0.797694 24.802803   2.385   0.0250 *
+milestoneAchievement         -0.284450   0.151227 25.201533  -1.881   0.0716 .
+motivationBeforeDuringChange -0.135747   0.124344 22.085290  -1.092   0.2867
+milestoneAdherence           -0.521796   0.375995 25.958497  -1.388   0.1770
+condition                    -0.075744   0.114011 25.000897  -0.664   0.5125
+agreementPercentage           0.221302   0.205349 25.222820   1.078   0.2914
+futureWork                    0.507495   0.260178 23.706023   1.951   0.0630 .
+priorEfficacy                -0.109296   0.080481 25.954411  -1.358   0.1861
+postEfficacy                  0.086863   0.113467 25.703665   0.766   0.4509
+education                     0.013647   0.066052 16.421661   0.207   0.8389
+fakeNatural                  -0.033687   0.085332 25.641882  -0.395   0.6963
+machineHuman                 -0.001735   0.067603 25.825834  -0.026   0.9797
+consciousUnconscious         -0.068904   0.072476 24.200322  -0.951   0.3512
+artificialLifelike            0.105671   0.069129 25.425278   1.529   0.1387
+rigidElegant                  0.041192   0.057649 23.016175   0.715   0.4821
+deadAlive                     0.135916   0.073533 23.953469   1.848   0.0769 .
+stagnantLively                0.165611   0.061542 23.841415   2.691   0.0128 *
+mechanicalOrganic            -0.003015   0.092752 26.569114  -0.033   0.9743
+inertInteractive             -0.157468   0.104782 25.491394  -1.503   0.1452
+apatheticResponsive           0.143586   0.099996 22.237012   1.436   0.1649
+dislikeLike                   0.001708   0.097865 25.803069   0.017   0.9862
+unfriendlyFriendly            0.090338   0.171903 19.705112   0.526   0.6051
+unkindKind                   -0.092694   0.158517 23.130430  -0.585   0.5644
+unpleasantPleasant           -0.041537   0.134449 25.854738  -0.309   0.7598
+awfulNice                    -0.155463   0.118168 24.014439  -1.316   0.2007
+incompetentCompetent          0.245032   0.106506 23.319342   2.301   0.0307 *
+ignorantKnowledgeable        -0.368096   0.131901 24.399335  -2.791   0.0101 *
+irresponsibleResponsible     -0.028989   0.075020 22.411249  -0.386   0.7028
+unintelligentIntelligent      0.171730   0.108119 23.731733   1.588   0.1254
+foolishSensible              -0.171527   0.103042 25.465005  -1.665   0.1082
+anxiousRelaxedBefore         -0.041348   0.085212 26.266080  -0.485   0.6315
+agitatedCalmBefore           -0.070098   0.093001 26.793686  -0.754   0.4576
+quiescentSurprisedBefore      0.039272   0.086955 25.988736   0.452   0.6553
+anxiousRelaxedAfter           0.112373   0.101466 25.620443   1.107   0.2784
+agitatedCalmAfter            -0.040392   0.102228 24.615486  -0.395   0.6962
+quiescentSurprisedAfter      -0.038088   0.064888 25.203184  -0.587   0.5624
+typeOfRelationship            0.010916   0.029752 21.538614   0.367   0.7173
+usefulOrNotDiabetes          -0.207371   0.149621 21.240403  -1.386   0.1801
+usefulOrNotObesity           -0.108339   0.096168 23.682767  -1.127   0.2712
+convenience                  -0.023613   0.056004 24.629315  -0.422   0.6770
+preference                   -0.034839   0.055834 24.868219  -0.624   0.5383
+motivationBefore             -0.004514   0.114282 23.649792  -0.039   0.9688
+motivationAfter               0.147418   0.087270 25.099154   1.689   0.1036
+engagement                    0.062387   0.084283 25.096877   0.740   0.4660
+autonomy                     -0.040347   0.070862 23.563644  -0.569   0.5745
+positiveNegative              0.139393   0.121102 23.425534   1.151   0.2613
+similarSystem                 0.059255   0.219690 24.213560   0.270   0.7897
+duration                     -0.029926   0.078977 23.168393  -0.379   0.7082
+numberOfSessions              0.031755   0.070204 25.813828   0.452   0.6548
+understandingDiabetes        -0.121572   0.077038 24.841012  -1.578   0.1272
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+finalGoalAchievementWithoutGoalChange
+
+REML criterion at convergence: 176
+
+Scaled residuals:
+    Min      1Q  Median      3Q     Max
+-1.3393 -0.4107  0.0099  0.4089  1.5117
+
+Random effects:
+ Groups   Name                  Variance Std.Dev. Corr
+ groups   (Intercept)           0.460796 0.67882
+          firstTime             0.118608 0.34440   0.05
+          gendermale            0.042519 0.20620   0.94 -0.28
+          gendernon binary      0.026210 0.16189   0.96 -0.21  1.00
+          familyHistoryDiabetes 0.056794 0.23831  -0.80  0.56 -0.95 -0.93
+          age                   0.000262 0.01619  -0.91 -0.46 -0.73 -0.77  0.48
+          diabetes              0.009966 0.09983  -0.18 -0.99  0.16  0.09 -0.45  0.56
+ Residual                       0.083286 0.28859
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                   1.578189   0.800193 22.457336   1.972 0.061018 .
+milestoneAchievement          0.108130   0.154944 20.181955   0.698 0.493224
+motivationBeforeDuringChange -0.156997   0.122737 18.006651  -1.279 0.217088
+milestoneAdherence           -0.318733   0.399578 24.277519  -0.798 0.432792
+condition                    -0.178567   0.117539 19.824227  -1.519 0.144496
+agreementPercentage           0.401416   0.209178 21.191110   1.919 0.068552 .
+futureWork                    0.917513   0.272525 19.438064   3.367 0.003161 **
+priorEfficacy                -0.139263   0.079707 20.539555  -1.747 0.095540 .
+postEfficacy                  0.145724   0.111258 20.813088   1.310 0.204543
+education                     0.041847   0.067849 18.194173   0.617 0.545030
+fakeNatural                  -0.066938   0.090350 19.497496  -0.741 0.467598
+machineHuman                 -0.033697   0.066801 19.879102  -0.504 0.619498
+consciousUnconscious         -0.074926   0.070998 19.023795  -1.055 0.304494
+artificialLifelike            0.095097   0.070000 22.793497   1.359 0.187591
+rigidElegant                  0.027715   0.059071 14.845107   0.469 0.645750
+deadAlive                     0.170662   0.072042 18.409243   2.369 0.028959 *
+stagnantLively                0.140733   0.063191 18.204666   2.227 0.038790 *
+mechanicalOrganic             0.080512   0.091472 19.134316   0.880 0.389679
+inertInteractive             -0.046138   0.105639 20.478909  -0.437 0.666860
+apatheticResponsive           0.051461   0.099704 21.010844   0.516 0.611149
+dislikeLike                   0.003626   0.102403 20.925887   0.035 0.972090
+unfriendlyFriendly            0.062571   0.172000 14.618761   0.364 0.721228
+unkindKind                   -0.140381   0.157110 18.550810  -0.894 0.383024
+unpleasantPleasant           -0.123137   0.134450 22.050907  -0.916 0.369650
+awfulNice                    -0.101526   0.118822 19.815127  -0.854 0.403077
+incompetentCompetent          0.302950   0.106610 21.132877   2.842 0.009732 **
+ignorantKnowledgeable        -0.527325   0.134133 21.204934  -3.931 0.000754 ***
+irresponsibleResponsible     -0.029497   0.075854 11.832281  -0.389 0.704278
+unintelligentIntelligent      0.305160   0.107815 18.659343   2.830 0.010821 *
+foolishSensible              -0.166367   0.108299 22.534409  -1.536 0.138418
+anxiousRelaxedBefore         -0.058252   0.084138 19.390530  -0.692 0.496932
+agitatedCalmBefore           -0.081665   0.095294 23.094411  -0.857 0.400266
+quiescentSurprisedBefore      0.136692   0.094831 20.658643   1.441 0.164450
+anxiousRelaxedAfter           0.099008   0.100416 21.621169   0.986 0.335052
+agitatedCalmAfter             0.036643   0.103470 16.925344   0.354 0.727603
+quiescentSurprisedAfter      -0.112399   0.066789 17.412156  -1.683 0.110238
+typeOfRelationship            0.036328   0.029383 21.013399   1.236 0.229967
+usefulOrNotDiabetes          -0.296391   0.150150 20.279119  -1.974 0.062166 .
+usefulOrNotObesity           -0.168383   0.095005 20.703596  -1.772 0.091052 .
+convenience                  -0.059011   0.056478 18.465971  -1.045 0.309575
+preference                    0.004174   0.055357 20.279338   0.075 0.940636
+motivationBefore             -0.079191   0.111603 20.029343  -0.710 0.486143
+motivationAfter               0.136043   0.085160 19.859157   1.598 0.125943
+engagement                    0.097935   0.082517 19.047640   1.187 0.249880
+autonomy                     -0.008706   0.069890 17.958091  -0.125 0.902245
+positiveNegative              0.195282   0.126788 15.629034   1.540 0.143506
+similarSystem                -0.143958   0.218081 18.352044  -0.660 0.517381
+duration                     -0.075860   0.080552 19.499878  -0.942 0.357840
+numberOfSessions              0.052000   0.070861 19.779713   0.734 0.471664
+understandingDiabetes        -0.152472   0.077091 22.235823  -1.978 0.060475 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+dislikeLike
+
+REML criterion at convergence: 201.4
+
+Scaled residuals:
+     Min       1Q   Median       3Q      Max
+-1.42399 -0.41104  0.04019  0.43625  1.34670
+
+Random effects:
+ Groups   Name                  Variance  Std.Dev. Corr
+ groups   (Intercept)           2.0741532 1.44019
+          firstTime             0.0001543 0.01242   0.93
+          gendermale            0.2127824 0.46128   0.34  0.25
+          gendernon binary      0.2712091 0.52078  -0.81 -0.81  0.28
+          familyHistoryDiabetes 0.0184206 0.13572  -0.57 -0.60  0.57  0.94
+          age                   0.0008939 0.02990  -0.61 -0.51 -0.95  0.02 -0.30
+          diabetes              0.0711087 0.26666  -0.84 -0.82  0.22  1.00  0.93  0.08
+ Residual                       0.2082193 0.45631
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                  -0.796859   1.208979 21.154964  -0.659  0.51693
+milestoneAchievement         -0.145070   0.237376 18.354897  -0.611  0.54860
+motivationBeforeDuringChange -0.157054   0.195303 21.616509  -0.804  0.43006
+milestoneAdherence            1.083789   0.605241 20.593544   1.791  0.08806 .
+condition                    -0.507285   0.183104 23.249647  -2.770  0.01082 *
+agreementPercentage           0.899126   0.335105 23.610367   2.683  0.01310 *
+futureWork                    0.862434   0.441444 23.644332   1.954  0.06267 .
+priorEfficacy                 0.077768   0.135639 15.025730   0.573  0.57489
+postEfficacy                  0.274714   0.173245 21.748714   1.586  0.12724
+education                     0.122790   0.098189 22.894036   1.251  0.22373
+fakeNatural                  -0.152061   0.149612 20.259876  -1.016  0.32144
+machineHuman                 -0.093248   0.100290 18.654686  -0.930  0.36436
+consciousUnconscious          0.068235   0.112895 21.058583   0.604  0.55203
+artificialLifelike            0.095670   0.111519 23.331126   0.858  0.39969
+rigidElegant                  0.097108   0.089902 19.833611   1.080  0.29303
+deadAlive                     0.034023   0.102414 18.057990   0.332  0.74355
+stagnantLively                0.059928   0.097678 17.954573   0.614  0.54722
+mechanicalOrganic            -0.165859   0.141713 20.222583  -1.170  0.25545
+inertInteractive              0.236478   0.160662 19.694243   1.472  0.15685
+apatheticResponsive          -0.218999   0.148595 18.525447  -1.474  0.15733
+unfriendlyFriendly            0.386020   0.282455 20.229034   1.367  0.18673
+unkindKind                   -0.166455   0.259183 22.258934  -0.642  0.52728
+unpleasantPleasant           -0.313336   0.211861 20.258609  -1.479  0.15453
+awfulNice                     0.262748   0.172766 19.996853   1.521  0.14396
+incompetentCompetent          0.273445   0.167831 24.127178   1.629  0.11624
+ignorantKnowledgeable        -0.091501   0.209837 23.302929  -0.436  0.66681
+irresponsibleResponsible      0.112531   0.126100 12.634210   0.892  0.38886
+unintelligentIntelligent      0.226578   0.179419 19.065234   1.263  0.22187
+foolishSensible               0.020729   0.176623 20.208681   0.117  0.90773
+anxiousRelaxedBefore         -0.172198   0.135029 15.670536  -1.275  0.22080
+agitatedCalmBefore            0.024750   0.150840 17.741200   0.164  0.87152
+quiescentSurprisedBefore      0.194507   0.143966 16.926637   1.351  0.19446
+anxiousRelaxedAfter           0.228173   0.154002 20.172421   1.482  0.15389
+agitatedCalmAfter            -0.110833   0.159654 16.173429  -0.694  0.49740
+quiescentSurprisedAfter      -0.226696   0.108593 22.850268  -2.088  0.04818 *
+typeOfRelationship            0.006537   0.045645 18.876373   0.143  0.88765
+usefulOrNotDiabetes          -0.242960   0.251946 24.330043  -0.964  0.34437
+usefulOrNotObesity           -0.379706   0.147831 23.268753  -2.569  0.01709 *
+convenience                   0.163493   0.089168 21.755513   1.834  0.08044 .
+preference                   -0.015776   0.089526 19.647842  -0.176  0.86193
+motivationBefore             -0.209562   0.182470 22.432236  -1.148  0.26287
+motivationAfter              -0.007196   0.139762 21.827043  -0.051  0.95941
+engagement                   -0.050224   0.125361 20.836770  -0.401  0.69277
+autonomy                      0.134705   0.119056 23.095413   1.131  0.26948
+positiveNegative              0.538838   0.182533 14.900672   2.952  0.00995 **
+similarSystem                -0.770612   0.353598 20.456467  -2.179  0.04115 *
+duration                     -0.087610   0.127120 20.094502  -0.689  0.49858
+numberOfSessions             -0.109689   0.107982 17.554684  -1.016  0.32352
+understandingDiabetes         0.173731   0.119294 21.824373   1.456  0.15954
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+unintelligentIntelligent
+
+REML criterion at convergence: 186.3
+
+Scaled residuals:
+     Min       1Q   Median       3Q      Max
+-1.10438 -0.39824  0.03447  0.29596  1.43744
+
+Random effects:
+ Groups   Name                  Variance Std.Dev. Corr
+ groups   (Intercept)           4.222595 2.05490
+          firstTime             0.823019 0.90720  -0.37
+          gendermale            0.052318 0.22873  -0.27 -0.79
+          gendernon binary      0.740290 0.86040  -0.90 -0.08  0.67
+          familyHistoryDiabetes 0.012345 0.11111  -0.53 -0.59  0.96  0.85
+          age                   0.000479 0.02189  -1.00  0.38  0.26  0.89  0.53
+          diabetes              0.168193 0.41011  -0.66 -0.45  0.90  0.93  0.99  0.66
+ Residual                       0.109689 0.33119
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                  -1.008107   0.932262 23.576314  -1.081 0.290476
+milestoneAchievement          0.378098   0.187634 19.290642   2.015 0.058047 .
+motivationBeforeDuringChange  0.163877   0.145415 16.472330   1.127 0.275908
+milestoneAdherence            0.155916   0.437105 23.803185   0.357 0.724457
+condition                     0.114086   0.125651 15.280800   0.908 0.377996
+agreementPercentage          -0.406563   0.225518 12.483263  -1.803 0.095599 .
+futureWork                   -1.165670   0.271420 22.495392  -4.295 0.000282 ***
+priorEfficacy                 0.189668   0.098288 14.651793   1.930 0.073235 .
+postEfficacy                  0.048831   0.126672 22.639723   0.385 0.703471
+education                     0.166718   0.081882 18.751580   2.036 0.056119 .
+fakeNatural                   0.328324   0.088515 21.576590   3.709 0.001254 **
+machineHuman                  0.035355   0.074855 23.767537   0.472 0.641007
+consciousUnconscious          0.015862   0.083493 23.668050   0.190 0.850943
+artificialLifelike           -0.046278   0.080235 23.643931  -0.577 0.569538
+rigidElegant                  0.075909   0.068506 13.722212   1.108 0.286874
+deadAlive                    -0.124249   0.081703 15.687471  -1.521 0.148225
+stagnantLively                0.055368   0.075870 14.586916   0.730 0.477089
+mechanicalOrganic            -0.189235   0.105560 12.336504  -1.793 0.097563 .
+inertInteractive             -0.136427   0.121525 24.546121  -1.123 0.272456
+apatheticResponsive           0.028080   0.119592 23.276724   0.235 0.816417
+dislikeLike                   0.028862   0.113924 22.836717   0.253 0.802268
+unfriendlyFriendly            0.006834   0.203135 17.518111   0.034 0.973543
+unkindKind                   -0.028455   0.176097 19.183924  -0.162 0.873321
+unpleasantPleasant           -0.191250   0.157378 23.965196  -1.215 0.236116
+awfulNice                     0.094798   0.136139 20.982622   0.696 0.493864
+incompetentCompetent         -0.115944   0.117989 18.438244  -0.983 0.338488
+ignorantKnowledgeable         0.454810   0.138743 22.660573   3.278 0.003344 **
+irresponsibleResponsible      0.084710   0.100827  9.879956   0.840 0.420691
+foolishSensible               0.388774   0.112069 19.904252   3.469 0.002436 **
+anxiousRelaxedBefore         -0.051615   0.105107 17.653407  -0.491 0.629425
+agitatedCalmBefore            0.024785   0.107658 22.591756   0.230 0.819995
+quiescentSurprisedBefore     -0.153304   0.096440 15.355569  -1.590 0.132294
+anxiousRelaxedAfter          -0.058021   0.114292 23.803811  -0.508 0.616367
+agitatedCalmAfter             0.109410   0.117349 20.767213   0.932 0.361872
+quiescentSurprisedAfter       0.040707   0.074653 18.662104   0.545 0.592013
+typeOfRelationship           -0.002884   0.034227 20.813893  -0.084 0.933655
+usefulOrNotDiabetes           0.278180   0.172941 22.741169   1.609 0.121516
+usefulOrNotObesity           -0.097927   0.122296 19.146363  -0.801 0.433111
+convenience                   0.175822   0.064400 23.490828   2.730 0.011800 *
+preference                    0.089272   0.064951 23.322531   1.374 0.182367
+motivationBefore              0.225172   0.124478 20.762501   1.809 0.084967 .
+motivationAfter               0.058649   0.110703 21.449678   0.530 0.601701
+engagement                    0.002904   0.089791 23.542105   0.032 0.974469
+autonomy                      0.188689   0.089767 22.907875   2.102 0.046753 *
+positiveNegative             -0.446793   0.128074 22.643593  -3.489 0.002016 **
+similarSystem                -0.028621   0.270068 14.371507  -0.106 0.917065
+duration                      0.178608   0.087959 22.147098   2.031 0.054473 .
+numberOfSessions             -0.130396   0.079028 18.984037  -1.650 0.115394
+understandingDiabetes        -0.116571   0.089678 21.381277  -1.300 0.207483
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+condition
+
+REML criterion at convergence: 189
+
+Scaled residuals:
+     Min       1Q   Median       3Q      Max
+-1.07935 -0.39842  0.00733  0.35317  1.38516
+
+Random effects:
+ Groups   Name                  Variance  Std.Dev. Corr
+ groups   (Intercept)           1.7899978 1.33791
+          firstTime             0.0701248 0.26481  -0.81
+          gendermale            0.2872563 0.53596  -0.08  0.62
+          gendernon binary      0.1092924 0.33059  -0.99  0.87  0.22
+          familyHistoryDiabetes 0.0071800 0.08473   0.99 -0.86 -0.14 -0.98
+          age                   0.0006885 0.02624   0.41 -0.85 -0.94 -0.54  0.47
+          diabetes              0.3129303 0.55940  -0.95  0.94  0.38  0.98 -0.96 -0.67
+ Residual                       0.1202914 0.34683
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                   0.416315   0.929431 22.670864   0.448 0.658459
+milestoneAchievement          0.006967   0.190331 18.010437   0.037 0.971203
+motivationBeforeDuringChange -0.125233   0.150828 22.898117  -0.830 0.414941
+milestoneAdherence            0.340117   0.482048 23.502737   0.706 0.487393
+agreementPercentage           1.519744   0.146746 21.620323  10.356 7.67e-10 ***
+futureWork                    1.015651   0.314100 23.047367   3.234 0.003665 **
+priorEfficacy                 0.122277   0.095889 17.639276   1.275 0.218778
+postEfficacy                  0.089084   0.141005 22.635785   0.632 0.533861
+education                     0.171509   0.075233  7.742281   2.280 0.053154 .
+fakeNatural                  -0.304025   0.101585 21.024175  -2.993 0.006929 **
+machineHuman                 -0.105031   0.076963 21.772214  -1.365 0.186287
+consciousUnconscious          0.305335   0.075345 21.991424   4.053 0.000531 ***
+artificialLifelike           -0.051340   0.085840 22.930183  -0.598 0.555642
+rigidElegant                  0.176125   0.069831 19.910042   2.522 0.020294 *
+deadAlive                     0.169995   0.078336 20.309688   2.170 0.042027 *
+stagnantLively               -0.069602   0.074596 22.396932  -0.933 0.360746
+mechanicalOrganic             0.012480   0.110685 20.644307   0.113 0.911319
+inertInteractive              0.338612   0.116422 21.719644   2.908 0.008214 **
+apatheticResponsive          -0.397187   0.111663 19.772309  -3.557 0.002004 **
+dislikeLike                  -0.357583   0.119183 23.505341  -3.000 0.006290 **
+unfriendlyFriendly            0.203013   0.201619 20.533896   1.007 0.325695
+unkindKind                   -0.086095   0.190249 21.055438  -0.453 0.655507
+unpleasantPleasant           -0.489712   0.140382 19.134986  -3.488 0.002439 **
+awfulNice                     0.170230   0.132751 21.610512   1.282 0.213312
+incompetentCompetent          0.341532   0.128163 22.784820   2.665 0.013903 *
+ignorantKnowledgeable        -0.635132   0.142981 22.171659  -4.442 0.000202 ***
+irresponsibleResponsible      0.216847   0.105303 13.713374   2.059 0.058983 .
+unintelligentIntelligent      0.282816   0.122377 20.248901   2.311 0.031476 *
+foolishSensible               0.027219   0.135229 20.599200   0.201 0.842455
+anxiousRelaxedBefore         -0.160083   0.099116 17.855357  -1.615 0.123819
+agitatedCalmBefore            0.052848   0.111349 19.930414   0.475 0.640219
+quiescentSurprisedBefore      0.203391   0.103389 20.957610   1.967 0.062533 .
+anxiousRelaxedAfter           0.303878   0.111712 22.364502   2.720 0.012388 *
+agitatedCalmAfter            -0.154903   0.122657 18.283240  -1.263 0.222496
+quiescentSurprisedAfter      -0.158301   0.084198 20.489387  -1.880 0.074390 .
+typeOfRelationship            0.054210   0.035871 22.085143   1.511 0.144903
+usefulOrNotDiabetes          -0.589219   0.169229 20.550230  -3.482 0.002281 **
+usefulOrNotObesity           -0.088853   0.119172 19.865135  -0.746 0.464647
+convenience                   0.011220   0.069012 20.746622   0.163 0.872428
+preference                   -0.066653   0.065222 21.082125  -1.022 0.318393
+motivationBefore             -0.326036   0.127727 22.643707  -2.553 0.017917 *
+motivationAfter              -0.022699   0.106690 21.161061  -0.213 0.833552
+engagement                   -0.093936   0.100461 23.691710  -0.935 0.359197
+autonomy                      0.248927   0.088693 21.212279   2.807 0.010507 *
+positiveNegative              0.542871   0.136969 20.386506   3.963 0.000743 ***
+similarSystem                -0.627562   0.267332 17.362196  -2.348 0.030991 *
+duration                     -0.170506   0.093333 20.836386  -1.827 0.082083 .
+numberOfSessions             -0.129046   0.082171 22.132846  -1.570 0.130496
+understandingDiabetes         0.050388   0.096079 20.078926   0.524 0.605708
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+engagement
+
+REML criterion at convergence: 216.2
+
+Scaled residuals:
+     Min       1Q   Median       3Q      Max
+-1.16151 -0.37973  0.00042  0.35117  1.45408
+
+Random effects:
+ Groups   Name                  Variance  Std.Dev. Corr
+ groups   (Intercept)           0.3797654 0.61625
+          firstTime             0.2099405 0.45819  -0.35
+          gendermale            0.1637480 0.40466   0.36 -1.00
+          gendernon binary      0.0820002 0.28636  -0.13  0.75 -0.74
+          familyHistoryDiabetes 0.0826550 0.28750  -0.03  0.94 -0.94  0.82
+          age                   0.0002004 0.01416  -0.15  0.97 -0.97  0.82  0.99
+          diabetes              0.1737181 0.41680  -0.36 -0.75  0.74 -0.70 -0.92 -0.87
+ Residual                       0.3929192 0.62683
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                  -2.216246   1.608508 22.430861  -1.378 0.181849
+milestoneAchievement         -0.121238   0.318618 14.741058  -0.381 0.708992
+motivationBeforeDuringChange  0.032806   0.259450 23.113269   0.126 0.900473
+milestoneAdherence            1.277733   0.752185 16.619143   1.699 0.108017
+condition                     0.014378   0.244772 24.978178   0.059 0.953628
+agreementPercentage          -0.036389   0.438701 21.600519  -0.083 0.934657
+futureWork                    0.071511   0.526368 15.091551   0.136 0.893730
+priorEfficacy                -0.089159   0.172828 22.719910  -0.516 0.610920
+postEfficacy                 -0.408010   0.233704 20.476938  -1.746 0.095826 .
+education                    -0.129408   0.134428  8.996292  -0.963 0.360878
+fakeNatural                   0.123051   0.185070 23.695283   0.665 0.512541
+machineHuman                  0.040617   0.139879 18.420835   0.290 0.774774
+consciousUnconscious          0.288260   0.151433 23.952126   1.904 0.069052 .
+artificialLifelike           -0.255180   0.139862 23.847650  -1.825 0.080629 .
+rigidElegant                  0.040568   0.126063 20.251708   0.322 0.750895
+deadAlive                    -0.121096   0.143819 12.375406  -0.842 0.415762
+stagnantLively                0.080090   0.131895 18.319329   0.607 0.551154
+mechanicalOrganic             0.321698   0.183950 17.417414   1.749 0.097920 .
+inertInteractive             -0.199757   0.222290 19.717771  -0.899 0.379692
+apatheticResponsive          -0.131283   0.207066 19.900529  -0.634 0.533291
+dislikeLike                  -0.011834   0.212489 26.058345  -0.056 0.956010
+unfriendlyFriendly           -0.528238   0.346679 20.497158  -1.524 0.142863
+unkindKind                    0.643122   0.312236 20.538837   2.060 0.052324 .
+unpleasantPleasant            0.190998   0.282411 15.275870   0.676 0.508955
+awfulNice                    -0.314732   0.241032 14.078296  -1.306 0.212566
+incompetentCompetent          0.265344   0.214453 15.309410   1.237 0.234616
+ignorantKnowledgeable         0.105561   0.275758 23.946654   0.383 0.705243
+irresponsibleResponsible      0.176625   0.162494  5.515623   1.087 0.322255
+unintelligentIntelligent      0.043060   0.227845 19.171310   0.189 0.852088
+foolishSensible               0.566237   0.198033 21.938387   2.859 0.009133 **
+anxiousRelaxedBefore          0.063337   0.181109 17.249059   0.350 0.730784
+agitatedCalmBefore            0.265142   0.190908 15.692497   1.389 0.184277
+quiescentSurprisedBefore      0.145443   0.184566 16.526935   0.788 0.441836
+anxiousRelaxedAfter          -0.275481   0.208949 24.754097  -1.318 0.199434
+agitatedCalmAfter             0.087085   0.216985 18.277992   0.401 0.692823
+quiescentSurprisedAfter       0.204466   0.132695 22.374947   1.541 0.137371
+typeOfRelationship            0.035091   0.061142 19.531837   0.574 0.572572
+usefulOrNotDiabetes           0.044406   0.307513 17.517189   0.144 0.886831
+usefulOrNotObesity            0.076342   0.202128 23.850338   0.378 0.709001
+convenience                  -0.146363   0.114610 20.081848  -1.277 0.216152
+preference                   -0.009253   0.118443 16.759030  -0.078 0.938656
+motivationBefore              0.051376   0.239095 20.276552   0.215 0.832008
+motivationAfter               0.091116   0.183276 18.039212   0.497 0.625088
+autonomy                      0.394084   0.141297 18.904797   2.789 0.011737 *
+positiveNegative             -0.016591   0.267858 19.043681  -0.062 0.951255
+similarSystem                -0.023148   0.458400 20.030584  -0.050 0.960226
+duration                     -0.591694   0.138843 25.629889  -4.262 0.000242 ***
+numberOfSessions              0.308404   0.134257 23.776322   2.297 0.030727 *
+understandingDiabetes         0.133558   0.165006 17.740948   0.809 0.429002
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+convenience
+
+REML criterion at convergence: 232.5
+
+Scaled residuals:
+     Min       1Q   Median       3Q      Max
+-1.48783 -0.42622 -0.02648  0.39813  1.30124
+
+Random effects:
+ Groups   Name                  Variance  Std.Dev. Corr
+ groups   (Intercept)           15.526469 3.94036
+          firstTime              0.468298 0.68432  -0.69
+          gendermale             0.416606 0.64545  -0.35 -0.08
+          gendernon binary       2.638118 1.62423  -0.81  0.35  0.84
+          familyHistoryDiabetes  0.543412 0.73717  -0.46  0.02  0.99  0.90
+          age                    0.002752 0.05246  -0.30  0.54 -0.79 -0.32 -0.71
+          diabetes               0.610993 0.78166  -0.97  0.48  0.43  0.84  0.53  0.19
+ Residual                        0.556506 0.74599
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                  -0.057985   2.069631 22.914108  -0.028 0.977891
+milestoneAchievement          0.045922   0.399442 18.644300   0.115 0.909702
+motivationBeforeDuringChange  0.254454   0.334166 22.676205   0.761 0.454230
+milestoneAdherence           -0.518404   1.035299 23.795230  -0.501 0.621162
+condition                     0.009903   0.317224 20.264746   0.031 0.975402
+agreementPercentage           0.020561   0.572569 20.270759   0.036 0.971706
+futureWork                    0.201303   0.759029 15.930003   0.265 0.794248
+priorEfficacy                -0.177285   0.230650 15.637719  -0.769 0.453565
+postEfficacy                 -0.275800   0.301701 21.879172  -0.914 0.370604
+education                    -0.344395   0.168290 16.960737  -2.046 0.056538 .
+fakeNatural                   0.123117   0.257036 21.838286   0.479 0.636710
+machineHuman                 -0.236752   0.167005 21.963763  -1.418 0.170329
+consciousUnconscious          0.248290   0.179012 22.046904   1.387 0.179305
+artificialLifelike           -0.010609   0.184081 23.868346  -0.058 0.954520
+rigidElegant                  0.010571   0.156972 17.410326   0.067 0.947076
+deadAlive                     0.134761   0.190139 19.721930   0.709 0.486774
+stagnantLively               -0.047584   0.168781 21.384640  -0.282 0.780709
+mechanicalOrganic             0.482967   0.246665 19.762279   1.958 0.064501 .
+inertInteractive              0.055055   0.282002 23.016630   0.195 0.846928
+apatheticResponsive          -0.221693   0.257459 21.325943  -0.861 0.398773
+dislikeLike                   0.599545   0.255316 20.831967   2.348 0.028818 *
+unfriendlyFriendly           -1.334533   0.467394 21.942779  -2.855 0.009216 **
+unkindKind                    1.231838   0.394668 21.962469   3.121 0.004979 **
+unpleasantPleasant            0.428489   0.364495 23.396869   1.176 0.251592
+awfulNice                    -0.064916   0.297897 23.507198  -0.218 0.829376
+incompetentCompetent         -0.021481   0.293175 23.033438  -0.073 0.942225
+ignorantKnowledgeable        -0.283737   0.345724 22.342708  -0.821 0.420485
+irresponsibleResponsible     -0.281983   0.232109 16.271218  -1.215 0.241751
+unintelligentIntelligent      0.404883   0.314996 11.664667   1.285 0.223601
+foolishSensible               0.233593   0.287916 18.895871   0.811 0.427282
+anxiousRelaxedBefore          0.150053   0.224592 17.025333   0.668 0.513017
+agitatedCalmBefore            0.294860   0.253874 19.769462   1.161 0.259295
+quiescentSurprisedBefore     -0.625223   0.247003 23.090094  -2.531 0.018629 *
+anxiousRelaxedAfter          -0.185299   0.265975 21.934497  -0.697 0.493321
+agitatedCalmAfter            -0.080255   0.280955 20.108721  -0.286 0.778067
+quiescentSurprisedAfter       0.637963   0.159738 21.026986   3.994 0.000658 ***
+typeOfRelationship            0.058123   0.078856 21.838454   0.737 0.468919
+usefulOrNotDiabetes          -0.135887   0.441937 24.271633  -0.307 0.761100
+usefulOrNotObesity            0.929670   0.231379 22.184364   4.018 0.000570 ***
+preference                   -0.112222   0.149187 23.944329  -0.752 0.459248
+motivationBefore              0.119976   0.303575 21.246898   0.395 0.696628
+motivationAfter              -0.247565   0.250163 25.112068  -0.990 0.331803
+engagement                   -0.130472   0.206305 22.876068  -0.632 0.533381
+autonomy                     -0.206854   0.221197 23.745389  -0.935 0.359121
+positiveNegative             -0.046129   0.328840 12.927738  -0.140 0.890603
+similarSystem                 0.720217   0.613324 22.992693   1.174 0.252300
+duration                     -0.343740   0.199613 19.585972  -1.722 0.100820
+numberOfSessions              0.103815   0.183666 21.278395   0.565 0.577824
+understandingDiabetes        -0.408995   0.205196 21.632706  -1.993 0.059003 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+preference
+
+REML criterion at convergence: 236.5
+
+Scaled residuals:
+     Min       1Q   Median       3Q      Max
+-1.40522 -0.39869 -0.04546  0.37013  1.76302
+
+Random effects:
+ Groups   Name                  Variance  Std.Dev. Corr
+ groups   (Intercept)           4.423e-01 0.665020
+          firstTime             3.421e-01 0.584903 -0.99
+          gendermale            3.612e-02 0.190061 -0.99  1.00
+          gendernon binary      7.982e-02 0.282517 -0.96  0.99  0.99
+          familyHistoryDiabetes 1.972e-02 0.140420 -0.99  1.00  1.00  0.98
+          age                   7.961e-05 0.008922  0.97 -1.00 -1.00 -1.00 -0.99
+          diabetes              1.451e-02 0.120475  0.92 -0.97 -0.97 -0.98 -0.97  0.99
+ Residual                       8.298e-01 0.910907
+Number of obs: 79, groups:  groups, 3
+
+Fixed effects:
+                              Estimate Std. Error        df t value Pr(>|t|)
+(Intercept)                   3.192283   2.374585 27.871506   1.344   0.1897
+milestoneAchievement          0.233589   0.467232 25.207720   0.500   0.6215
+motivationBeforeDuringChange -0.490071   0.378792 28.041680  -1.294   0.2063
+milestoneAdherence           -1.047943   1.155913 29.149793  -0.907   0.3721
+condition                    -0.360239   0.342615 24.214225  -1.051   0.3034
+agreementPercentage           0.881413   0.605392 24.545853   1.456   0.1581
+futureWork                   -0.191823   0.803134 26.826077  -0.239   0.8130
+priorEfficacy                 0.360320   0.242199 26.243438   1.488   0.1487
+postEfficacy                 -0.239795   0.348459 26.746992  -0.688   0.4973
+education                     0.334895   0.175277 19.715843   1.911   0.0707 .
+fakeNatural                  -0.392540   0.274009 24.090310  -1.433   0.1648
+machineHuman                  0.350655   0.193524 27.476881   1.812   0.0809 .
+consciousUnconscious          0.054328   0.217578 28.058322   0.250   0.8046
+artificialLifelike           -0.287391   0.204844 28.598299  -1.403   0.1714
+rigidElegant                 -0.056589   0.172284 27.368418  -0.328   0.7451
+deadAlive                    -0.005394   0.207120 27.533054  -0.026   0.9794
+stagnantLively                0.048537   0.189299 27.518636   0.256   0.7995
+mechanicalOrganic             0.054856   0.276158 27.972349   0.199   0.8440
+inertInteractive              0.195167   0.327386 27.533873   0.596   0.5560
+apatheticResponsive           0.354492   0.299222 27.383436   1.185   0.2463
+dislikeLike                   0.051154   0.312695 28.910617   0.164   0.8712
+unfriendlyFriendly            0.104738   0.531413 23.177738   0.197   0.8455
+unkindKind                    0.400692   0.482808 22.105500   0.830   0.4155
+unpleasantPleasant           -0.424410   0.408200 28.723359  -1.040   0.3071
+awfulNice                    -0.090012   0.358132 27.224643  -0.251   0.8034
+incompetentCompetent         -0.292166   0.320138 27.521464  -0.913   0.3694
+ignorantKnowledgeable        -0.002730   0.393707 27.412240  -0.007   0.9945
+irresponsibleResponsible      0.130497   0.232325 22.572066   0.562   0.5799
+unintelligentIntelligent      0.389107   0.341214 21.480377   1.140   0.2667
+foolishSensible              -0.257909   0.324664 26.942711  -0.794   0.4339
+anxiousRelaxedBefore         -0.255549   0.255805 27.796265  -0.999   0.3264
+agitatedCalmBefore            0.028301   0.282941 25.311170   0.100   0.9211
+quiescentSurprisedBefore     -0.222767   0.267100 20.948241  -0.834   0.4137
+anxiousRelaxedAfter           0.408498   0.300942 27.464644   1.357   0.1857
+agitatedCalmAfter             0.130495   0.330481 23.837893   0.395   0.6965
+quiescentSurprisedAfter      -0.021406   0.205443 26.517895  -0.104   0.9178
+typeOfRelationship           -0.132826   0.090863 28.120387  -1.462   0.1549
+usefulOrNotDiabetes          -0.228957   0.470940 26.018496  -0.486   0.6309
+usefulOrNotObesity            0.134423   0.302849 24.572276   0.444   0.6610
+convenience                  -0.280067   0.164809 26.318714  -1.699   0.1010
+motivationBefore             -0.351072   0.345122 27.345787  -1.017   0.3180
+motivationAfter               0.002111   0.261385 27.512605   0.008   0.9936
+engagement                    0.045137   0.242327 27.706334   0.186   0.8536
+autonomy                      0.028456   0.220683 27.526051   0.129   0.8983
+positiveNegative              0.121364   0.359270 26.512610   0.338   0.7382
+similarSystem                 0.441923   0.682260 21.172474   0.648   0.5241
+duration                     -0.091932   0.229779 27.121022  -0.400   0.6922
+numberOfSessions             -0.291806   0.202718 25.962630  -1.439   0.1620
+understandingDiabetes        -0.112319   0.222782 27.648809  -0.504   0.6181
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
