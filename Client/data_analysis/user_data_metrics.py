@@ -281,6 +281,9 @@ quiescentSurprisedBefore = [None]*len(ids)
 anxiousRelaxedAfter = [None]*len(ids)
 agitatedCalmAfter = [None]*len(ids)
 quiescentSurprisedAfter = [None]*len(ids)
+anxiousRelaxedChange = [None]*len(ids)
+agitatedCalmChange = [None]*len(ids)
+quiescentSurprisedChange = [None]*len(ids)
 typeOfRelationship = [None]*len(ids)
 usefulOrNotDiabetes = [None]*len(ids)
 usefulOrNotObesity = [None]*len(ids)
@@ -359,6 +362,11 @@ for index, row in dfQuestionnaire.iterrows():
     anxiousRelaxedAfter[index] = row["AnxiousRelaxed2"]
     agitatedCalmAfter[index] = row["AgitatedCalm2"]
     quiescentSurprisedAfter[index] = row["QuiescentSurprised2"]
+
+    #Change
+    anxiousRelaxedChange[index] = int(row["AnxiousRelaxed2"]) - int(row["AnxiousRelaxed1"])
+    agitatedCalmChange[index] = int(row["AgitatedCalm2"]) - int(row["AgitatedCalm1"])
+    quiescentSurprisedChange[index] = int(row["QuiescentSurprised2"]) - int(row["QuiescentSurprised1"])
 
     typeOfRelationship[index] = row["TypeOfRelationship"]
 
@@ -442,6 +450,9 @@ columnContents = list(zip(ids,
                           anxiousRelaxedAfter,
                           agitatedCalmAfter,
                           quiescentSurprisedAfter,
+                          anxiousRelaxedChange,
+                          agitatedCalmChange,
+                          quiescentSurprisedChange,
                           typeOfRelationship,
                           usefulOrNotDiabetes,
                           usefulOrNotObesity,
@@ -513,6 +524,9 @@ columnNames = ['id',
                'anxiousRelaxedAfter',
                'agitatedCalmAfter',
                'quiescentSurprisedAfter',
+               'anxiousRelaxedChange',
+               'agitatedCalmChange',
+               'quiescentSurprisedChange',
                'typeOfRelationship',
                'usefulOrNotDiabetes',
                'usefulOrNotObesity',
