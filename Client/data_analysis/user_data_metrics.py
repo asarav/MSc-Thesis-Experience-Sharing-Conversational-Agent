@@ -305,6 +305,13 @@ engagement = [None]*len(ids)
 autonomy = [None]*len(ids)
 positiveNegative = [None]*len(ids)
 firstTime = [None]*len(ids)
+anthropomorphism = [None]*len(ids)
+animacy = [None]*len(ids)
+likeability = [None]*len(ids)
+perceivedIntelligence = [None]*len(ids)
+safetyAfter = [None]*len(ids)
+safetyBefore = [None]*len(ids)
+safetyChange = [None]*len(ids)
 
 #Process questionnaire results
 for index, row in dfQuestionnaire.iterrows():
@@ -339,29 +346,49 @@ for index, row in dfQuestionnaire.iterrows():
     conscious[index] = row["Unconsciousconscious"]
     artificialLifelike[index] = row["Artificiallifelike"]
     rigidElegant[index] = row["rigidlyelegantly"]
+
+    anthropomorphism[index] = int(row["Fake or Natural"]) + int(row["Machine or Human"]) + int(row["Unconsciousconscious"]) + int(row["Artificiallifelike"]) + int(row["rigidlyelegantly"])
+
     deadAlive[index] = row["DeadAlive"]
     stagnantLively[index] = row["StagnantLively"]
     mechanicalOrganic[index] = row["MechanicalOrganic"]
     inertInteractive[index] = row["InertInteractive"]
     apatheticResponsive[index] = row["ApatheticResponsive"]
+
+    animacy[index] = int(row["DeadAlive"]) + int(row["StagnantLively"]) + int(row["MechanicalOrganic"]) + int(row["InertInteractive"]) + int(row["ApatheticResponsive"])
+
     dislikeLike[index] = row["DislikeLike"]
     unfriendlyFriendly[index] = row["UnfriendlyFriendly"]
     unkindKind[index] = row["UnkindKind"]
     unpleasantPleasant[index] = row["UnpleasantPleasant"]
     awfulNice[index] = row["AwfulNice"]
+
+    likeability[index] = int(row["DislikeLike"]) + int(row["UnfriendlyFriendly"]) + int(row["UnkindKind"]) + int( row["UnpleasantPleasant"]) + int(row["AwfulNice"])
+
     incompetentCompetent[index] = row["IncompetentCompetent"]
     ignorantKnowledgeable[index] = row["IgnorantKnowledgeabl"]
     irresponsibleResponsible[index] = row["IrresponsibleRespons"]
     unintelligentIntelligent[index] = row["UnintelligentIntelli"]
     foolishSensible[index] = row["FoolishSensible"]
+
+    perceivedIntelligence[index] = int(row["IncompetentCompetent"]) + int(row["IgnorantKnowledgeabl"]) + int(row["IrresponsibleRespons"]) + int(row["UnintelligentIntelli"]) + int(row["FoolishSensible"])
+
     #Before
     anxiousRelaxedBefore[index] = row["AnxiousRelaxed1"]
     agitatedCalmBefore[index] = row["AgitatedCalm1"]
     quiescentSurprisedBefore[index] = row["QuiescentSurprised1"]
+
+    safetyBefore[index] = int(row["AnxiousRelaxed1"]) + int(row["AgitatedCalm1"]) + int(row["QuiescentSurprised1"])
+
     #After
     anxiousRelaxedAfter[index] = row["AnxiousRelaxed2"]
     agitatedCalmAfter[index] = row["AgitatedCalm2"]
     quiescentSurprisedAfter[index] = row["QuiescentSurprised2"]
+
+    safetyAfter[index] = int(row["AnxiousRelaxed2"]) + int(row["AgitatedCalm2"]) + int(row["QuiescentSurprised2"])
+
+    safetyChange[index] = safetyAfter[index] - safetyBefore[index]
+
 
     #Change
     anxiousRelaxedChange[index] = int(row["AnxiousRelaxed2"]) - int(row["AnxiousRelaxed1"])
@@ -472,7 +499,14 @@ columnContents = list(zip(ids,
                           similarSystem,
                           duration,
                           numberOfSessions,
-                          understandingDiabetes))
+                          understandingDiabetes,
+                          anthropomorphism,
+                          animacy,
+                          likeability,
+                          perceivedIntelligence,
+                          safetyAfter,
+                          safetyBefore,
+                          safetyChange))
 columnNames = ['id',
                'condition',
                'goals',
@@ -546,7 +580,14 @@ columnNames = ['id',
                'similarSystem',
                'duration',
                'numberOfSessions',
-               'understandingDiabetes']
+               'understandingDiabetes',
+               'anthropomorphism',
+               'animacy',
+               'likeability',
+               'perceivedIntelligence',
+               'safetyAfter',
+               'safetyBefore',
+               'safetyChange']
 
 dfJson = pd.DataFrame(columnContents,
                   columns =columnNames)

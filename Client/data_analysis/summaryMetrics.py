@@ -7,8 +7,8 @@ from collections import Counter
 
 np.set_printoptions(precision=4)
 
-def plotHistogram(valueList, binsNum, label="None"):
-    plt.hist(valueList, bins=binsNum, alpha=0.5, label=label, edgecolor='black')
+def plotHistogram(valueList, binsNum, label="None", range=None):
+    plt.hist(valueList, bins=binsNum, alpha=0.5, range=range, label=label, edgecolor='black')
 
 def efficacyHistogram(data, title="User Efficacy"):
     plotHistogram(data["priorEfficacy"].tolist(), 5, "Prior")
@@ -45,7 +45,7 @@ def genderHistogram(data, title="Participants by Gender"):
 def ageHistogram(data, title="Participants by Age"):
     age = data["age"].tolist()
 
-    plotHistogram(age, 10)
+    plotHistogram(age, 8, range=[18, 60])
     plt.title(title)
     plt.show()
 
@@ -299,7 +299,7 @@ def educationHistogram(data, title="Education Levels of Participants"):
     education = replaceItemInList(5, "Masters", education)
     education = replaceItemInList(6, "Doctorate", education)
     print(education)
-    plotHistogram(education, 7)
+    plotHistogram(education, 6)
     plt.title(title)
     plt.show()
 
@@ -513,28 +513,85 @@ def claimsBarChart(data, data_std, labels):
     fig.tight_layout()
     plt.show()
 
+def Categories(data):
+    anthropomorphism = data["anthropomorphism"].tolist()
+    animacy = data["animacy"].tolist()
+    likeability = data["likeability"].tolist()
+    intelligence = data["perceivedIntelligence"].tolist()
+    safetyBefore = data["safetyBefore"].tolist()
+    safetyAfter = data["safetyAfter"].tolist()
+    safetyChange = data["safetyChange"].tolist()
+
+    print("Categories")
+    print(median(anthropomorphism), median(animacy),
+          median(likeability), median(intelligence), median(safetyBefore), median(safetyAfter), median(safetyChange))
+    return [mean(anthropomorphism), mean(animacy), mean(likeability), mean(intelligence), mean(safetyBefore), mean(safetyAfter), mean(safetyChange)],\
+           [stdev(anthropomorphism), stdev(animacy), stdev(likeability), stdev(intelligence), stdev(safetyBefore), stdev(safetyAfter), stdev(safetyChange)]
+
+def categoriesBarChart(data, data_std, labels):
+    length = len(data)
+    x_labels = labels
+
+    # Set plot parameters
+    fig, ax = plt.subplots()
+    width = 0.1  # width of bar
+    x = np.arange(length)
+
+    print(x)
+    print(data[:, 0])
+    rects1 = ax.bar(x, data[:, 0], width, color='green', label='Anthropomorphism', yerr=data_std[:, 0])
+    rects2 = ax.bar(x + width, data[:, 1], width, color='#0F52BA', label='Animacy', yerr=data_std[:, 1])
+    rects3 = ax.bar(x + (2 * width), data[:, 2], width, color='#6593F5', label='Likeability', yerr=data_std[:, 2])
+    rects4 = ax.bar(x + (3 * width), data[:, 3], width, color='red', label='Perceived Intelligence', yerr=data_std[:, 3])
+    rects5 = ax.bar(x + (4 * width), data[:, 4], width, color='green', label='Safety Before', yerr=data_std[:, 4])
+    rects6 = ax.bar(x + (5 * width), data[:, 5], width, color='brown', label='Safety After', yerr=data_std[:, 5])
+    rects7 = ax.bar(x + (6 * width), data[:, 6], width, color='purple', label='Safety Change', yerr=data_std[:, 6])
+
+
+
+    ax.set_ylabel('Likert Item Value')
+    ax.set_ylim(0, 27)
+    ax.set_xticks(x + width + width / 2)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel('Conditions')
+    ax.set_title('Categorical Values')
+    ax.legend()
+    plt.grid(True, 'major', 'y', ls='--', lw=.5, c='k', alpha=.3)
+
+    autolabel(rects1, ax)
+    autolabel(rects2, ax)
+    autolabel(rects3, ax)
+    autolabel(rects4, ax)
+    autolabel(rects5, ax)
+    autolabel(rects6, ax)
+    autolabel(rects7, ax)
+
+    fig.tight_layout()
+    plt.show()
+
 data = pd.read_csv("output_files/summary.csv")
 data1 = pd.read_csv("output_files/summary_1.csv")
 data2 = pd.read_csv("output_files/summary_2.csv")
 data3 = pd.read_csv("output_files/summary_3.csv")
 
-'''
 #Efficacy
-efficacyHistogram(data)
-efficacyHistogram(data1)
-efficacyHistogram(data2)
-efficacyHistogram(data3)
+#efficacyHistogram(data)
+#efficacyHistogram(data1)
+#efficacyHistogram(data2)
+#efficacyHistogram(data3)
 #Efficacy Difference
-efficacyDifference(data)
-efficacyDifference(data1)
-efficacyDifference(data2)
-efficacyDifference(data3)
+#efficacyDifference(data)
+#efficacyDifference(data1)
+#efficacyDifference(data2)
+#efficacyDifference(data3)
 
 #Demographics
 
 #Age
-ageHistogram(data)
+#ageHistogram(data)
+#educationHistogram(data)
 
+'''
 #Anthropomorphism
 all, allError = getAnthropomorphism(data)
 print(all, allError)
@@ -643,6 +700,7 @@ motivationDifferencesBarChart(np.array([all, first, second, third]), np.array([a
 
 relationshipHistogram(data)
 '''
+'''
 items = [data, data1, data2, data3]
 
 for item in items:
@@ -652,3 +710,15 @@ for item in items:
     #print(mean(words), stdev(words), median(words))
     print(Counter(words).keys()) # equals to list(set(words))
     print(Counter(words).values()) # counts the elements' frequency
+'''
+
+all, allError, = Categories(data)
+print(all, allError)
+first, firstError, = Categories(data1)
+print(first, firstError)
+second, secondError, = Categories(data2)
+print(second, secondError)
+third, thirdError, = Categories(data3)
+print(third, thirdError)
+
+categoriesBarChart(np.array([all, first, second, third]), np.array([allError, firstError, secondError, thirdError]), ["All", "1", "2", "3"])
