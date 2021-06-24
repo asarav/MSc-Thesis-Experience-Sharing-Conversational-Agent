@@ -44,18 +44,18 @@ def calculateStats(item):
         assumption1 = True
     print("Shapiro: %.8f" % p1)
     #Then Levene for Conditions 1, 2, and 3
-    stat, p = stats.levene(data2[item], data3[item])
+    stat, p = stats.levene(data1[item], data2[item], data3[item])
     if p >= 0.05:
         lev = True
     print('Levene: %.6f' % p)
     print("Anova")
-    fstat, p = stats.f_oneway(data2[item], data3[item])
+    fstat, p = stats.f_oneway(data1[item], data2[item], data3[item])
     print(fstat, p)
     if p < 0.05:
         print("Reject NULL Hypothesis (YAY)")
     else:
         print("CAN'T reject H0. (OH NO)")
-    fstat, p = stats.kruskal(data2[item], data3[item])
+    fstat, p = stats.kruskal(data1[item], data2[item], data3[item])
     print("Kruskal")
     #Kruskal if no Anova
     print(fstat, p)
@@ -75,11 +75,11 @@ def calculateStats(item):
     print('n: %.4f' % power_anova(eta=effect_size, k=2, power=0.80))
     #print('alpha: %.4f' % power_anova(eta=effect_size, n=79, k=3, power=0.80, alpha=None))
 
-def frequency(item):
+def frequency():
     items = [data1, data2, data3]
     for item in items:
         print("ITEM")
-        words = item["futureWork"].tolist()
+        words = item["typeOfRelationship"].tolist()
 
         # print(mean(words), stdev(words), median(words))
         print(Counter(words).keys())  # equals to list(set(words))
@@ -114,18 +114,25 @@ def dunn(item):
     modeldata3 = data3[item].tolist()
     print(sp.posthoc_dunn([modeldata1, modeldata2, modeldata3], p_adjust ='bonferroni'))
 
-#calculateStats("agreementPercentage")
-one = [11, 15]
-two = [12, 14]
-three = [14, 13]
+
+
+
+#frequency()
+
+
+calculateStats("motivationBeforeDuringChange")
 '''
+one = [19, 2, 5, 0]
+two = [19, 2, 5, 0]
+three = [17, 2, 5, 3]
+chiSquare3([one, two, three])
+
 # 1 2
 fisherExact([one, two])
 # 1 3
 fisherExact([one, three])
 # 2 3
 fisherExact([two, three])
-'''
 
 item = "motivationBeforeDuringChange"
 
@@ -136,4 +143,5 @@ print("Bonferroni")
 bonferroni(item)
 print("DUNN")
 dunn(item)
+'''
 
